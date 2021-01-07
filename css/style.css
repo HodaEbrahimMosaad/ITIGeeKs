@@ -4,6 +4,7 @@ body{
     padding: 0px;
     font-family: system-ui;
 }
+textarea{outline: none !important;}
 .container{
     width: 1170px;
     margin: auto;
@@ -93,12 +94,12 @@ a{cursor: pointer;}
     font-weight: bold;
     margin: 10px 0;
 }
-.ver-sec.profile-info .f {
+.ver-sec.profile-info .f, .side-div .f{
     text-align: center;
     border-top: 1px solid #e9e7e7;
     font-size: 20px;
 }
-.f a{
+.profile-info .f a{
     color: #cc625c;
     font-weight: 500;
 }
@@ -216,7 +217,7 @@ div:empty:before {
     top: 43%;
     font-size: 40px;
     color: #cac5c5;
-    z-index: 3000;
+    z-index: 3;
     box-shadow: 1px 1px 3px #f3efef7a;
     width: 30px;
     height: 30px;
