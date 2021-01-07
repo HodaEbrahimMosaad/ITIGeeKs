@@ -1,3 +1,4 @@
+$('#myApp').css({"display":"none"});
 $('#cont').click(function () {
     $('#myApp').fadeToggle()
 });
@@ -6,6 +7,19 @@ $('.chat-input input').keyup(function(e) {
         $(this).removeAttr('good');
     else
         $(this).attr('good', '');
+});
+$(".user-img").draggable({
+    drag: function () {
+        var xPos = Number.parseInt($(this).css("right"))+63
+        var yPos = Number.parseInt($(this).css("bottom"))+63
+        console.log($(this).css("left") + "-----" + yPos)
+        $('#myApp').css({
+            //"position": "fixed",
+            "right": xPos+"px",
+            "bottom": yPos+"px",
+
+        })
+    }
 });
 var trigger=[];
 var reply=[];
@@ -43,24 +57,25 @@ function test(){
     var input = document.getElementById("input").value;
     process(input)
     output(input);
+
 }
 function process(input) {
     var now = new Date()
-    var inp = `
-                        <article class="msg-container msg-remote" id="msg-0">
-                            <div class="msg-box">
-                                <img class="user-img" id="user-0" src="img/profile.jpg" />
-                                <div class="flr">
-                                    <div class="messages">
-                                        <p class="msg" id="msg-0">
-                                            ${input}
-                                        </p>
-                                    </div>
-                                    <span class="timestamp"><span class="username">${getCookie("Fname")}</span>&bull;<span class="posttime">${now.getHours() + ":" + now.getMinutes()}</span></span>
-                                </div>
+    var inp = `<div class="msg-container msg-remote" id="msg-0">
+                    <div class="msg-box">
+                        <img class="user-img" id="user-0" src="img/profile.jpg" />
+                        <div class="flr">
+                            <div class="messages">
+                                <p class="msg" id="msg-0">
+                                    ${input}
+                                </p>
                             </div>
-                        </article>`
+                            <span class="timestamp"><span class="username">${getCookie("Fname")}</span>&bull;<span class="posttime">${now.getHours() + ":" + now.getMinutes()}</span></span>
+                        </div>
+                    </div>
+                </div>`
     document.getElementById('app').innerHTML += inp;
+
 }
 function output(input){
     var text = (input.toLowerCase()).replace(/[^\w\s\d]/gi, ""); //remove all chars except words, space and
@@ -72,7 +87,7 @@ function output(input){
     }
     function callback() {
         var now = new Date();
-        var out = `<article class="msg-container msg-self" id="msg-0">
+        var out = `<div class="msg-container msg-self" id="msg-0">
                 <div class="msg-box">
                     <div class="flr">
                         <div class="messages">
@@ -84,12 +99,47 @@ function output(input){
                     </div>
                     <img class="user-img" id="user-0" src="img/cartoon-robot-toy-object-for-small-children-to-vector-32859441.jpg" />
                 </div>
-            </article>`
-        document.getElementById("app").innerHTML += out;
-        speak(product);
+            </div>`
+        if (product == "Choose any topic"){
+            if (input == "help"){
+                var html = ``;
+                var request1 = $.ajax({
+                    url: "http://localhost:3000/tags",
+                    method: "GET",
+                    data: {},
+                    dataType: "json"
+                });
+                request1.done(function( tags ) {
+                    html += `<div style="color:#FFF;" id="options">`
+                    for (var i=0; i < tags.length; i++){
+                        html += `<button class="option">${tags[i]}</button>`
+                    }
+                    html+= `</div>`
+                    $('#app').append(out);
+                    $('#app').append(html)
+                    speak(product);
+
+                    $('.options').click(function () {
+                        alert("d")
+                        console.log($(this).text())
+                    });
+
+                    return;
+                });
+                request1.fail(function( jqXHR, textStatus ) {
+                    errorAlert("Request failed: " + textStatus );
+                });
+
+            }
+
+            return;
+        } else{
+            document.getElementById("app").innerHTML += out;
+            speak(product);
+        }
+
     }
     document.getElementById("input").value = ""; //clear input value
-
         i = 0;
         var back = setInterval(function() {
             i = ++i % 4;
@@ -104,6 +154,10 @@ function output(input){
     }, 2000)
 }
 function compare(arr, array, string){
+    if (string == "help"){
+        return "Choose any topic";
+        return;
+    }
     var item;
     for(var x=0; x<jsObj.length; x++){
         for(var y=0; y<jsObj[x].value.length; y++){
@@ -125,3 +179,4 @@ function speak(string){
     utterance.pitch = 2; //0-2 interval
     speechSynthesis.speak(utterance);
 }
+

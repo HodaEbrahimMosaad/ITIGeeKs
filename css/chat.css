@@ -22,6 +22,7 @@
     max-height: calc(100% - 60px);
     background: #ffffff;
     overflow: auto;
+    position: relative;
 }
 .chat-input {
     flex: 0 0 auto;
@@ -149,8 +150,8 @@
     right: 20px;
 }
 #myApp{
-    bottom: 57px;
     position: fixed;
+    bottom: 57px;
     right: 64px;
 }
 .toggle{
@@ -160,8 +161,8 @@
     width: 60%;
     height: 65%
 }
-
-#con{
+#con
+{
     right: 0px;
     position: absolute;
     bottom: 65px;
@@ -171,5 +172,16 @@
     padding: 4px;
     display: none;
     margin-right: 0px;
+}
+#options{
+    text-align: center;
+}
+.option{
+    background: transparent;
+    border: 1px solid #fff;
+    padding: 8px;
+    border-radius: 10px;
+    color: navajowhite;
+    margin: 7px;
 }
 

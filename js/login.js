@@ -164,24 +164,28 @@ loginForm.addEventListener('submit', (e) => {
                     passwordFounded = true;
                     setCookie("id", users[i].id);
                     setCookie("email", users[i].email);
+                    setCookie("bio", users[i].bio);
+                    setCookie("track", users[i].track);
                     setCookie("role", users[i].role);
-                    window.location = '/project/jsProject-master/jsProject-master/index.html';
+                    setCookie("Fname", users[i].Fname);
+                    setCookie("Lname", users[i].Lname);
+                    window.location = 'index.html';
                     return;
                 }
             }
         }
         if (emailFounded == false && passwordFounded == false){
-            errorAlert("Wrong Email And Password")
+            console.log("Wrong Email And Password")
         }else if (emailFounded == false){
-            errorAlert("No User Founded with this email")
+            console.log("No User Founded with this email")
         } else if (passwordFounded == false){
-            errorAlert("Wrong Password")
+            console.log("Wrong Password")
         }
 
     });
 
     request.fail(function( jqXHR, textStatus ) {
-        errorAlert("Request failed: " + textStatus );
+        console.log("Request failed: " + textStatus );
     });
 
 });
@@ -207,7 +211,6 @@ function successMess(errorMessage) {
         $("#succ").slideUp(500);
     },3000)
 }
-
 // signup
 var signupForm = document.querySelector('#signup-form');
 signupForm.addEventListener('submit', function(e){
@@ -257,6 +260,13 @@ signupForm.addEventListener('submit', function(e){
         });
         request2.done(function(msg) {
             successMess("User Signed Up")
+            setCookie("id", users[i].id);
+            setCookie("email", _email);
+            setCookie("bio", signupForm['bio'].value);
+            setCookie("Fname", signupForm['Fname'].value);
+            setCookie("Lname",  signupForm['Lname'].value);
+            setCookie("track", signupForm['track'].value,);
+            setCookie("role", "user");
             window.location = '/project/jsProject-master/jsProject-master/index.html';
         });
         request2.fail(function( jqXHR, textStatus ) {

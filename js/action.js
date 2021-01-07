@@ -3,8 +3,8 @@ function logoute() {
     deleteCookie("Fname");
     deleteCookie("Lname");
     deleteCookie("email");
-    auth.signOut().then(() => {
-        console.log('user signed out');
-    });
-    window.location = '/project/jsProject-master/jsProject-master/login.html';
+    deleteCookie("bio");
+    deleteCookie("track");
+    deleteCookie("role");
+    window.location = 'login.html';
 }
