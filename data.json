@@ -1,0 +1,66 @@
+[
+    {
+        "value" : ["hi","hey","hello"],
+        "message" : ["Hi","Hey","Hello"]
+    }
+    ,
+    {
+        "value": ["how are you", "how is life", "how are things"],
+        "message": ["Fine", "Pretty well", "Fantastic"]
+    }
+    ,
+    {
+        "value": ["what are you doing", "what is going on"],
+        "message": ["Nothing much", "About to go to sleep", "Can you guest?", "I don't know actually"]
+    }
+    ,
+    {
+        "value": ["how old are you"],
+        "message": ["I am 1 day old"]
+    }
+    ,
+    {
+        "value": ["who are you", "are you human", "are you bot", "are you human or bot"],
+        "message":  ["I am just a bot", "I am a bot. What are you?"]
+    },
+    {
+        "value": ["who created you", "who made you"],
+        "message": ["Hoda Ebrahim", "My God"]
+    }
+    ,
+    {
+        "value":["your name please",  "your name", "may i know your name", "what is your name"],
+        "message": ["I am nameless", "I don't have a name"]
+    }
+    ,
+    {
+        "value": ["i love you"],
+        "message": ["I love you too", "Me too"]
+    }
+    ,
+    {
+        "value": ["happy", "good"],
+        "message": ["Have you ever felt bad?", "Glad to hear it"]
+    }
+    ,
+    {
+        "value": ["bad", "bored", "tired"],
+        "message": ["Why?", "Why? You shouldn't!", "Try watching TV"]
+    }
+    ,
+    {
+        "value": ["help me", "tell me story", "tell me joke"],
+        "message": ["I will", "What about?"]
+    }
+    ,
+    {
+        "value": ["ah", "yes", "ok", "okay", "nice", "thanks", "thank you"],
+        "message": ["Tell me a story", "Tell me a joke", "Tell me about yourself", "You are welcome"]
+    }
+    ,
+    {
+        "value": ["bye", "good bye", "goodbye", "see you later"],
+        "message": ["Bye", "Goodbye", "See you later"]
+    }
+
+]

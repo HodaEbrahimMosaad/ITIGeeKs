@@ -1,0 +1,74 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "hoda2020@gmail.com",
+      "password": "1234567",
+      "role": "admin",
+      "Fname": "Hoda",
+      "Lname": "Mosaad",
+      "bio": "bla bla bla",
+      "track": "System Development"
+    },
+    {
+      "id": 2,
+      "email": "amal@gmail.com",
+      "password": "7654321",
+      "role": "user",
+      "Fname": "Amal",
+      "Lname": "Nabil",
+      "bio": "bla bla",
+      "track": "Big Data"
+    },
+    {
+      "email": "hodaz202000@gmail.com",
+      "password": "1234567",
+      "role": "user",
+      "Fname": "jhgjh",
+      "Lname": "jhgjhg",
+      "track": "System Development",
+      "bio": "",
+      "id": 3
+    },
+    {
+      "email": "hoda20@gmail.com",
+      "password": "1234567",
+      "role": "user",
+      "Fname": "kkkjj",
+      "Lname": "kkkk",
+      "track": "Internet Of Things",
+      "bio": "",
+      "id": 4
+    },
+    {
+      "email": "test@gmaio.com",
+      "password": "1234567",
+      "role": "user",
+      "profile[0][Fname]": "mmmm",
+      "profile[0][Lname]": "mmmmm",
+      "profile[0][track]": "System Development",
+      "profile[0][bio]": "",
+      "id": 5
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "hello",
+      "body": "bla bla bla",
+      "user_id": 1
+    },
+    {
+      "id": 2,
+      "title": "hello2",
+      "body": "bla bla bla2",
+      "user_id": 1
+    },
+    {
+      "id": 3,
+      "title": "hello3",
+      "body": "bla bla bla3",
+      "user_id": 2
+    }
+  ]
+}

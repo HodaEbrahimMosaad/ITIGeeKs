@@ -1,0 +1,38 @@
+body {
+    background-color: #031c32;
+}
+.logContainer {
+    width: 800px;
+    min-height: 400px;
+    background: #fff;
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 80px;
+}
+.logContainer>div{
+    border: 1px solid #c0c0c038;
+    padding: 40px;
+}
+.logoo{
+    text-align: center;
+    margin-top: 30px;
+}
+.logoo span {
+    font-size: 76px;
+    font-family: fantasy;
+    color: #91d53d;
+}
+.left img{
+    width: 122px;
+    margin: auto;
+}
+.right .btns{
+    margin-bottom: 40px;
+}
+.txt-border{
+    border-bottom: 3px solid #031c32;
+    padding-bottom: 7px;
+}
+.logContainer>div form {
+    margin-top: 40px;
+}

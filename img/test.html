@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title></title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href=''>
+    <script src=''></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+</head>
+<body>
+    <style>
+    ul {
+        max-width: 600px;
+        text-align: center;
+        margin: auto;
+    }
+    li {
+        list-style: none;
+        float: left;
+        /* height: 100%; */
+        margin: 0 10px;
+    }
+    body {
+        margin: 0;
+        font-family: sans-serif;
+        /* padding: 0; */
+    }
+    nav {
+        background: darkcyan;
+        margin: 0;
+        padding: 19px;
+        font-size: 33px;
+        font-weight: bold;
+        color: white;
+        height: 55px;
+    }
+    nav li { cursor: pointer; }
+    section{
+        font-size: 22px;
+        width: 900px;
+        margin: auto;
+        padding: 50px;
+        font-family: cursive;
+    }
+    section>div{text-align: center;}
+    /*  */
+    .galary>div{
+        margin: auto;
+        width: 700px;
+        overflow: hidden;
+        height: 300px;
+        position: relative;
+    }
+    .galary img {
+        width: 700px;
+        height: 300px;
+        position: absolute;
+        
+    }
+    .left1{left: 700px;}
+    .left0{left: 0px;}
+    .left-1{left: -700px;}
+    /*  */
+    table{margin: auto;}
+    .form input, textarea{
+        margin: 12px;
+        width: 300px;
+        padding: 6px
+    }
+    button{
+        padding: 6px 28px;
+        font-size: 30px;
+        background: #7fc47f;
+        color: white;
+        border: 0;
+        margin-top: 40px;
+    }
+    .response span{
+        font-weight: bold;
+        line-height: 43px;
+        padding-left: 3px;
+    }
+    /* dropdown */
+    .dropdown-content {
+        height: 0px;
+        overflow: hidden;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+    li a, .dropbtn {
+        display: inline-block;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+    }
+    .dropdown-content a {
+        display: block;
+        color: #000;
+        font-size: 16px;
+        text-align: left;
+        padding: 10px;
+    }
+    </style>
+    <nav>
+        <ul>
+            <div>
+                <li id="about">About</li>
+                <li id="galary">Galary</li>
+                <li id="services" class="dropdown">
+                    <a class="dropbtn">Services</a>
+                    <div class="dropdown-content">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                        <a href="#">Link 4</a>
+                        <a href="#">Link 5</a>
+                    </div>
+                </li>
+                
+                <li id="complain">Complain</li>
+            </div>
+        </ul>
+    </nav>
+    <section>
+        <div class="about" >
+            <h2>Short story </h2>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel ex vel est placerat tempor a quis lorem. Duis luctus, turpis fermentum rutrum consequat, tellus mauris sodales urna, sit amet ornare mauris neque eu est. Maecenas a interdum justo, a tristique nisl. Integer magna turpis, bibendum vitae elit et, pharetra tincidunt orci. Nunc elementum vel enim at feugiat. Donec sit amet est magna. In eget nunc ut tellus feugiat vestibulum id sed neque. Phasellus mattis elementum pharetra. Nulla facilisi. Nam sodales commodo lacus blandit finibus. In orci libero, rhoncus eu neque ut, vehicula fermentum mi. Duis placerat eget urna eget.
+
+        </div>
+        <div class="galary" style="display: none;">
+            <div>
+                <img id="img1" class="left0" src="5.jpg">
+                <img id="img2" class="left1" src="6.jpg">
+                <img id="img3" class="left1" src="3.jpg">
+                <img id="img4" class="left1" src="4.jpg">
+                <img id="img5" class="left1" src="2.jpg">
+                <img id="img6" class="left1" src="1.jpg">
+            </div>
+
+            <button id="prev" style="background: #bb6b8c;">Prev</button>
+            <button id="next">Next</button>
+            
+        </div>
+        <div class="complain" style="display: none;">
+            <div class="form">
+                <div >
+                    <table>
+                        <tr>
+                            <td><label for="name">Name: </label></td>
+                            <td><input type="text" name="name"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="email">E-mail: </label></td>
+                            <td><input type="email" name="email"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="phone">Phone: </label></td>
+                            <td><input type="number" name="phone"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="area">Complain: </label></td>
+                            <td><textarea name="area"></textarea></td>
+                        </tr>
+                        <!-- <tr><td><button>Submit</button></td></tr> -->
+                    </table>
+                </div>
+                <button id="sendComplain">Submit</button>
+            </div>
+            <div class="response" style="display: none;">
+                <h2>Complainment sent successfully</h2>
+                <div>Your complain is <span id="sCmpln"></span></div>
+                <div>Your name is <span id="sName"></span></div>
+                <div>Your email is <span id="sEmail"></span></div>
+                <div>Your phone is <span id="sPhone"></span></div>
+                <button id="backComplain">Back</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        $(function(){
+            $('#about').click(function(){
+                $('section>div').css('display','none');
+                $('div.about').css('display','block');
+            });
+            $('#galary').click(function(){
+                $('section>div').css('display','none');
+                $('div.galary').css('display','block');
+            });
+            $('#complain').click(function(){
+                $('section>div').css('display','none');
+                $('div.complain').css('display','block');
+            });
+
+            $('#sendComplain').click(function(){
+                
+                $('.response #sCmpln').text($('[name=area]').val())
+                $('.response #sName').text($('[name=name]').val())
+                $('.response #sPhone').text($('[name=phone]').val())
+                $('.response #sEmail').text($('[name=email]').val())
+                $('.form').css('display','none');
+                $('.response').css('display','block');
+            });
+            $('#backComplain').click(function(){
+                $('.response').css('display','none');
+                $('.form').css('display','block');
+            });
+            var count = 1;
+            var imgArr = $('.galary>div').find('img');
+            $('#next').click(function(){
+                prevFlag = 0;
+                $(`.galary>div #img${count}`).animate({left: '700px'});
+                $('.galary img').css('left','-700px');
+                if(count>=imgArr.length){
+                    count =0;
+                }
+                if(count!=imgArr.length)
+                    $(`.galary>div #img${++count}`).animate({left: '0px'});
+            });
+            //
+            var prevFlag = 0;
+            $('#prev').click(function(){
+                if(prevFlag == 0){
+                    $('.galary img').removeClass('left1');
+                    $('.galary img').removeAttr('style');
+                    $('.galary #img1').removeClass('left0');
+                    $('.galary img').css('right','-700px');
+                    $(`.galary>div #img${count}`).css('right','0px');
+                    prevFlag = 1;
+                }
+                //$('.galary img').removeAttr('style');
+                $(`.galary>div #img${count}`).animate({right: '700px'});
+                $('.galary img').css('right','-700px');
+                if(count>=imgArr.length){
+                    count =0;
+                }
+                if(count!=imgArr.length)
+                    $(`.galary>div #img${++count}`).animate({right: '0px'});
+            });
+            //
+            $('#services .dropbtn').click(function() {
+                var el = $('.dropdown-content');
+                curHeight = el.height();
+                if(curHeight==0){
+                    autoHeight = el.css('height', 'auto').height();
+                    el.height(curHeight).animate({height: autoHeight}, 1000);
+                }
+                else{
+                    curHeight = el.height();
+                    zeroHeight = el.css('height', '0').height();
+                    el.height(curHeight).animate({height: zeroHeight}, 500);
+                }
+                
+            });
+            //
+
+            // $('.dropdown-content').slideUp();            
+            // $('#prev').click(function(){
+            //     $('.galary img').css('left','0px');
+            //     $(`.galary>div #img${count}`).animate({right: '700px'});
+            //     $('.galary img').css('right','-700px');
+            //     if(count>=imgArr.length){
+            //         count =0;
+            //     }
+            //     if(count!=imgArr.length)
+            //         $(`.galary>div #img${++count}`).animate({right: '0px'});
+            // });
+            
+        });
+        
+    </script>
+</body>
+</html>

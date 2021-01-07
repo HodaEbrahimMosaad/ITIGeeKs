@@ -1,0 +1,38 @@
+.board {
+    border:1px solid black;
+    display:flex;
+    flex-wrap:wrap;
+    height:276px;
+    width:330px;
+    background:blue
+}
+.board div {
+    height:40px;
+    width:40px;
+    margin:3px;
+    border-radius:20px
+}
+.square{
+    background:white;
+}
+.taken {
+    /*background:red !important */
+}
+.player-one {
+    background:red;
+}
+.player-two {
+    background:yellow;
+}
+.restart{
+    background: red;
+    width: 200px;
+    height: 200px;
+    position: fixed;
+    top: 100px;
+    left: 100px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

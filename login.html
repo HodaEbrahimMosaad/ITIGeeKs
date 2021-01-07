@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel='stylesheet' type='text/css' media='screen' href='css/login.css'>
+</head>
+<body>
+
+    <div class="logContainer row" style="width: 975px;margin-top: 45px">
+        <div class="left col-md-6">
+            <h1>GEEKS</h1>
+            <p>Workwise, is a global freelancing platform and social networking where businesses and independent professionals connect and collaborate remotely</p>
+            <div class="logoo">
+                <img src="img/tl.png">
+                <div><span>ITIGeeks</span></div>
+            </div>
+        </div>
+        <div class="right col-md-6">
+            <div class="login">
+                <div class="btns row justify-content-end">
+                    <div class="col-6">
+                        <button class="login-btn btn btn-danger btn-sm">Sign in</button>
+                        <button class="register-btn btn btn-sm">Sign out</button>
+                    </div>
+                </div>
+                <p class="h4"><span class="txt-border">Sign in</span></p>
+                <form id="login-form">
+                    <div class="row mb-3">
+                      <label for="email-login" class="col-sm-3 col-form-label">Email</label>
+                      <div class="col-sm-9">
+                        <input type="email" class="form-control" id="email-login">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="password-login" class="col-sm-3 col-form-label">Password</label>
+                      <div class="col-sm-9">
+                        <input type="password" class="form-control" id="password-login">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-12 form-check">
+                          <input class="form-check-input" type="checkbox" id="gridCheck1">
+                          <label class="form-check-label" for="gridCheck1">
+                            Remember me.
+                          </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-lg">Log in</button>
+                  </form>
+            </div>
+
+            <div class="register">
+                <div class="btns row justify-content-end">
+                    <div class="col-6">
+                        <button class="login-btn btn btn-sm">Sign in</button>
+                        <button class="register-btn btn btn-danger btn-sm">Sign up</button>
+                    </div>
+                </div>
+                <p class="h4"><span class="txt-border">Sign up</span></p>
+                <form id="signup-form">
+                    <div class="row mb-3">
+                        <label for="Fname" class="col-sm-4 col-form-label">First name</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="Fname">
+                            <span id="FnameMess"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="Lname" class="col-sm-4 col-form-label">Last name</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="Lname">
+                            <span id="LnameMess"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="email" class="col-sm-4 col-form-label">Email</label>
+                      <div class="col-sm-8">
+                        <input type="email" class="form-control" id="email" onkeyup="emailChecking()">
+                          <span id="EmailMess"></span>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="track" class="col-sm-4 col-form-label">Track</label>
+                        <div class="col-sm-8">
+                            <!--onchange="selectChecking()"-->
+                            <select class="form-select" aria-label="" id="track">
+                                <option selected value="">Select Your Track</option>
+                                <option value="System Development">System Development</option>
+                                <option value="Internet Of Things">Internet Of Things</option>
+                                <option value="Data Management">Data Management</option>
+                            </select>
+
+                            <a id="trackMessage"></a>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="password-signin" class="col-sm-4 col-form-label">Password</label>
+                      <div class="col-sm-8">
+                        <input type="password" class="form-control" id="password-signin" onkeyup="passwordChecking()">
+                          <span id="passwordMess"></span>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="RepeatPassword" class="col-sm-4 col-form-label">Password</label>
+                        <div class="col-sm-8">
+                          <input type="password" class="form-control" id="RepeatPassword" onkeyup="passwordRepChecking()">
+                            <span id="passwordRepMess"></span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="bio" class="col-sm-4 col-form-label">BIO</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="bio">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success btn-lg">Sign out</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+    <script src="js/cookies.js"></script>
+    <script src="js/conf.js"></script>
+    <script src="js/login.js"></script>
+
+</body>
+</html>

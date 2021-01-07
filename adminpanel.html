@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+
+</head>
+<body>
+    <div class="nav">
+        <div class="container">
+            <div class="logo">
+                <span>ITI Geeks</span>
+            </div>
+            <div class="items" s>
+                <ul id="navbar">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="">Friends</a></li>
+                    <li><a href="">Groups</a></li>
+                    <li><a href="">Profile</a></li>
+                    <li><a href="">Entertainment</a></li>
+                    <li><a onclick="logoute()">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class = "ver-sec timeline" style="width: 100%;">
+            <div class="create-post line-div">
+                ee
+            </div>
+        </div>
+    </div>
+
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+<script src="js/cookies.js"></script>
+<script src="js/conf.js"></script>
+<script src="js/action.js"></script>
+<script>
+    auth.onAuthStateChanged(function(user){
+        var userm = {} ;
+        if (user) {
+            db.collection("users").where("bio", "==", 'My Bio')
+                .onSnapshot(function(querySnapshot) {
+                    querySnapshot.forEach(doc => {
+                        userm = doc.data()
+                    });
+                }, function (err) {
+                    console.log(err.message)
+                });
+            console.log(userm)
+            // db.collection("users").where("id", "==",'7dxNdROVWTZKfcBuqyP6qouM1pz2').doc(.then(function() {
+            //     console.log("Document successfully deleted!");
+            // }).catch(function(error) {
+            //     console.error("Error removing document: ", error);
+            // });
+
+            // var id = '7dxNdROVWTZKfcBuqyP6qouM1pz2';
+            // db.collection("users").doc(id).delete().then(function () {
+            //     console.log('user deleted');
+            //     const hospitals = [];
+            //     db.collection('users').get()
+            //         .then(snapshot => {
+            //             snapshot.docs.forEach(hospital => {
+            //                 let appObj = hospital.data();
+            //                 appObj['id'] = hospital.id;
+            //                 hospitals.push(appObj)
+            //             })
+            //         });
+            //     console.log(db.collection("users").doc(id).id);
+            //     console.log(hospitals)
+            // });
+
+
+            // db.collection("users").where("id", "==",'7dxNdROVWTZKfcBuqyP6qouM1pz2').doc("DC").delete().then(function() {
+            //     console.log("Document successfully deleted!");
+            // }).catch(function(error) {
+            //     console.error("Error removing document: ", error);
+            // });
+
+
+            // })
+            //     .catch((error) => {
+            //         console.log(' -- 2. deleteUser() error.message:');
+            //     });
+        }
+    });
+
+
+
+        // db.collection("users")
+        //     .onSnapshot(function(querySnapshot) {
+        //         querySnapshot.forEach(doc => {
+        //             var user = doc;
+        //             console.log(user.id)
+        //
+        //
+        //         })
+        //     }, function (err) {
+        //         console.log(err.message)
+        //     });
+
+</script>
+</body>
+</html>
