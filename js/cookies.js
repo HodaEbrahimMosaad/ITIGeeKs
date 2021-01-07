@@ -1,10 +1,7 @@
  function hasCookie(name) {
-    var user = getCookie(name);
-    if (user == "") {
-        return false;
-    } else {
+    if(getCookie(name))
         return true;
-    }
+    else return false;
 }
 
  function setCookie(cname, cvalue, exdays) {
