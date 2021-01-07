@@ -39,36 +39,96 @@
       "track": "Internet Of Things",
       "bio": "",
       "id": 4
-    },
-    {
-      "email": "test@gmaio.com",
-      "password": "1234567",
-      "role": "user",
-      "profile[0][Fname]": "mmmm",
-      "profile[0][Lname]": "mmmmm",
-      "profile[0][track]": "System Development",
-      "profile[0][bio]": "",
-      "id": 5
     }
   ],
   "posts": [
     {
       "id": 1,
-      "title": "hello",
-      "body": "bla bla bla",
-      "user_id": 1
+      "body": "  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi beatae deleniti dolorum,  ducimus labore magnam nisi nobis porro quos sim  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi beatae deleniti dolorum,  ducimus labore magnam nisi nobis porro quos sim  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi beatae deleniti dolorum,  ducimus labore magnam nisi nobis porro quos simLorem ipsum dolor sit amet, consectetur adipisicing elit. Animi beatae deleniti dolorum,  ducimus labore magnam nisi nobis porro quos similique? Eligendi error facere nisi optio provident quo reiciendis sed, voluptatibus?  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi beatae deleniti dolorum,  ducimus labore magnam nisi nobis porro quos similique? Eligendi error facere nisi optio provident quo reiciendis sed, voluptatibus?",
+      "comments": [],
+      "img_path": [],
+      "userid": 1,
+      "created_at": "1/7/2021, 6:34:33 PM",
+      "tags" : ["Programming"]
     },
     {
       "id": 2,
-      "title": "hello2",
       "body": "bla bla bla2",
-      "user_id": 1
+      "img_path": [],
+      "comments": [],
+      "userid": 1,
+      "created_at":  "1/7/2021, 5:34:33 PM",
+      "tags": ["Entertainment"]
     },
     {
       "id": 3,
-      "title": "hello3",
       "body": "bla bla bla3",
-      "user_id": 2
+      "img_path": "",
+      "comments": [],
+      "userid": 3,
+      "created_at":  "1/7/2021, 6:34:33 PM",
+      "tags": ["Programming"]
+    },
+    {
+      "id": 4,
+      "body": "bla bla bla3",
+      "img_path": [],
+      "comments": [],
+      "userid": 4,
+      "created_at": "1/7/2021, 2:34:33 PM",
+      "tags": ["Scientific", "Entertainment"]
+    },
+    {
+      "id": 5,
+      "body": "bla bla bla2",
+      "img_path": [],
+      "comments": [],
+      "userid": 2,
+      "created_at": "1/7/2021, 2:37:33 PM",
+      "tags": ["Entertainment"]
     }
+  ],
+  "following": [
+    {
+      "follower": 1,
+      "followed" : 2
+    },
+    {
+      "follower": 2,
+      "followed" : 1
+    },
+    {
+      "follower": 1,
+      "followed": 4
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "content": "this is comment1",
+      "postid": 1,
+      "userid": 2,
+      "username": "jhghj gjhghj",
+      "created_at": "1/7/2021, 6:34:33 PM"
+    },
+    {
+      "id": 2,
+      "content": "this is comment11",
+      "postid": 1,
+      "userid": 1,
+      "username": "Hoda Mosaad",
+      "created_at": "1/7/2021, 5:34:33 PM"
+    },
+    {
+      "id": 3,
+      "content": "this is comment4",
+      "postid": 4,
+      "userid": 3,
+      "username": "Amal Nabil",
+      "created_at": "1/7/2021, 6:34:00 PM"
+    }
+  ],
+  "tags": [
+    "Scientific", "Entertainment", "Data Science", "Big Data", "AI", "CV","Programming"
   ]
 }

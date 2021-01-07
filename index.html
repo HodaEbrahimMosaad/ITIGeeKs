@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
     <link rel="stylesheet" type="text/css" href="css/chat.css">
-    
+
 </head>
 <body>
 
@@ -53,7 +53,7 @@
                 <p><a>View Profile</a></p>
             </div>
             </div>
-            
+
         </div>
         <div class="ver-sec timeline">
             <form class="create-post line-div">
@@ -67,9 +67,7 @@
                     <button id="post-btn">Post</button>
                 </div>
             </form>
-<!--            <div id="posts">-->
 
-<!--            </div>-->
 
             <div class="post line-div">
                 <div class="head">
@@ -151,60 +149,30 @@
                 <i id="prev" class="fa fa-angle-right"></i>
             </div>
 
-            <div class="post line-div">
-                <div class="head">
-                    <div class="img"><img src="img/profile.jpg"></div>
-                    <div class="info">
-                        <div class="name">Ali Ahmed</div>
-                        <div class="time">yesterday</div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="body">
-                    <p class="postP1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book...</p>
-                    <div><a class="more">Read more..</a></div>
-                </div>
-            </div>
-            <div class="post line-div">
-                <div class="head">
-                    <div class="img"><img src="img/profile.jpg"></div>
-                    <div class="info">
-                        <div class="name">Mohsen Talga</div>
-                        <div class="time">5 hours ago</div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="body">
-                    <p class="postP1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book...</p>
-                    <div><a class="more">Read more..</a></div>
-                </div>
-            </div>
-
-
 
         </div>
     </div>
+    <div id="toDrag">
+        <div id="cont">
+            <img class="user-img"  style="box-shadow: 0px 0px 35px;" src="img/cartoon-robot-toy-object-for-small-children-to-vector-32859441.jpg" />
+        </div>
+        <section class="chatbox" id="myApp">
 
-    <div id="cont">
-        <img class="user-img"  style="box-shadow: 0px 0px 35px;" src="img/cartoon-robot-toy-object-for-small-children-to-vector-32859441.jpg" />
-    </div>
+            <section class="chat-window" id="app">
 
-    <section class="chatbox" id="myApp">
-
-        <section class="chat-window" id="app">
-
+            </section>
             <div id="con">
                 <div id="loading">
                 </div>
             </div>
+            <form class="chat-input" onsubmit="return false;">
+                <input onkeyup="test2(this.keyCode)" type="text" id="input" autocomplete="on" placeholder="Type a message" />
+                <button id="bttn" onclick="test()">
+                    <img src="img/send.png">
+                </button>
+            </form>
         </section>
-        <form class="chat-input" onsubmit="return false;">
-            <input onkeyup="test2(this.keyCode)" type="text" id="input" autocomplete="on" placeholder="Type a message" />
-            <button id="bttn" onclick="test()">
-                <img src="img/send.png">
-            </button>
-        </form>
-    </section>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
