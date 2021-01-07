@@ -112,18 +112,13 @@ function output(input){
                 request1.done(function( tags ) {
                     html += `<div style="color:#FFF;" id="options">`
                     for (var i=0; i < tags.length; i++){
-                        html += `<button class="option">${tags[i]}</button>`
+                        html += `<button onclick="getTagPsts(event)" class="option">${tags[i]}</button>`
                     }
                     html+= `</div>`
                     $('#app').append(out);
-                    $('#app').append(html)
+                    $('#app').append(html);
+                    
                     speak(product);
-
-                    $('.options').click(function () {
-                        alert("d")
-                        console.log($(this).text())
-                    });
-
                     return;
                 });
                 request1.fail(function( jqXHR, textStatus ) {
@@ -180,3 +175,22 @@ function speak(string){
     speechSynthesis.speak(utterance);
 }
 
+
+function getTagPsts(e) {
+    var target = e.target
+    var text = target.textContent || target.innerText;
+    console.log(text)
+    var request1 = $.ajax({
+        url: "http://localhost:3000/tags",
+        method: "GET",
+        data: {},
+        dataType: "json"
+    });
+    request1.done(function( tags ) {
+
+    });
+    request1.fail(function( jqXHR, textStatus ) {
+        errorAlert("Request failed: " + textStatus );
+    });
+
+}
