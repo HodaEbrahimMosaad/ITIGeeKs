@@ -12,7 +12,16 @@
 </head>
 <body>
 <style>
-    
+    .edit-modal-content input,.edit-modal-content  textarea {
+        padding: 5px;
+        border: 1px solid gray;
+        width: 250px;
+        margin: 8px;
+    }
+    .modal-content.edit-modal-content {
+        width: 40%;
+        padding: 20px 30px;
+    }
 </style>
 <div class="nav">
     <div class="container">
@@ -28,6 +37,7 @@
                 <li><a href="">Groups</a></li>
                 <li><a href="profile.html">Profile</a></li>
                 <li><a href="">Entertainment</a></li>
+                <li><a onclick="logoute()">Logout</a></li>
             </ul>
         </div>
     </div>
@@ -40,6 +50,7 @@
   <div class="side-div">
     <div class="img-cont">
       <img src="img/profile.jpg">
+      <button id="edit-profile" class="btn">Edit Profile</button>
     </div>
     <div class="f">
       <p class="grayTxt">Following</p>
@@ -188,15 +199,42 @@
     </div>
   </div>
   <!-- end modal -->
+  <!-- edit profile modal -->
+  <div id="editModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content edit-modal-content">
+      <span class="close">&times;</span>
+      <h4>Edit profile details</h4>
+      <div class="editform">
+        <table>
+            <tr>
+                <td><label>First Name</label></td>
+                <td><input id="Fname" type="text" name="Fname"></td>
+            </tr>
+            <tr>
+                <td><label>Last Name</label></td>
+                <td><input id="Lname" type="text" name="Lname"></td>
+            </tr>
+            <tr>
+                <td><label>Email</label></td>
+                <td><input id="email" type="email" name="email"></td>
+            </tr>
+            <tr>
+                <td><label>Bio</label></td>
+                <td><textarea id="bio" name="bio"></textarea></td>
+            </tr>
+        </table>        
+        
+      </div>
+      <button class="btn" id="editProfileBtn">Edit</button>
+    </div>
+  </div>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/cookies.js"></script>
     <script src="js/profile.js"></script>
     <script>
-      $( function() {
-        // $("#tabs .ui-tabs-active a").css("color","green");
-        $('#myposts').css("display","block");
-        $( "#tabs" ).tabs();
-      } );
+      
       </script>
 </body>
 </html>
