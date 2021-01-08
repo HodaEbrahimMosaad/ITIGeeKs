@@ -1,4 +1,6 @@
+ 
 function hasCookie(name) {
+
     if(getCookie(name))
         return true;
     else return false;
