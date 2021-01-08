@@ -49,16 +49,16 @@
 <div class="container">
   <div class="side-div">
     <div class="img-cont">
-      <img src="img/profile.jpg">
+      <img id="ProfileImg" src="img/profile.jpg">
       <button id="edit-profile" class="btn">Edit Profile</button>
     </div>
     <div class="f">
       <p class="grayTxt">Following</p>
-      <p>34</p>
+      <p id="profileFolowing"></p>
     </div>
     <div class="f">
         <p class="grayTxt">Followers</p>
-        <p>100</p>
+        <p id="profileFollowers"></p>
     </div>
     <div class="f sm">
         <p>
@@ -81,8 +81,8 @@
   </div>
   <div class="ver-sec timeline">
     <div>
-      <h2>Ahmed Atef</h2>
-      <h4 class="grayTxt">Front-End Developer</h4>
+      <h2 id="UserFullName"></h2>
+      <h4 class="grayTxt" id="UserTrack"></h4>
     </div>
     <div id="tabs">
       <ul>
@@ -102,7 +102,7 @@
           <div class="head">
               <div class="img"><img src="img/profile.jpg"></div>
               <div class="info">
-                  <div class="name">Ahmed Atef</div>
+                  <div class="name UserName" ></div>
                   <div class="time"><i class="fa fa-history"></i> 3 min ago</div>
               </div>
           </div>
@@ -209,19 +209,23 @@
         <table>
             <tr>
                 <td><label>First Name</label></td>
-                <td><input id="Fname" type="text" name="Fname"></td>
+                <td><input id="FnameEdite" type="text" name="Fname"></td>
             </tr>
             <tr>
                 <td><label>Last Name</label></td>
-                <td><input id="Lname" type="text" name="Lname"></td>
+                <td><input id="LnameEdite" type="text" name="Lname"></td>
             </tr>
             <tr>
                 <td><label>Email</label></td>
-                <td><input id="email" type="email" name="email"></td>
+                <td><input id="emailEdite" type="email" name="email"></td>
             </tr>
             <tr>
                 <td><label>Bio</label></td>
-                <td><textarea id="bio" name="bio"></textarea></td>
+                <td><textarea id="bioEdite" name="bio"></textarea></td>
+            </tr>
+              <tr>
+                <td><label>Profile Image</label></td>
+                <td><input type="file" accept="image/*" class="EditProfileImg" name="ProfileImg"></td>
             </tr>
         </table>        
         
@@ -233,6 +237,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="js/cookies.js"></script>
     <script src="js/profile.js"></script>
+    <script src="js/index-data.js"></script>
     <script>
       
       </script>
