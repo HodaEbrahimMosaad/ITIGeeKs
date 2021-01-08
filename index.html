@@ -10,9 +10,9 @@
     <link rel="stylesheet" type="text/css" href="css/chat.css">
     <script src="js/cookies.js"></script>
     <script>
-        // if (hasCookie("Fname") == false){
-        //     window.location = 'login.html';
-        // }
+        if (hasCookie("Fname") == false){
+            window.location = 'login.html';
+        }
     </script>
     <script>
 
@@ -20,60 +20,7 @@
 
 </head>
 <body>
-<style>
-    /* .image-upload > input {
-  visibility:hidden;
-  width:0;
-  height:0
-} */
-.upImg {
-    pointer-events: none;
-    width: 57px;
-    position: absolute;
-    right: 52px;
-    z-index: 4;
-    top: -10px;
-}
-#postImgs{
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    right: 58px;
-    cursor: pointer;
-}
-input#postImgs:focus {
-    outline: none;
-}
-.image-upload{
-    position: relative;
-    width: 200px;
-}
-/* dropdown */
-.dropdown-content {
-    height: 0px;
-    overflow: hidden;
-    position: absolute;
-    background-color: #031c32;
-    min-width: 130px;
-    box-shadow: 1px 1px 3px #8080807d;
-    z-index: 1;
-    margin-top: 10px;
-}
-li a, .dropbtn {
-    display: inline-block;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-}
-.dropdown-content a {
-    display: block;
-    color: #000;
-    font-size: 16px;
-    text-align: left;
-    padding: 10px;
-}
 
-</style>
     <div class="nav">
         <div class="container">
             <div class="logo">
@@ -83,8 +30,7 @@ li a, .dropbtn {
             <div class="items">
                 <ul id="navbar">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="">Friends</a></li>
-                    <li><a href="">Groups</a></li>
+                    <li><a href="friends.html">Friends</a></li>
                     <li><a href="profile.html">Profile</a></li>
                     <li id="games" class="dropdown">
                         <a class="dropbtn">Entertainment</a>
@@ -241,22 +187,5 @@ li a, .dropbtn {
     <script src="js/action.js"></script>
     <script src="js/index-data.js"></script>
     <script src="js/chat.js"></script>
-    <script>
-        //dropdown
-        $('#games .dropbtn').click(function() {
-            var el = $('.dropdown-content');
-            curHeight = el.height();
-            if(curHeight==0){
-                autoHeight = el.css('height', 'auto').height();
-                el.height(curHeight).animate({height: autoHeight}, 1000);
-            }
-            else{
-                curHeight = el.height();
-                zeroHeight = el.css('height', '0').height();
-                el.height(curHeight).animate({height: zeroHeight}, 500);
-            }
-            
-        });
-    </script>
 </body>
 </html>

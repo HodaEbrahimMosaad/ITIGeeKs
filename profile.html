@@ -11,18 +11,7 @@
     
 </head>
 <body>
-<style>
-    .edit-modal-content input,.edit-modal-content  textarea {
-        padding: 5px;
-        border: 1px solid gray;
-        width: 250px;
-        margin: 8px;
-    }
-    .modal-content.edit-modal-content {
-        width: 40%;
-        padding: 20px 30px;
-    }
-</style>
+
 <div class="nav">
     <div class="container">
         <div class="logo">
@@ -33,10 +22,15 @@
         <div class="items">
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="">Friends</a></li>
-                <li><a href="">Groups</a></li>
+                <li><a href="friends.html">Friends</a></li>
                 <li><a href="profile.html">Profile</a></li>
-                <li><a href="">Entertainment</a></li>
+                <li id="games" class="dropdown">
+                  <a class="dropbtn">Entertainment</a>
+                  <div class="dropdown-content">
+                      <a href="Ludo-game.html" target="_blank">Ludo game</a>
+                      <a href="connect-for.html" target="_blank">Connect 4</a>
+                  </div>
+              </li>
                 <li><a onclick="logout()">Logout</a></li>
             </ul>
         </div>
@@ -187,6 +181,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="js/cookies.js"></script>
+    <script src="js/action.js"></script>
     <script src="js/profile.js"></script>
     <script>
       

@@ -14,6 +14,7 @@
 /* side div */
 .side-div img {
     width: 220px;
+    height: 220px;
     border-radius: 50%;
     border: 2px solid #fff;
 }
@@ -124,5 +125,15 @@
 /* CHECKED STYLES */
     [type=radio]:checked + img {
     outline: 2px solid coral;
+}
+.edit-modal-content input,.edit-modal-content  textarea {
+    padding: 5px;
+    border: 1px solid gray;
+    width: 250px;
+    margin: 8px;
+}
+.modal-content.edit-modal-content {
+    width: 40%;
+    padding: 20px 30px;
 }
 /* end modal */
