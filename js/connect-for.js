@@ -1,9 +1,9 @@
-let board=document.querySelector(".board")
-let player=document.querySelector(".player")
-let playAgain=document.querySelector(".playAgain")
-let restart=document.querySelector(".restart")
-let box=0
-let winningArray = [
+var board=document.querySelector(".board")
+var player=document.querySelector(".player")
+var playAgain=document.querySelector(".playAgain")
+var restart=document.querySelector(".restart")
+var box=0
+var winningArray = [
     [0, 1, 2, 3], [41, 40, 39, 38],[7, 8, 9, 10],
     [34, 33, 32, 31], [14, 15, 16, 17], [27, 26, 25, 24],
     [21, 22, 23, 24], [20, 19, 18, 17], [28, 29, 30, 31],
@@ -28,7 +28,7 @@ let winningArray = [
     [8, 15, 22, 29], [9, 16, 23, 30], [10, 17, 24, 31],
     [11, 18, 25, 32], [12, 19, 26, 33], [13, 20, 27, 34]
 ];
-let currentPlayer=1
+var currentPlayer=1
 document.addEventListener("DOMContentLoaded", loadDOM)
 //load dom function
 
@@ -36,7 +36,7 @@ function loadDOM(){
     createBoard()
     player.innerHTML=currentPlayer
     playAgain.addEventListener("click",reset)
-    let squares =document.querySelectorAll(".board div")
+    var squares =document.querySelectorAll(".board div")
     Array.from(squares).forEach(square=>{
         square.addEventListener("click",clickBox)
 
@@ -45,13 +45,12 @@ function loadDOM(){
 // createBoard function
 
 function createBoard(){
-    for(let i=0;i<49;i++){
-        let div =document.createElement("div")
-        div.setAttribute("data-id",i)
+    for(var i=0;i<49;i++){
+        var div =document.createElement("div")
+        div.setAttribute("id",i)
         div.className = "square"
         if (i>=42){
             div.className="taken non";
-            // div.className="non";
         }
         board.appendChild(div)
     }
@@ -59,8 +58,8 @@ function createBoard(){
 //clickBoard function
 
 function clickBox(){
-    let squares =document.querySelectorAll(".board div")
-    let click =parseInt(this.dataset.id)
+    var squares =document.querySelectorAll(".board div")
+    var click =parseInt(this.id)
     if( squares[click+7].classList.contains("taken") && !squares[click].classList.contains("taken")){
         if(currentPlayer===1){
             currentPlayer=2
@@ -75,32 +74,39 @@ function clickBox(){
         }
         if(box===42){
             setTimeout(()=>alert("boxes filled"),300)
-            setTimeout(()=>restart.style.display="flex",500)
+            setTimeout(()=>restart.style.display="block",500)
         }
     }else{
-        alert("You cannot build on an empty space or on a space that has been built on")
+        //alert("You cannot build on an empty space or on a space that has been built on")
     }
 }
 //the checkWon function
 
 function checkWon(){
-    let squares =document.querySelectorAll(".board div")
-    for (let y=0;y<winningArray.length;y++){
-
-        let square =winningArray[y]
-        if(square.every(q=>squares[q].classList.contains("player-one"))){
-
-
-            setTimeout(() =>alert("player one(red) wins "), 200)
-            setTimeout(() =>restart.style.display="flex", 500)
-
-        }else if(square.every(q=>squares[q].classList.contains("player-two"))){
-            setTimeout(() =>alert("player two(yellow) wins"), 200)
-            setTimeout(() =>restart.style.display="flex", 500)
-
+    var squares =document.querySelectorAll(".board div")
+    for (var y=0;y<winningArray.length;y++){
+        var flagR = true, flagB = true;
+        var square =winningArray[y] //(1,2,3,4)
+        for(var j =0 ;j<4;j++){
+            if(!squares[square[j]].classList.contains("player-one")){
+                flagR=false;
+                break;
+            }
         }
+        for(var j =0 ;j<4;j++){
+            if(!squares[square[j]].classList.contains("player-two")){
+                flagB=false;
+                break;
+            }
+        }
+        if(flagR){
+            setTimeout(() =>alert("player one(Red) wins "), 200)
+            setTimeout(() =>restart.style.display="block", 500)
 
-
+        }else if(flagB){
+            setTimeout(() =>alert("player two(Blue) wins"), 200)
+            setTimeout(() =>restart.style.display="block", 500)
+        }
     }
 }
 function reset(){
