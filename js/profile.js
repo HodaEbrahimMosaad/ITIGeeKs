@@ -6,9 +6,71 @@ try{
     var flag = false;
 }
 
-if (flag && id != getCookie("id")){
-    $("#edit-profile").css({"display": "none"})
+window.onload=function(){
+    var firstname =getCookie("Fname");
+    var lastName=getCookie("Lname")
+    var Track=getCookie("track");
+
+    $('#UserFullName,.UserName').html(firstname +" "+lastName)
+    $('#UserTrack').html(Track);
 }
+
+
+
+if (flag && id != getCookie("id")){
+    var request5 = $.ajax({
+        url: "http://localhost:3000/users/"+id,
+        method: "GET",
+        data: {},
+        dataType: "json"
+    });
+    request5.done(function(user) {
+        console.log(user)
+        $("#edit-profile").css({"display": "none"})
+        $('#facebook').text(user.socialmedia.facebook)
+        $('#github').text(user.socialmedia.github)
+        $('#linkedin').text(user.socialmedia.linkedin)
+        $('#ProfileImg').attr("src","img/"+user.profilepic)
+        $('#UserFullName').text(user.Fname + " " + user.Lname)
+        $('#UserTrack').html(user.track);
+
+    });
+    request5.fail(function( jqXHR, textStatus ) {
+        errorAlert("Request failed: " + textStatus );
+    });
+
+
+} else {
+    if (!id ){
+        var id = getCookie('id')
+    }
+}
+
+var request1 = $.ajax({
+    url: "http://localhost:3000/following",
+    method: "GET",
+    data: {},
+    dataType: "json"
+});
+var __follower = 0;
+var __followed = 0;
+request1.done(function( following ) {
+    for (var i=0; i < following.length; i++){
+        console.log(following[i])
+        if (following[i].follower == id){
+            __follower += 1
+        }
+        if (following[i].followed == id){
+            __followed += 1
+        }
+    }
+    $('#profileFolowing').text(__follower)
+    $('#profileFollowers').text(__followed)
+});
+request1.fail(function( jqXHR, textStatus ) {
+    errorAlert("Request failed: " + textStatus );
+});
+
 var request = $.ajax({
     url: "http://localhost:3000/posts",
     method: "GET",
@@ -48,6 +110,7 @@ request.done(function( posts ) {
         });
         console.log(all_posts);
         setupPosts(all_posts)
+
     });
     request2.fail(function( jqXHR, textStatus ) {
         errorAlert("Request failed: " + textStatus );
@@ -77,7 +140,7 @@ var setupPosts = function(posts){
                 <p class="postP1">${posts[i].body}</p>
                 <div><a class="see more">Read more..</a></div>
             </div>
-            <div style="color:cornflowerblue;"><span id="likeCounter">${posts[i].likes} </span> Likes             <div style="color:cornflowerblue;"><span id="likeCounter">${posts[i].likes} &#128514;</span> Likes</div>
+            <div style="color:cornflowerblue;"><span id="likeCounter">${posts[i].likes} </span>Likes</div>
 </div>
             <div class="react">
                 <div onclick="likeFun(this)"><i class="fa fa-thumbs-o-up"></i> Like</div>
@@ -178,7 +241,6 @@ btn2.onclick = function() {
         setCookie("Fname", _fname);
         setCookie("Lname", _lName);
         //var _newProfileImg=newProfileImg.replace(/^.*[\\\/]/, '');
-        debugger
         //location.reload(true);
 
     });
@@ -233,12 +295,4 @@ $( function() {
 
 } );
 
-window.onload=function(){
-    var firstname =getCookie("Fname");
-    var lastName=getCookie("Lname")
-    var Track=getCookie("track");
-    
-    $('#UserFullName,.UserName').html(firstname +" "+lastName)
-    $('#UserTrack').html(Track);
-}
 

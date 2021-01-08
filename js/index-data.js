@@ -8,6 +8,7 @@ var count2=count;
 var id = getCookie("id");
 console.log(id);
 var followersId = [];
+
 var request1 = $.ajax({
     url: "http://localhost:3000/following",
     method: "GET",
@@ -26,8 +27,8 @@ request1.done(function( following ) {
             _followed += 1
         }
     }
-    $('#Following ,#profileFolowing').text(_follower)
-    $('#Followers,#profileFollowers').text(_followed)
+    $('#Following').text(_follower)
+    $('#Followers').text(_followed)
 });
 request1.fail(function( jqXHR, textStatus ) {
     errorAlert("Request failed: " + textStatus );
@@ -92,7 +93,7 @@ var setupPosts = function(posts){
         var li =
         `<div class="post line-div">
             <div class="head">
-                 <div class="img"><a href="${href}" id="prfLink" target="_blank"><img src="img/profile.jpg"></a></div>
+                 <div class="img"><a href="${href}" id="prfLink" target="_blank"><img src="img/${posts[i].userprofilepic}"></a></div>
                 <div class="info">
                     <div class="name"><a style="text-decoration: none;" href="${href}" id="prfLink" target="_blank">${posts[i].username}</a></div>
                     <div class="time"><i class="fa fa-history"></i> ${posts[i].created_at}</div>
@@ -135,7 +136,7 @@ var setupPosts = function(posts){
                 hrefpro = hrefpro + "?id=" + posts[i].comments[j].userid
             }
             li += `<div class="ccmnt">
-                    <div class="img"><a style="text-decoration: none;" href="${hrefpro}" id="prfLink" target="_blank"><img src="img/profile.jpg"></a></div>
+                    <div class="img"><a style="text-decoration: none;" href="${hrefpro}" id="prfLink" target="_blank"><img src="img/${posts[i].comments[j].userprofilepic}"></a></div>
                     <div class="post-text">
                         <p><b><a style="text-decoration: none;" href="${hrefpro}" id="prfLink" target="_blank">${posts[i].comments[j].username}</a></b></p>
                         <p>${posts[i].comments[j].content}</p>
@@ -158,7 +159,6 @@ var setupPosts = function(posts){
 
     $('.postP1').each(function(i, obj) {
         if (Number.parseInt($(obj).text().length) <= 355){
-            console.log(Number.parseInt($(obj).css('-webkit-line-clamp')) + "---")
             $(obj).next().css({"display": "none"})
         }
     });
@@ -375,7 +375,6 @@ function funPrev(){
     else{
         flagToOutSlid=1;
     }
-
 }
 
 function slider(){
@@ -383,7 +382,6 @@ function slider(){
     timerId = setInterval(function () {
         if(flagToOutSlid==0&&start>=1){
             funPrev();
-
         }
         else {
             if(flagToOutSlid==1){
