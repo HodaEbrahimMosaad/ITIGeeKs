@@ -116,7 +116,7 @@ a{cursor: pointer;}
     box-shadow: 1px 1px 3px #8080807d;
     min-height: 100px;
 }
-.line-div .head img, .profilesContainer .person img{
+.line-div .head .img img, .profilesContainer .person img{
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -293,8 +293,7 @@ div:empty:before {
 .likeClass{
     color: blue
 }
-
- .thumbnail {
-    height: 100px;
-    margin: 10px;
-    }
+.thumbnail {
+    height: 50px;
+    margin: 10px 5px;
+}
