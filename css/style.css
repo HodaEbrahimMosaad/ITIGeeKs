@@ -84,6 +84,7 @@ a{cursor: pointer;}
 }
 .ver-sec.profile-info img {
     width: 140px;
+    height: 140px;
     border-radius: 50%;
     margin: auto;
     display: block;
@@ -116,7 +117,7 @@ a{cursor: pointer;}
     box-shadow: 1px 1px 3px #8080807d;
     min-height: 100px;
 }
-.line-div .head img, .profilesContainer .person img{
+.line-div .head .img img, .profilesContainer .person img{
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -268,15 +269,13 @@ div:empty:before {
 .profilesContainer i.fa-angle-left{left: 0;}
 .person .img{margin: auto;}
 /* end top profiles */
-.alert{
+#alert{
     width: 975px;
     text-align: center;
-    margin: auto;
-    background-color: hsla(92, 23%, 87%, 0.2);
-    margin-top: 45px;
+    margin: 45px auto 20px;
+    background-color: darkgray;
     padding: 20px;
     border-radius: 10px;
-    width: 975px;
 }
 .succ{
     width: 975px;
@@ -293,8 +292,7 @@ div:empty:before {
 .likeClass{
     color: blue
 }
-
- .thumbnail {
-    height: 100px;
-    margin: 10px;
-    }
+.thumbnail {
+    height: 50px;
+    margin: 10px 5px;
+}

@@ -1,17 +1,32 @@
+body{
+    background-image: url('../img/gb.jpg');
+    background-size: cover;
+}
+.board-cont {
+    border: 15px solid black;
+    padding: 21px;
+    box-shadow: inset 0px 0px 8px #413e3e;
+    width: 330px;
+    background: black;
+    margin: auto;
+    margin-top: 187px;
+}
 .board {
-    border:1px solid black;
-    display:flex;
-    flex-wrap:wrap;
-    height:276px;
-    width:330px;
-    background:blue
+    
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 276px;
+    
 }
 .board div {
     height:40px;
     width:40px;
     margin:3px;
-    border-radius:20px
+    border-radius:20px;
+    box-shadow: inset 1px 1px 7px rgb(0 0 0 / 53%);
 }
+.non{box-shadow: inset 0px 0px 0px !important;}
 .square{
     background:white;
 }
@@ -19,13 +34,13 @@
     /*background:red !important */
 }
 .player-one {
-    background:red;
+    background:#bf0f15;
 }
 .player-two {
-    background:yellow;
+    background: #0a7dda;
 }
 .restart{
-    background: red;
+    background: #bf0f15;
     width: 200px;
     height: 200px;
     position: fixed;

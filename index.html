@@ -10,9 +10,9 @@
     <link rel="stylesheet" type="text/css" href="css/chat.css">
     <script src="js/cookies.js"></script>
     <script>
-        if (hasCookie("Fname") == false){
-            window.location = 'login.html';
-        }
+        // if (hasCookie("Fname") == false){
+        //     window.location = 'login.html';
+        // }
     </script>
     <script>
 
@@ -20,7 +20,60 @@
 
 </head>
 <body>
+<style>
+    /* .image-upload > input {
+  visibility:hidden;
+  width:0;
+  height:0
+} */
+.upImg {
+    pointer-events: none;
+    width: 57px;
+    position: absolute;
+    right: 52px;
+    z-index: 4;
+    top: -10px;
+}
+#postImgs{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 58px;
+    cursor: pointer;
+}
+input#postImgs:focus {
+    outline: none;
+}
+.image-upload{
+    position: relative;
+    width: 200px;
+}
+/* dropdown */
+.dropdown-content {
+    height: 0px;
+    overflow: hidden;
+    position: absolute;
+    background-color: #031c32;
+    min-width: 130px;
+    box-shadow: 1px 1px 3px #8080807d;
+    z-index: 1;
+    margin-top: 10px;
+}
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+.dropdown-content a {
+    display: block;
+    color: #000;
+    font-size: 16px;
+    text-align: left;
+    padding: 10px;
+}
 
+</style>
     <div class="nav">
         <div class="container">
             <div class="logo">
@@ -33,8 +86,14 @@
                     <li><a href="">Friends</a></li>
                     <li><a href="">Groups</a></li>
                     <li><a href="profile.html">Profile</a></li>
-
-                    <li><a href="Games.html">Entertainment</a></li>
+                    <li id="games" class="dropdown">
+                        <a class="dropbtn">Entertainment</a>
+                        <div class="dropdown-content">
+                            <a href="Ludo-game.html" target="_blank">Ludo game</a>
+                            <a href="connect-for.html" target="_blank">Connect 4</a>
+                        </div>
+                    </li>
+                    <!-- <li><a href="Games.html">Entertainment</a></li> -->
                     <li><a onclick="logout()">Logout</a></li>
 
                 </ul>
@@ -46,7 +105,7 @@
             <div class="sticky">
             <div class="img-back"></div>
             <div class="img-cont">
-                <img src="img/profile.jpg">
+                <img  id="profilepic" src="img/profile.jpg">
                 <div class="info">
                     <p class="nm" id="FLname">Ahmed</p>
                     <p class="ttl" id="ttle">Developer</p>
@@ -68,20 +127,25 @@
         <div class="ver-sec timeline">
             <form class="create-post line-div" id="_form">
                 <div class="head">
-                    <div class="img"><img src="img/profile.jpg"></div>
+                    <div class="img"><img class="profile" src="img/profile.jpg"></div>
                     <textarea class="post-text" placeholder="What's in your mind?" onkeyup="txtautoheight(this)" id="postBody"></textarea>
                     <!-- <div class="post-text" contenteditable="true" data-placeholder="What's in your mind?"></div> -->
-                    <input type="file" accept="image/*" multiple id="postImgs">
-                    <output id='result' />
+                    <!-- <input class="" type="file" accept="image/*" multiple id="postImgs"> -->
+                    <div id='result'></div>
                 </div>
-                <div class="foot">
-
+                <div class="foot">   
+                    <div class="image-upload">
+                        <label for="postImgs">
+                          <img class="upImg" src="img/photo.png"/>
+                        </label>
+                        <input name="postImgs" id="postImgs"type="file" accept="image/*" multiple>
+                    </div>
                     <button id="post-btn" onclick="CreatePost()">Post</button>
                 </div>
             </form>
             <div class="post line-div">
                 <div class="head">
-                    <div class="img"><img src="img/profile.jpg"></div>
+                    <a id="prfLink" target="_blank"><div class="img"><img src="img/profile.jpg"></div></a>
                     <div class="info">
                         <div class="name">Ahmed Atef</div>
                         <div class="time"><i class="fa fa-history"></i> 3 min ago</div>
@@ -107,7 +171,7 @@
                         </div>
                     </div>
                 </div>
-                <div style="color:cornflowerblue;"><span id="likeCounter"> 4 </span> Likes</div>
+                <div class="" style="color:cornflowerblue;"><span id="likeCounter"> 4 </span> Likes</div>
                 <div class="react">
 
                     <div onclick="likeFun(this)" ><i class="fa fa-thumbs-o-up"> Like</i></div>
@@ -133,40 +197,27 @@
 
 
             <div class="profilesContainer" onmouseout="slider()" onmouseover="stop()" id="profilesContainer">
-
                 <div><h3>Top profiles</h3></div>
                 <i id="prev" onclick="funPrev()" class="fa fa-angle-left"></i>
-                <div class="person line-div" id="innerDiv1">
-                    <div class="img"><img src="img/profile.jpg"></div>
-                    <div class="name"><b>Ali Ahmed</b></div>
-                    <div class="title" style="color: #00000085;">Developer</div>
-                    <div><button class="btn">Follow</button></div>
-                </div>
-                <div class="person line-div" id="innerDiv2">
-                    <div class="img"><img src="img/profile.jpg"></div>
-                    <div class="name"><b>Ali Ahmed</b></div>
-                    <div class="title" style="color: #00000085;">Developer</div>
-                    <div><button class="btn">Follow</button></div>
-                </div>
-                <div class="person line-div" id="innerDiv3">
-                    <div class="img"><img src="img/profile.jpg"></div>
-                    <div class="name"><b>Ali Ahmed</b></div>
-                    <div class="title" style="color: #00000085;">Developer</div>
-                    <div><button class="btn">Follow</button></div>
-                </div>
-                <div class="person line-div" id="innerDiv4">
-                    <div class="img"><img src="img/profile.jpg" ></div>
-                    <div class="name"><b>Ali Ahmed</b></div>
-                    <div class="title" style="color: #00000085;">Developer</div>
-                    <div><button class="btn">Follow</button></div>
-                </div>
+                <span id="profCont">
+<!--                    <div class="person line-div" id="innerDiv1">-->
+<!--                        <div class="img"><img src="img/profile.jpg"></div>-->
+<!--                        <div class="name"><b>Ali Ahmed</b></div>-->
+<!--                        <div class="title" style="color: #00000085;">Developer</div>-->
+<!--                        <div><button class="btn">Follow</button></div>-->
+<!--                    </div>-->
+
+                </span>
+
                 <i id="next" onclick="funNext()" class="fa fa-angle-right"></i>
             </div>
+
+
         </div>
     </div>
     <div id="toDrag">
         <div id="cont">
-            <img class="user-img"  style="box-shadow: 0px 0px 35px;" src="img/cartoon-robot-toy-object-for-small-children-to-vector-32859441.jpg" />
+            <img class="user-img"  style="box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2)" src="img/cartoon-robot-toy-object-for-small-children-to-vector-32859441.jpg" />
         </div>
         <section class="chatbox" id="myApp">
             <section class="chat-window" id="app">
@@ -190,5 +241,22 @@
     <script src="js/action.js"></script>
     <script src="js/chat.js"></script>
     <script src="js/index-data.js"></script>
+    <script>
+        //dropdown
+        $('#games .dropbtn').click(function() {
+            var el = $('.dropdown-content');
+            curHeight = el.height();
+            if(curHeight==0){
+                autoHeight = el.css('height', 'auto').height();
+                el.height(curHeight).animate({height: autoHeight}, 1000);
+            }
+            else{
+                curHeight = el.height();
+                zeroHeight = el.css('height', '0').height();
+                el.height(curHeight).animate({height: zeroHeight}, 500);
+            }
+            
+        });
+    </script>
 </body>
 </html>
