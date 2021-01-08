@@ -126,3 +126,17 @@
     outline: 2px solid coral;
 }
 /* end modal */
+.edit-modal-content input,.edit-modal-content  textarea {
+    padding: 5px;
+    border: 1px solid gray;
+    width: 250px;
+    margin: 8px;
+}
+.modal-content.edit-modal-content {
+    width: 40%;
+    padding: 20px 30px;
+}
+#ProfileImg{
+    width: 220px;
+    height: 220px;
+}
