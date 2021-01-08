@@ -3,7 +3,6 @@ function txtautoheight(x) {
     x.style.height = "5px";
     x.style.height = (15+x.scrollHeight)+"px";
 }
-
 $(function(){
     //fixed profile section in home
     var stickyHeaderTop = $('.sticky').offset().top;

@@ -17,7 +17,6 @@ $(".user-img").draggable({
             //"position": "fixed",
             "right": xPos+"px",
             "bottom": yPos+"px",
-
         })
     }
 });
@@ -32,14 +31,13 @@ $( document ).ready(function() {
         if (xhr.readyState == 4)
             if (xhr.status >= 200 && xhr.status < 300) {
                 jsObj = JSON.parse(xhr.responseText);
-
                 for (var i =0 ; i< jsObj.length; i++){
                     trigger.push(jsObj[i].value)
                     reply.push(jsObj[i].message)
                 }
             }
             else {
-                console.log("PAGENOTFOUND");
+                console.log("PAGE NOT FOUND");
             }
     };
     //3) send req data-->POST
@@ -57,7 +55,6 @@ function test(){
     var input = document.getElementById("input").value;
     process(input)
     output(input);
-
 }
 function process(input) {
     var now = new Date()
@@ -75,7 +72,6 @@ function process(input) {
                     </div>
                 </div>`
     document.getElementById('app').innerHTML += inp;
-
 }
 function output(input){
     var text = (input.toLowerCase()).replace(/[^\w\s\d]/gi, ""); //remove all chars except words, space and
@@ -124,15 +120,12 @@ function output(input){
                 request1.fail(function( jqXHR, textStatus ) {
                     errorAlert("Request failed: " + textStatus );
                 });
-
             }
-
             return;
         } else{
             document.getElementById("app").innerHTML += out;
             speak(product);
         }
-
     }
     document.getElementById("input").value = ""; //clear input value
         i = 0;
@@ -141,7 +134,6 @@ function output(input){
             $("#con").css({display: 'block'})
             $("#loading").html("Typing"+Array(i+1).join("."));
         }, 500);
-
     setTimeout(function() {
         clearInterval(back)
         $("#con").css({display: 'none'})
@@ -174,23 +166,112 @@ function speak(string){
     utterance.pitch = 2; //0-2 interval
     speechSynthesis.speak(utterance);
 }
-
-
 function getTagPsts(e) {
     var target = e.target
-    var text = target.textContent || target.innerText;
-    console.log(text)
-    var request1 = $.ajax({
-        url: "http://localhost:3000/tags",
+    var tag = target.textContent || target.innerText;
+    console.log(tag)
+    var tagPosts = [];
+    var request = $.ajax({
+        url: "http://localhost:3000/posts",
         method: "GET",
         data: {},
         dataType: "json"
     });
-    request1.done(function( tags ) {
-
+    request.done(function (posts) {
+        for (var i = 0; i < posts.length; i++) {
+            if (posts[i].tags.includes(tag)) {
+                tagPosts.push(posts[i])
+            }
+        }
+        var request2 = $.ajax({
+            url: "http://localhost:3000/comments",
+            method: "GET",
+            data: {},
+            dataType: "json"
+        });
+        request2.done(function (comments) {
+            for (var i = 0; i < comments.length; i++) {
+                for (var j = 0; j < tagPosts.length; j++) {
+                    if (comments[i].postid == tagPosts[j].id) {
+                        tagPosts[j].comments.push(comments[i])
+                    }
+                }
+            }
+            tagPosts.sort(function (a, b) {
+                if (a.created_at > b.created_at) return 1;
+                if (a.created_at < b.created_at) return -1;
+                return 0;
+            });
+            setupTagPosts(tagPosts)
+        });
+        request2.fail(function (jqXHR, textStatus) {
+            errorAlert("Request failed: " + textStatus);
+        });
     });
-    request1.fail(function( jqXHR, textStatus ) {
-        errorAlert("Request failed: " + textStatus );
-    });
-
 }
+function setupTagPosts(tagPosts) {
+    var myWindow;
+    myWindow = window.open("tagposts.html", "", "width=1000, height=1000");
+    myWindow.onload = function () {
+        var postsList = myWindow.document.querySelector('.timeline');
+        var html;
+        console.log(tagPosts.length)
+        if (tagPosts.length == 0){
+            html = `<div class="post line-div">
+                            <div class="clearfix"></div>
+                            <div class="body">
+                                <p class="postP1" style="text-align: center;font-size: larger;color: darkblue;">There Is No Posts For This Topic!</p>
+                            </div>
+                        </div>`;
+            postsList.innerHTML += html
+        } else {
+            for (var i = 0; i < tagPosts.length; i++) {
+                var li =
+                    `<div class="post line-div">
+                        <div class="head">
+                            <div class="img"><img src="img/profile.jpg"></div>
+                            <div class="info">
+                                <div class="name">${getCookie("Fname")} ${getCookie("Lname")}</div>
+                                <div class="time">${tagPosts[i].created_at}</div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="body">
+                            <p class="postP1">${tagPosts[i].body}</p>
+                            <div><a class="see more">Read more..</a></div>
+                        </div>
+            
+                        <div class="react">
+                            <div><i class="fa fa-thumbs-o-up"></i> Like</div>
+                            <div><i class="fa fa-comments-o"></i> Comment</div>
+                        </div>
+                        <div class="comments">`
+                tagPosts[i].comments.sort(function (a, b) {
+                    if (a.created_at > b.created_at) return 1;
+                    if (a.created_at < b.created_at) return -1;
+                    return 0;
+                });
+                for (var j = 0; j < tagPosts[i].comments.length; j++) {
+                    li += `<div class="ccmnt">
+                                <div class="img"><img src="img/profile.jpg"></div>
+                                <div class="post-text">
+                                    <p><b>${tagPosts[i].comments[j].username}</b></p>
+                                    <p>${tagPosts[i].comments[j].content}</p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>`
+                }
+                li +=`<div class="ccmnt">
+                                <div class="img"><img src="img/profile.jpg"></div>
+                                <textarea class="post-text" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>`;
+                html += li;
+            }
+            postsList.innerHTML += html;
+        }
+    }
+}
+

@@ -24,8 +24,8 @@
       "email": "hodaz202000@gmail.com",
       "password": "1234567",
       "role": "user",
-      "Fname": "jhgjh",
-      "Lname": "jhgjhg",
+      "Fname": "Ibrahim",
+      "Lname": "Mostafa",
       "track": "System Development",
       "bio": "",
       "id": 3
@@ -34,8 +34,8 @@
       "email": "hoda20@gmail.com",
       "password": "1234567",
       "role": "user",
-      "Fname": "kkkjj",
-      "Lname": "kkkk",
+      "Fname": "Somaia",
+      "Lname": "Ibrahim",
       "track": "Internet Of Things",
       "bio": "",
       "id": 4
@@ -48,8 +48,10 @@
       "comments": [],
       "img_path": [],
       "userid": 1,
+      "username": "Hoda Mosaad",
       "created_at": "1/7/2021, 6:34:33 PM",
-      "tags" : ["Programming"]
+      "tags" : ["Programming","Scientific"],
+      "likes": 0
     },
     {
       "id": 2,
@@ -57,17 +59,21 @@
       "img_path": [],
       "comments": [],
       "userid": 1,
+      "username":"Hoda Mosaad" ,
       "created_at":  "1/7/2021, 5:34:33 PM",
-      "tags": ["Entertainment"]
+      "tags": ["Scientific"],
+      "likes": 0
     },
     {
       "id": 3,
-      "body": "bla bla bla3",
-      "img_path": "",
+      "body": "bla bla bla33",
+      "img_path": [],
       "comments": [],
       "userid": 3,
+      "username": "Ibrahim Mostafa",
       "created_at":  "1/7/2021, 6:34:33 PM",
-      "tags": ["Programming"]
+      "tags": ["Programming"],
+      "likes": 3
     },
     {
       "id": 4,
@@ -75,8 +81,10 @@
       "img_path": [],
       "comments": [],
       "userid": 4,
+      "username": "Somaia Ibrahim",
       "created_at": "1/7/2021, 2:34:33 PM",
-      "tags": ["Scientific", "Entertainment"]
+      "tags": ["Scientific", "Entertainment"],
+      "likes": 2
     },
     {
       "id": 5,
@@ -84,8 +92,10 @@
       "img_path": [],
       "comments": [],
       "userid": 2,
+      "username": "Amal Nabil",
       "created_at": "1/7/2021, 2:37:33 PM",
-      "tags": ["Entertainment","CV"]
+      "tags": ["Entertainment","CV"],
+      "likes": 5
     }
   ],
   "following": [

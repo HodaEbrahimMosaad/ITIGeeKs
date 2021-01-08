@@ -1,4 +1,4 @@
-function logoute() {
+function logout() {
     deleteCookie("id");
     deleteCookie("Fname");
     deleteCookie("Lname");
