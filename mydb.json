@@ -39,6 +39,26 @@
       "track": "Internet Of Things",
       "bio": "",
       "id": 4
+    },
+         {
+      "email": "hoda20@gmail.com",
+      "password": "1234567",
+      "role": "user",
+      "Fname": "Somaia",
+      "Lname": "Ibrahim",
+      "track": "Internet Of Things",
+      "bio": "",
+      "id": 4
+    },
+         {
+      "email": "hoda20@gmail.com",
+      "password": "1234567",
+      "role": "user",
+      "Fname": "Somaia",
+      "Lname": "Ibrahim",
+      "track": "Internet Of Things",
+      "bio": "",
+      "id": 4
     }
   ],
   "posts": [

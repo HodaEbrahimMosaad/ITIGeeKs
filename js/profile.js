@@ -19,6 +19,49 @@ var btn2 = document.getElementById("edit-profile");
 var span2 = document.getElementsByClassName("close")[1];
 btn2.onclick = function() {
   modal2.style.display = "block";
+    
+    var _fname =getCookie("Fname");
+    var _lName=getCookie("Lname")
+    var _Track=getCookie("track");
+    var _Email=getCookie("email");
+    var _bio=getCookie("bio");
+    $('#UserFullName').html(_fname +" "+_lName)
+    $('#UserTrack').html(_Track);
+
+    //========================display user info=================================//
+
+
+   
+        $('#FnameEdite').val(_fname);
+        console.log(_fname,"jj")
+        $('#LnameEdite').val(_lName);
+        $('#emailEdite').val(_Email);
+        $('#bioEdite').value=_bio;
+     
+    //===============get & set  new data=================//
+    $("#editProfileBtn").click(function(){
+         /*deleteCookie("Fname");
+        deleteCookie("Lname");
+        deleteCookie("email");
+        deleteCookie("bio");*/
+        _fname=$('#FnameEdite').val();
+        _lName=$('#LnameEdite').val();
+        _Email=$('#emailEdite').val();
+        _bio=$('#bioEdite').val();
+        var newProfileImg=$(".EditProfileImg").val();
+        setCookie("email", _Email);
+        setCookie("bio", _bio);
+        console.log(newProfileImg,"profile img")
+        setCookie("Fname", _fname);
+        setCookie("Lname", _lName);
+        //var _newProfileImg=newProfileImg.replace(/^.*[\\\/]/, '');
+        debugger
+        //location.reload(true);
+
+    });
+
+    
+    
 }
 span2.onclick = function() {
   modal2.style.display = "none";
@@ -66,3 +109,13 @@ $( function() {
   })
 
 } );
+
+window.onload=function(){
+    var firstname =getCookie("Fname");
+    var lastName=getCookie("Lname")
+    var Track=getCookie("track");
+    
+    $('#UserFullName,.UserName').html(firstname +" "+lastName)
+    $('#UserTrack').html(Track);
+}
+

@@ -1,7 +1,7 @@
 
 var start=1;
 var count=5;
-
+var usersss;
 var count2=count;
 
 var id = getCookie("id");
@@ -25,8 +25,8 @@ request1.done(function( following ) {
             _followed += 1
         }
     }
-    $('#Following').text(_follower)
-    $('#Followers').text(_followed)
+    $('#Following ,#profileFolowing').text(_follower)
+    $('#Followers,#profileFollowers').text(_followed)
 });
 request1.fail(function( jqXHR, textStatus ) {
     errorAlert("Request failed: " + textStatus );
@@ -270,14 +270,14 @@ var flagToOutSlid=0;
 console.log("inneDiv"+start)
 function funNext(){
     /*if(count!=15){*/
-    debugger
-    console.log("start"+start,"coun 2",count2,"cputn",count)
     
+    console.log("start"+start,"coun 2",count2,"cputn",count)
+    console.log(usersss,"userss");
     $("#innerDiv"+start).hide();
     if(count==count2){
     $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+count+"'"+">\
                     <div class='img'><img src='img/profile.jpg'></div>\
-                    <div class='name'><b>Aliaa Ahmed</b></div>\
+                    <div class='name'><b>user name</b></div>\
                     <div class='title' style='color: #00000085;'>Developer</div>\
                     <div><button class='btn'>Follow</button></div>\
                 </div>");
@@ -302,12 +302,13 @@ function funNext(){
 function funPrev(){
     
    if(start!=1){
-       debugger
+     
         start--;
        count2--;
      console.log("start",start,"coun 2",count2,"cputn",count)
        $("#innerDiv"+count2).hide();
        $("#innerDiv"+start).show(); 
+       console.log(usersss,"usess")
       
    }
     else{
@@ -341,3 +342,29 @@ function slider(){
 function stop(){
     clearInterval(timerId);
 }
+
+
+
+
+
+
+
+var request5 = $.ajax({
+    url: "http://localhost:3000/users",
+    method: "GET",
+    data: {},
+    dataType: "json"
+});
+
+
+request5.done(function(users) {
+    var html = "";
+   
+    usersss=users;
+  
+    $('#profCont').append(html)
+});
+  console.log(usersss,"\sers")
+request5.fail(function( jqXHR, textStatus ) {
+    errorAlert("Request failed: " + textStatus );
+});
