@@ -1,5 +1,6 @@
 
 var files ;
+var myNewPostImgLen=0;
 window.onload=function(){
     if (window.File && window.FileList && window.FileReader) {
         var filesInput = document.getElementById("postImgs");
@@ -39,7 +40,12 @@ function CreatePost(){
     console.log(files,"files from create post")
      var PostBody=$('#postBody').val();
     if(files!=undefined){
-        
+        var n ='', p='';
+        if(files.length>1) 
+        {
+            p = `<i id="prevv" onclick="prevv(this)" class="fa fa-angle-left"></i>`;
+            n = `<i id="nextt" onclick="nextt(this)" class="fa fa-angle-right"></i>`;
+        }
             var postDiv=`
             <div class="post line-div">
                 <div class="head">
@@ -53,14 +59,15 @@ function CreatePost(){
                 <div class="body">
                     <span></span>
                     <p class="postP1" id="newPostBody"></p>
-                    <div><a class="more">Read more..</a></div>
+                    <div><a c[lass="more">Read more..</a></div>
                     <div class="galary">
                         <div class="imgsContainer">
-                            <i id="prevv" onclick="prevv(this)" class="fa fa-angle-left"></i>
+                            
+                            ${p}
                             <div id="newPostImgs">
                                 
                             </div>
-                            <i id="nextt" onclick="nextt(this)" class="fa fa-angle-right"></i>
+                            ${n}
                         </div>
                     </div>
                 </div>
@@ -91,34 +98,30 @@ function CreatePost(){
         $('#newPostBody').append( PostBody);
         console.log(PostBody)
          for (var i = 0; i < files.length; i++) {
-                    var file = files[i];
-                      console.log(files[i]['name'],i);
-                    //Only pics
-                    if (!file.type.match('image'))
-                      continue;
-                    var picReader = new FileReader();
-                    picReader.addEventListener("load", function(event) {
-                      var picFile = event.target;
-                       if(c==1){
-                            $('#newPostImgs').append("<img id='img"+c+"' class='left0' src='" + picFile.result + "'" +"title='" + picFile.name + "'/>");
-                           c++;
-                       }
-                        else{
-                              $('#newPostImgs').append("<img id='img"+c+"' class='left1' src='" + picFile.result + "'" +"title='" + picFile.name + "'/>");
-                            c++;
-                        }
-                     
-                      
-                        let fileUpload =files[i];
-                        console.log(files);
-                      
-                      
-                    });
-                      
-                    //Read the image
-                    picReader.readAsDataURL(file);
-                    
-                  }
+            var file = files[i];
+                console.log(files[i]['name'],i);
+            //Only pics
+            if (!file.type.match('image'))
+                continue;
+            var picReader = new FileReader();
+            picReader.addEventListener("load", function(event) {
+                var picFile = event.target;
+                if(c==1){
+                    $('#newPostImgs').append("<img id='img"+c+"' class='left0' src='" + picFile.result + "'" +"title='" + picFile.name + "'/>");
+                    c++;
+                }
+                else{
+                        $('#newPostImgs').append("<img id='img"+c+"' class='left1' src='" + picFile.result + "'" +"title='" + picFile.name + "'/>");
+                    c++;
+                }
+                //var fileUpload =files[i];
+                console.log(files);
+            });
+                
+            //Read the image
+            picReader.readAsDataURL(file);
+            
+            }
     }
     else{
         var postDiv=`
@@ -160,6 +163,7 @@ function CreatePost(){
         $('#_form').after(postDiv);
         $('#newPostBody').append( PostBody);
     }
+    myNewPostImgLen = files.length;
     files = undefined;
     $('.create-post .post-text').val="";
     $('#result').html("");
@@ -236,14 +240,13 @@ $(function(){
 })
     var i=1;
     function nextt(thiss){
-        
         prevFlag = 0;
         $(`.galary>div #img${i}`).animate({left: '700px'});
         $('.galary img').css('left','-700px');
-        if(i>=files.length){
+        if(i>=myNewPostImgLen){
             i =0;
         }
-        if(i!=files.length)
+        if(i!=myNewPostImgLen)
             $(`.galary>div #img${++i}`).animate({left: '0px'});
     
     }
@@ -261,10 +264,10 @@ function prevv(thiss){
         //$('.galary img').removeAttr('style');
         $(`.galary>div #img${i}`).animate({right: '700px'});
         $('.galary img').css('right','-700px');
-        if(i>=files.length){
+        if(i>=myNewPostImgLen){
             i =0;
         }
-        if(i!=files.length)
+        if(i!=myNewPostImgLen)
             $(`.galary>div #img${++i}`).animate({right: '0px'});
     
 }
