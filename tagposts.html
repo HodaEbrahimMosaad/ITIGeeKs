@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+    <link rel="stylesheet" type="text/css" href="css/chat.css">
+    <script src="js/cookies.js"></script>
+    <script>
+        if (hasCookie("Fname") == false){
+            window.location = 'login.html';
+        }
+    </script>
+</head>
+<body>
+
+    <div class="nav">
+        <div class="container">
+            <div class="logo">
+                <img src="img/tl.png" style="height: 45px;padding-top: 3px;">
+                <span>ITIGeeks</span>
+            </div>
+            <div class="items" style="margin-right: 150px;">
+                <ul id="navbar">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="">Friends</a></li>
+                    <li><a href="">Groups</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="">Entertainment</a></li>
+                    <li><a onclick="logout()">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <!--<div class="ver-sec profile-info">
+            <div class="sticky">
+                <div class="img-back"></div>
+                <div class="img-cont">
+                    <img src="img/profile.jpg">
+                    <div class="info">
+                        <p class="nm" id="FLname">Ahmed Atef</p>
+                        <p class="ttl" id="ttle">Developer</p>
+                    </div>
+                </div>
+                <div class="f">
+                    <p class="grayTxt">Following</p>
+                    <p>34</p>
+                </div>
+                <div class="f">
+                    <p class="grayTxt">Followers</p>
+                    <p>100</p>
+                </div>
+                <div class="f">
+                    <p><a href="profile.html">View Profile</a></p>
+                </div>
+            </div>
+
+        </div>-->
+        <div class="ver-sec timeline" style="width: 85%;">
+
+
+        </div>
+    </div>
+    <script src="js/script/jqueryDev.js"></script>
+    <script src="js/action.js"></script>
+    <script>
+        $(document).on("click",".see", function () {
+            if ($(this).hasClass("more")){
+                console.log('more');
+                var p =$(this).parent().prev();
+                p.css({"-webkit-line-clamp":"150"})
+                $(this).text("See less..");
+                $(this).addClass("less");
+                $(this).removeClass("more");
+            }else {
+                console.log('less');
+                var p =$(this).parent().prev();
+                p.css({"-webkit-line-clamp":"3"})
+                $(this).text("Read more..");
+                $(this).addClass("more");
+                $(this).removeClass("less");
+            }
+        });
+    </script>
+</body>
+</html>
