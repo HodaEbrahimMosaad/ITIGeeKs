@@ -50,7 +50,8 @@ function createBoard(){
         div.setAttribute("data-id",i)
         div.className = "square"
         if (i>=42){
-            div.className="taken"
+            div.className="taken non";
+            // div.className="non";
         }
         board.appendChild(div)
     }

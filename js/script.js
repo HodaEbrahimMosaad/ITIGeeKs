@@ -1,44 +1,38 @@
 
 var files ;
 window.onload=function(){
-   
-            
-              if (window.File && window.FileList && window.FileReader) {
-                var filesInput = document.getElementById("postImgs");
-                filesInput.addEventListener("change", function(event) {
-                  files = event.target.files; //FileList object
-                  var output = document.getElementById("result");
-                  for (var i = 0; i < files.length; i++) {
-                    var file = files[i];
-                      console.log(files[i]['name'],i);
-                    //Only pics
-                    if (!file.type.match('image'))
-                      continue;
-                    var picReader = new FileReader();
-                    picReader.addEventListener("load", function(event) {
-                      var picFile = event.target;
-                      var div = document.createElement("div");
-                      div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
-                        "title='" + picFile.name + "'/>";
-                      output.insertBefore(div, null);
-                        let fileUpload =files[i];
-                        console.log(files);
-                      
-                      
-                    });
-                      
-                    //Read the image
-                    picReader.readAsDataURL(file);
-                    
-                  }
-                });
-              } else {
-                console.log("Your browser does not support File API");
-              } 
+    if (window.File && window.FileList && window.FileReader) {
+        var filesInput = document.getElementById("postImgs");
+        filesInput.addEventListener("change", function(event) {
+            files = event.target.files; //FileList object
+            var output = document.getElementById("result");
+            for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+                console.log(files[i]['name'],i);
+            //Only pics
+            if (!file.type.match('image'))
+                continue;
+            var picReader = new FileReader();
+            picReader.addEventListener("load", function(event) {
+                var picFile = event.target;
+                //var div = document.createElement("div");
+                
+                output.innerHTML += "<img class='thumbnail' src='" + picFile.result + "'" +
+                "title='" + picFile.name + "'/>";
+                //output.insertBefore(div, null);
+                let fileUpload =files[i];
+                console.log(files);  
+            });
+            //Read the image
+            picReader.readAsDataURL(file);
+            }
+        });
+    } else {
+    console.log("Your browser does not support File API");
+    } 
 }
 
 function CreatePost(){
-    
     $("#_form").submit(function(e) {
     e.preventDefault();
 });
@@ -127,7 +121,8 @@ function CreatePost(){
                     
                   }
     }
-    
+    $('.create-post .post-text').val="";
+    $('#result').html("");
 }
 
 //text area auto height
