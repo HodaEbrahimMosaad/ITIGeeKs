@@ -33,8 +33,10 @@
                     <li><a href="">Friends</a></li>
                     <li><a href="">Groups</a></li>
                     <li><a href="profile.html">Profile</a></li>
-                    <li><a href="">Entertainment</a></li>
+
+                    <li><a href="Games.html">Entertainment</a></li>
                     <li><a onclick="logout()">Logout</a></li>
+
                 </ul>
             </div>
         </div>
@@ -64,15 +66,17 @@
             </div>
         </div>
         <div class="ver-sec timeline">
-            <form class="create-post line-div">
+            <form class="create-post line-div" id="_form">
                 <div class="head">
                     <div class="img"><img src="img/profile.jpg"></div>
-                    <textarea class="post-text" placeholder="What's in your mind?" onkeyup="txtautoheight(this)"></textarea>
+                    <textarea class="post-text" placeholder="What's in your mind?" onkeyup="txtautoheight(this)" id="postBody"></textarea>
                     <!-- <div class="post-text" contenteditable="true" data-placeholder="What's in your mind?"></div> -->
+                    <input type="file" accept="image/*" multiple id="postImgs">
+                    <output id='result' />
                 </div>
                 <div class="foot">
 
-                    <button id="post-btn">Post</button>
+                    <button id="post-btn" onclick="CreatePost()">Post</button>
                 </div>
             </form>
             <div class="post line-div">
@@ -106,7 +110,8 @@
                 <div style="color:cornflowerblue;"><span id="likeCounter"> 4 </span> Likes</div>
                 <div class="react">
 
-                    <div><i class="fa fa-thumbs-o-up"></i> Like</div>
+                    <div onclick="likeFun(this)" ><i class="fa fa-thumbs-o-up"> Like</i></div>
+
                     <div><i class="fa fa-comments-o"></i> Comment</div>
                 </div>
                 <div class="comments">
@@ -125,34 +130,37 @@
                     </div>
                 </div>
             </div>
-            <div class="profilesContainer">
+
+
+            <div class="profilesContainer" onmouseout="slider()" onmouseover="stop()" id="profilesContainer">
+
                 <div><h3>Top profiles</h3></div>
-                <i id="prev" class="fa fa-angle-left"></i>
-                <div class="person line-div">
+                <i id="prev" onclick="funPrev()" class="fa fa-angle-left"></i>
+                <div class="person line-div" id="innerDiv1">
                     <div class="img"><img src="img/profile.jpg"></div>
                     <div class="name"><b>Ali Ahmed</b></div>
                     <div class="title" style="color: #00000085;">Developer</div>
                     <div><button class="btn">Follow</button></div>
                 </div>
-                <div class="person line-div">
+                <div class="person line-div" id="innerDiv2">
                     <div class="img"><img src="img/profile.jpg"></div>
                     <div class="name"><b>Ali Ahmed</b></div>
                     <div class="title" style="color: #00000085;">Developer</div>
                     <div><button class="btn">Follow</button></div>
                 </div>
-                <div class="person line-div">
+                <div class="person line-div" id="innerDiv3">
                     <div class="img"><img src="img/profile.jpg"></div>
                     <div class="name"><b>Ali Ahmed</b></div>
                     <div class="title" style="color: #00000085;">Developer</div>
                     <div><button class="btn">Follow</button></div>
                 </div>
-                <div class="person line-div">
-                    <div class="img"><img src="img/profile.jpg"></div>
+                <div class="person line-div" id="innerDiv4">
+                    <div class="img"><img src="img/profile.jpg" ></div>
                     <div class="name"><b>Ali Ahmed</b></div>
                     <div class="title" style="color: #00000085;">Developer</div>
                     <div><button class="btn">Follow</button></div>
                 </div>
-                <i id="prev" class="fa fa-angle-right"></i>
+                <i id="next" onclick="funNext()" class="fa fa-angle-right"></i>
             </div>
         </div>
     </div>

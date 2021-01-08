@@ -139,6 +139,10 @@ function output(input){
         $("#con").css({display: 'none'})
         callback()
     }, 2000)
+    var div = document.getElementById("app");
+   $('#app').animate({
+      scrollTop: div.scrollHeight+100
+   }, 2000);
 }
 function compare(arr, array, string){
     if (string == "help"){

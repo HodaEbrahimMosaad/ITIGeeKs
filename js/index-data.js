@@ -1,3 +1,9 @@
+
+var start=1;
+var count=5;
+
+var count2=count;
+
 var id = getCookie("id");
 console.log(id);
 var followersId = [];
@@ -254,3 +260,84 @@ postForm.addEventListener('submit', function(e){
 
 */
 
+
+function likeFun(LikeDiv){
+    $(LikeDiv ).toggleClass("likeClass")
+}
+
+
+var flagToOutSlid=0;
+console.log("inneDiv"+start)
+function funNext(){
+    /*if(count!=15){*/
+    debugger
+    console.log("start"+start,"coun 2",count2,"cputn",count)
+    
+    $("#innerDiv"+start).hide();
+    if(count==count2){
+    $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+count+"'"+">\
+                    <div class='img'><img src='img/profile.jpg'></div>\
+                    <div class='name'><b>Aliaa Ahmed</b></div>\
+                    <div class='title' style='color: #00000085;'>Developer</div>\
+                    <div><button class='btn'>Follow</button></div>\
+                </div>");
+          //$(this).show("slide", { direction: "left" }, 1000);
+    count++;
+    }
+    $("#innerDiv"+count2).show();
+    if(start<count && count2<count)
+        {
+            start++;
+            count2++;
+        }
+    if(count2==10){
+        flagToOutSlid=0;
+    }
+   
+   // }
+   
+}
+    
+    
+function funPrev(){
+    
+   if(start!=1){
+       debugger
+        start--;
+       count2--;
+     console.log("start",start,"coun 2",count2,"cputn",count)
+       $("#innerDiv"+count2).hide();
+       $("#innerDiv"+start).show(); 
+      
+   }
+    else{
+        flagToOutSlid=1;
+    }
+
+}
+var timerId = 0;
+var maxLen=30;
+
+function slider(){
+  
+//console.log(timerId,"yjh")
+    timerId = setInterval(function () {
+       console.log("k")
+        if(flagToOutSlid==0&&start>=1){
+            funPrev();
+            
+        }
+        else {
+            if(flagToOutSlid==1){
+                funNext();
+            }
+            
+        }
+        
+    }, 700);
+ 
+};
+
+function stop(){
+    clearInterval(timerId);
+}
