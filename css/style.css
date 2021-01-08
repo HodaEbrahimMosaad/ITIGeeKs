@@ -288,3 +288,13 @@ div:empty:before {
     border-radius: 10px;
     width: 975px;
 }
+
+
+.likeClass{
+    color: blue
+}
+
+ .thumbnail {
+    height: 100px;
+    margin: 10px;
+    }
