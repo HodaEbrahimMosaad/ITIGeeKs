@@ -169,23 +169,24 @@ loginForm.addEventListener('submit', (e) => {
                     setCookie("role", users[i].role);
                     setCookie("Fname", users[i].Fname);
                     setCookie("Lname", users[i].Lname);
+                    setCookie("profilepic", users[i].profilepic);
                     window.location = 'index.html';
                     return;
                 }
             }
         }
         if (emailFounded == false && passwordFounded == false){
-            console.log("Wrong Email And Password")
+            errorAlert("Wrong Email And Password")
         }else if (emailFounded == false){
-            console.log("No User Founded with this email")
+            errorAlert("No User Founded with this email")
         } else if (passwordFounded == false){
-            console.log("Wrong Password")
+            errorAlert("Wrong Password")
         }
 
     });
 
     request.fail(function( jqXHR, textStatus ) {
-        console.log("Request failed: " + textStatus );
+        errorAlert("Request failed: " + textStatus );
     });
 
 });
@@ -193,8 +194,14 @@ loginForm.addEventListener('submit', (e) => {
 function errorAlert(errorMessage) {
     var aler = document.createElement('div')
     aler.append(errorMessage);
-    aler.setAttribute('class', 'alert')
+    aler.setAttribute('class', 'alertt')
     aler.setAttribute('id', 'alert')
+    aler.style.width = "975px"
+    aler.style.textAlign = "center"
+    aler.style.margin = "45px auto 20px"
+    aler.style.backgroundColor = "darksalmon"
+    aler.style.padding = "20px"
+    aler.style.borderRadius = "10px"
     document.body.prepend(aler);
     setTimeout(function () {
         $("#alert").slideUp(500);
@@ -267,7 +274,8 @@ signupForm.addEventListener('submit', function(e){
             setCookie("Lname",  signupForm['Lname'].value);
             setCookie("track", signupForm['track'].value,);
             setCookie("role", "user");
-            window.location = '/project/jsProject-master/jsProject-master/index.html';
+            setCookie("profilepic", "def.jfif");
+            window.location = 'index.html';
         });
         request2.fail(function( jqXHR, textStatus ) {
             alert( "Request failed: " + textStatus );

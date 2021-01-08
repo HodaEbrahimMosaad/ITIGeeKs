@@ -1,9 +1,3 @@
-
-var start=1;
-var count=5;
-
-var count2=count;
-
 var id = getCookie("id");
 console.log(id);
 var followersId = [];
@@ -84,13 +78,17 @@ var postsList = document.querySelector('.timeline');
 var setupPosts = function(posts){
     let html = '';
     for (var i=0; i< posts.length; i++){
+        var href = 'profile.html';
+        if (posts[i].userid != id) {
+            href = href + "?id=" + posts[i].userid
+        }
         var li =
         `<div class="post line-div">
             <div class="head">
-                <div class="img"><img src="img/profile.jpg"></div>
+                 <div class="img"><a href="${href}" id="prfLink" target="_blank"><img src="img/profile.jpg"></a></div>
                 <div class="info">
-                    <div class="name">${posts[i].username}</div>
-                    <div class="time">${posts[i].created_at}</div>
+                    <div class="name"><a style="text-decoration: none;" href="${href}" id="prfLink" target="_blank">${posts[i].username}</a></div>
+                    <div class="time"><i class="fa fa-history"></i> ${posts[i].created_at}</div>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -98,9 +96,10 @@ var setupPosts = function(posts){
                 <p class="postP1">${posts[i].body}</p>
                 <div><a class="see more">Read more..</a></div>
             </div>
-            <div style="color:cornflowerblue;"><span id="likeCounter">${posts[i].likes}</span> Likes</div>
+            <div style="color:cornflowerblue;"><span id="likeCounter">${posts[i].likes} </span> Likes <div style="color:cornflowerblue;"></div>
+        </div>
             <div class="react">
-                <div><i class="fa fa-thumbs-o-up"></i> Like</div>
+                <div onclick="likeFun(this)"><i class="fa fa-thumbs-o-up"></i> Like</div>
                 <div><i class="fa fa-comments-o"></i> Comment</div>
             </div>
             <div class="comments">`
@@ -124,10 +123,14 @@ var setupPosts = function(posts){
             // request4.fail(function( jqXHR, textStatus ) {
             //     errorAlert("Request failed: " + textStatus );
             // });
+            var hrefpro = 'profile.html';
+            if (posts[i].comments[j].userid != id) {
+                hrefpro = hrefpro + "?id=" + posts[i].comments[j].userid
+            }
             li += `<div class="ccmnt">
-                    <div class="img"><img src="img/profile.jpg"></div>
+                    <div class="img"><a style="text-decoration: none;" href="${hrefpro}" id="prfLink" target="_blank"><img src="img/profile.jpg"></a></div>
                     <div class="post-text">
-                        <p><b>${posts[i].comments[j].username}</b></p>
+                        <p><b><a style="text-decoration: none;" href="${hrefpro}" id="prfLink" target="_blank">${posts[i].comments[j].username}</a></b></p>
                         <p>${posts[i].comments[j].content}</p>
                     </div>
                     <div class="clearfix"></div>
@@ -135,7 +138,7 @@ var setupPosts = function(posts){
         }
         li +=`<div class="ccmnt">
                     <div class="img"><img src="img/profile.jpg"></div>
-                    <textarea onkeypress="onTestChange(this);" id="comment" class="post-text commentPost" onkeyup="txtautoheight(this)"></textarea>
+                    <textarea onkeypress="onTestChange(this);" id="comment" class="post-text commentPost" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
                     <!-- <div class="post-text" contenteditable="true" data-placeholder="Write a comment.."></div> -->
                     <div class="clearfix"></div>
                 </div>
@@ -144,7 +147,17 @@ var setupPosts = function(posts){
         html += li;
     }
     postsList.innerHTML += html
+
+
+    $('.postP1').each(function(i, obj) {
+        if (Number.parseInt($(obj).text().length) <= 355){
+            console.log(Number.parseInt($(obj).css('-webkit-line-clamp')) + "---")
+            $(obj).next().css({"display": "none"})
+        }
+    });
 };
+
+
 $(document).on("click",".see", function () {
     if ($(this).hasClass("more")){
         console.log('more');
@@ -165,6 +178,7 @@ $(document).on("click",".see", function () {
 var fullname = getCookie("Fname") + " " + getCookie("Lname")
 $('#FLname').text(fullname)
 $('#ttle').text(getCookie("track"))
+$('#profilepic').attr("src","img/"+getCookie("profilepic"))
 
 
 function onTestChange(me) {
@@ -189,6 +203,9 @@ function onTestChange(me) {
         return true;
     }
 }
+
+
+
 
 
 // data.forEach(doc => {
@@ -262,27 +279,59 @@ postForm.addEventListener('submit', function(e){
 
 
 function likeFun(LikeDiv){
+    var count = Number.parseInt($(LikeDiv).parent().prev().children("span").text())
+    if ($(LikeDiv).hasClass("likeClass")){
+        $(LikeDiv).parent().prev().children("span").text(--count)
+    } else {
+        $(LikeDiv).parent().prev().children("span").text(++count)
+    }
     $(LikeDiv ).toggleClass("likeClass")
 }
 
+var request5 = $.ajax({
+    url: "http://localhost:3000/users",
+    method: "GET",
+    data: {},
+    dataType: "json"
+});
+var count=1;
+var count2=count;
+request5.done(function(users) {
+    var html = ``;
+    for (var i=0; i < users.length; i++){
+        var li = `<div class='person line-div' id='innerDiv${count}'>
+                    <div class='img'><img src='img/profile.jpg'></div>
+                    <div class='name'><b>Aliaa Ahmed</b></div>
+                    <div class='title' style='color: #00000085;'>Developer</div>
+                    <div><button class='btn'>Follow</button></div>
+                </div>`
+        html += li
+        count++;
+    }
+    $('#profCont').append(html)
+});
+request5.fail(function( jqXHR, textStatus ) {
+    errorAlert("Request failed: " + textStatus );
+});
 
+var start=1;
 var flagToOutSlid=0;
-console.log("inneDiv"+start)
+var timerId = 0;
+var maxLen=30;
+
+
 function funNext(){
     /*if(count!=15){*/
-    debugger
-    console.log("start"+start,"coun 2",count2,"cputn",count)
-    
     $("#innerDiv"+start).hide();
     if(count==count2){
-    $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+count+"'"+">\
-                    <div class='img'><img src='img/profile.jpg'></div>\
-                    <div class='name'><b>Aliaa Ahmed</b></div>\
-                    <div class='title' style='color: #00000085;'>Developer</div>\
-                    <div><button class='btn'>Follow</button></div>\
-                </div>");
+    // $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+count+"'"+">\
+    //                                     <div class='img'><img src='img/profile.jpg'></div>\
+    //                                     <div class='name'><b>Aliaa Ahmed</b></div>\
+    //                                     <div class='title' style='color: #00000085;'>Developer</div>\
+    //                                     <div><button class='btn'>Follow</button></div>\
+    //                                 </div>");
           //$(this).show("slide", { direction: "left" }, 1000);
-    count++;
+
     }
     $("#innerDiv"+count2).show();
     if(start<count && count2<count)
@@ -290,52 +339,43 @@ function funNext(){
             start++;
             count2++;
         }
-    if(count2==10){
+    if(count2==6){
         flagToOutSlid=0;
     }
-   
-   // }
-   
 }
-    
-    
+
+
 function funPrev(){
-    
+
    if(start!=1){
-       debugger
-        start--;
+       start--;
        count2--;
-     console.log("start",start,"coun 2",count2,"cputn",count)
        $("#innerDiv"+count2).hide();
-       $("#innerDiv"+start).show(); 
-      
+       $("#innerDiv"+start).show();
+
    }
     else{
         flagToOutSlid=1;
     }
 
 }
-var timerId = 0;
-var maxLen=30;
 
 function slider(){
-  
-//console.log(timerId,"yjh")
+
     timerId = setInterval(function () {
-       console.log("k")
         if(flagToOutSlid==0&&start>=1){
             funPrev();
-            
+
         }
         else {
             if(flagToOutSlid==1){
                 funNext();
             }
-            
+
         }
-        
+
     }, 700);
- 
+
 };
 
 function stop(){
