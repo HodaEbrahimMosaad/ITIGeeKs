@@ -41,7 +41,7 @@
       "track": "System Development",
       "bio": "",
       "id": 3,
-      "profilepic" :"2.jfif",
+      "profilepic" :"85.jpg",
       "socialmedia": {
         "facebook": "https://www.facebook.com/ibrahimmostafa",
         "linkedin": "https://www.linkedin.com/ibrahimmostafa",
@@ -129,7 +129,7 @@
       "img_path": [],
       "comments": [],
       "userid": 3,
-      "userprofilepic" :"2.jfif",
+      "userprofilepic" :"85.jpg",
       "username": "Ibrahim Mostafa",
       "created_at":  "1/7/2021, 6:34:33 PM",
       "tags": ["Programming"],
@@ -179,9 +179,9 @@
       "id": 1,
       "content": "this is comment1",
       "postid": 1,
-      "userprofilepic" : "2s.jpg",
+      "userprofilepic" : "33.jpg",
       "userid": 2,
-      "username": "jhghj gjhghj",
+      "username": "Amal Nabil",
       "created_at": "1/7/2021, 6:34:33 PM"
     },
     {
@@ -197,9 +197,9 @@
       "id": 3,
       "content": "this is comment4",
       "postid": 4,
-      "userprofilepic" :"2.jfif",
+      "userprofilepic" :"85.jpg",
       "userid": 3,
-      "username": "Amal Nabil",
+      "username": "Ibrahim Mostafa",
       "created_at": "1/7/2021, 6:34:00 PM"
     }
   ],

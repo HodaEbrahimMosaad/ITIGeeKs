@@ -117,20 +117,6 @@ var setupPosts = function(posts){
             return 0;
         });
         for (var j=0; j< posts[i].comments.length; j++){
-            // var userId = posts[i].comments[j].userid;
-            // var userName = "Hoda";
-            // var request4 = $.ajax({
-            //     url: "http://localhost:3000/users/"+userId,
-            //     method: "GET",
-            //     data: {},
-            //     dataType: "json"
-            // });
-            // request4.done(function(user) {
-            //     userName = user.Fname + " " + user.Lname;
-            // });
-            // request4.fail(function( jqXHR, textStatus ) {
-            //     errorAlert("Request failed: " + textStatus );
-            // });
             var hrefpro = 'profile.html';
             if (posts[i].comments[j].userid != id) {
                 hrefpro = hrefpro + "?id=" + posts[i].comments[j].userid
@@ -145,7 +131,7 @@ var setupPosts = function(posts){
                 </div>`
         }
         li +=`<div class="ccmnt">
-                    <div class="img"><img src="img/profile.jpg"></div>
+                    <div class="img"><img src="img/${getCookie("profilepic")}"></div>
                     <textarea onkeypress="onTestChange(this);" id="comment" class="post-text commentPost" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
                     <!-- <div class="post-text" contenteditable="true" data-placeholder="Write a comment.."></div> -->
                     <div class="clearfix"></div>
@@ -165,23 +151,7 @@ var setupPosts = function(posts){
 };
 
 
-$(document).on("click",".see", function () {
-    if ($(this).hasClass("more")){
-        console.log('more');
-        var p =$(this).parent().prev();
-        p.css({"-webkit-line-clamp":"150"})
-        $(this).text("See less..");
-        $(this).addClass("less");
-        $(this).removeClass("more");
-    }else {
-        console.log('less');
-        var p =$(this).parent().prev();
-        p.css({"-webkit-line-clamp":"3"})
-        $(this).text("Read more..");
-        $(this).addClass("more");
-        $(this).removeClass("less");
-    }
-});
+
 var fullname = getCookie("Fname") + " " + getCookie("Lname")
 $('#FLname').text(fullname)
 $('#ttle').text(getCookie("track"))
@@ -195,9 +165,9 @@ function onTestChange(me) {
 
         var comContent =  me.value
         var comm = `<div class="ccmnt">
-                        <div class="img"><img src="img/profile.jpg"></div>
+                        <div class="img"><a style="text-decoration: none;" href="profile.html" id="prfLink" target="_blank"><img src="img/${getCookie("profilepic")}"></a></div>
                         <div class="post-text">
-                            <p><b>${getCookie("Fname")} ${getCookie("Lname")}</b></p>
+                            <p><b><a style="text-decoration: none;" href="profile.html" id="prfLink" target="_blank">${getCookie("Fname")} ${getCookie("Lname")}</a></b></p>
                             <p>${comContent}</p>
                         </div>
                         <div class="clearfix"></div>
@@ -210,7 +180,109 @@ function onTestChange(me) {
         return true;
     }
 }
+var request5 = $.ajax({
+    url: "http://localhost:3000/users",
+    method: "GET",
+    data: {},
+    dataType: "json"
+});
+var count=1;
+var count2=count;
+request5.done(function(users) {
+    var html = ``;
+    for (var i=0; i < users.length; i++){
+        var li = `<div class='person line-div' id='innerDiv${count}'>
+                    <div class='img'><img src='img/profile.jpg'></div>
+                    <div class='name'><b>Aliaa Ahmed</b></div>
+                    <div class='title' style='color: #00000085;'>Developer</div>
+                    <div><button class='btn'>Follow</button></div>
+                </div>`
+        html += li
+        count++;
+    }
+    $('#profCont').append(html)
+});
+request5.fail(function( jqXHR, textStatus ) {
+    errorAlert("Request failed: " + textStatus );
+});
 
+var start=1;
+var flagToOutSlid=0;
+var timerId = 0;
+var maxLen=30;
+function funNext(){
+    /*if(count!=15){*/
+    console.log("start"+start,"coun 2",count2,"cputn",count)
+    console.log(usersss,"userss");
+    $("#innerDiv"+start).hide();
+    if(count==count2){
+    $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+count+"'"+">\
+                    <div class='img'><img src='img/profile.jpg'></div>\
+                    <div class='name'><b>user name</b></div>\
+                    <div class='title' style='color: #00000085;'>Developer</div>\
+                    <div><button class='btn'>Follow</button></div>\
+                </div>");
+
+          //$(this).show("slide", { direction: "left" }, 1000);
+    }
+    $("#innerDiv"+count2).show();
+    if(start<count && count2<count)
+        {
+            start++;
+            count2++;
+        }
+    if(count2==6){
+        flagToOutSlid=0;
+    }
+}
+function funPrev(){
+   if(start!=1){
+        start--;
+       count2--;
+       $("#innerDiv"+count2).hide();
+
+       $("#innerDiv"+start).show(); 
+       console.log(usersss,"usess")
+   }
+    else{
+        flagToOutSlid=1;
+    }
+}
+function slider(){
+    timerId = setInterval(function () {
+        if(flagToOutSlid==0&&start>=1){
+            funPrev();
+        }
+        else {
+            if(flagToOutSlid==1){
+                funNext();
+            }
+        }
+    }, 700);
+};
+function stop(){
+    clearInterval(timerId);
+}
+
+var request5 = $.ajax({
+    url: "http://localhost:3000/users",
+    method: "GET",
+    data: {},
+    dataType: "json"
+});
+
+
+request5.done(function(users) {
+    var html = "";
+   
+    usersss=users;
+  
+    $('#profCont').append(html)
+});
+  console.log(usersss,"\sers")
+request5.fail(function( jqXHR, textStatus ) {
+    errorAlert("Request failed: " + textStatus );
+});
 
 
 
@@ -283,143 +355,3 @@ postForm.addEventListener('submit', function(e){
 });
 
 */
-
-
-function likeFun(LikeDiv){
-    var count = Number.parseInt($(LikeDiv).parent().prev().children("span").text())
-    if ($(LikeDiv).hasClass("likeClass")){
-        $(LikeDiv).parent().prev().children("span").text(--count)
-    } else {
-        $(LikeDiv).parent().prev().children("span").text(++count)
-    }
-    $(LikeDiv ).toggleClass("likeClass")
-}
-
-var request5 = $.ajax({
-    url: "http://localhost:3000/users",
-    method: "GET",
-    data: {},
-    dataType: "json"
-});
-var count=1;
-var count2=count;
-request5.done(function(users) {
-    var html = ``;
-    for (var i=0; i < users.length; i++){
-        var li = `<div class='person line-div' id='innerDiv${count}'>
-                    <div class='img'><img src='img/profile.jpg'></div>
-                    <div class='name'><b>Aliaa Ahmed</b></div>
-                    <div class='title' style='color: #00000085;'>Developer</div>
-                    <div><button class='btn'>Follow</button></div>
-                </div>`
-        html += li
-        count++;
-    }
-    $('#profCont').append(html)
-});
-request5.fail(function( jqXHR, textStatus ) {
-    errorAlert("Request failed: " + textStatus );
-});
-
-var start=1;
-var flagToOutSlid=0;
-var timerId = 0;
-var maxLen=30;
-
-
-function funNext(){
-    /*if(count!=15){*/
-
-    
-    console.log("start"+start,"coun 2",count2,"cputn",count)
-    console.log(usersss,"userss");
-    $("#innerDiv"+start).hide();
-    if(count==count2){
-    $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+count+"'"+">\
-                    <div class='img'><img src='img/profile.jpg'></div>\
-                    <div class='name'><b>user name</b></div>\
-                    <div class='title' style='color: #00000085;'>Developer</div>\
-                    <div><button class='btn'>Follow</button></div>\
-                </div>");
-
-          //$(this).show("slide", { direction: "left" }, 1000);
-
-    }
-    $("#innerDiv"+count2).show();
-    if(start<count && count2<count)
-        {
-            start++;
-            count2++;
-        }
-    if(count2==6){
-        flagToOutSlid=0;
-    }
-}
-
-
-function funPrev(){
-
-   if(start!=1){
-
-     
-        start--;
-
-       count2--;
-       $("#innerDiv"+count2).hide();
-
-       $("#innerDiv"+start).show(); 
-       console.log(usersss,"usess")
-      
-
-   }
-    else{
-        flagToOutSlid=1;
-    }
-}
-
-function slider(){
-
-    timerId = setInterval(function () {
-        if(flagToOutSlid==0&&start>=1){
-            funPrev();
-        }
-        else {
-            if(flagToOutSlid==1){
-                funNext();
-            }
-
-        }
-
-    }, 700);
-
-};
-
-function stop(){
-    clearInterval(timerId);
-}
-
-
-
-
-
-
-
-var request5 = $.ajax({
-    url: "http://localhost:3000/users",
-    method: "GET",
-    data: {},
-    dataType: "json"
-});
-
-
-request5.done(function(users) {
-    var html = "";
-   
-    usersss=users;
-  
-    $('#profCont').append(html)
-});
-  console.log(usersss,"\sers")
-request5.fail(function( jqXHR, textStatus ) {
-    errorAlert("Request failed: " + textStatus );
-});
