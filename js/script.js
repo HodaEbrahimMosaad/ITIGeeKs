@@ -34,8 +34,8 @@ window.onload=function(){
 
 function CreatePost(){
     $("#_form").submit(function(e) {
-    e.preventDefault();
-});
+        e.preventDefault();
+    });
     console.log(files,"files from create post")
      var PostBody=$('#postBody').val();
     if(files!=undefined){
@@ -86,7 +86,6 @@ function CreatePost(){
                 </div>
             </div>`;
 
-        
         var c=1;
         $('#_form').after(postDiv);
         $('#newPostBody').append( PostBody);
@@ -121,6 +120,47 @@ function CreatePost(){
                     
                   }
     }
+    else{
+        var postDiv=`
+            <div class="post line-div">
+                <div class="head">
+                    <div class="img"><img src="img/profile.jpg"></div>
+                    <div class="info">
+                        <div class="name">Ahmed Atef</div>
+                        <div class="time"><i class="fa fa-history"></i> 3 min ago</div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="body">
+                    <span></span>
+                    <p class="postP1" id="newPostBody"></p>
+                    <div><a class="more">Read more..</a></div>
+                </div>
+                <div class="react">
+                    <div onclick="likeFun(this)" ><i class="fa fa-thumbs-o-up"> Like</i></div>
+                    <div><i class="fa fa-comments-o"></i> Comment</div>
+                </div>
+                <div class="comments">
+                    <div class="ccmnt">
+                        <div class="img"><img src="img/profile.jpg"></div>
+                        <div class="post-text">
+                            <p><b>Mostafa Ali</b></p>
+                            <p>agmd comment fel 3allam</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="ccmnt">
+                        <div class="img"><img src="img/profile.jpg"></div>
+                        <textarea class="post-text" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
+                        <!-- <div class="post-text" contenteditable="true" data-placeholder="Write a comment.."></div> -->
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>`;
+        $('#_form').after(postDiv);
+        $('#newPostBody').append( PostBody);
+    }
+    files = undefined;
     $('.create-post .post-text').val="";
     $('#result').html("");
 }

@@ -11,9 +11,9 @@
       "track": "System Development",
       "profilepic" : "2s.jpg",
       "socialmedia": {
-        "facebook": "",
-        "linkedin": "",
-        "github": ""
+        "facebook": "https://www.facebook.com/hodamosaad",
+        "linkedin": "https://www.linkedin.com/hodamosaad",
+        "github": "https://www.github.com/hodamosaad"
       }
     },
     {
@@ -27,9 +27,9 @@
       "track": "Big Data",
       "profilepic" :"33.jpg",
       "socialmedia": {
-        "facebook": "",
-        "linkedin": "",
-        "github": ""
+        "facebook": "https://www.facebook.com/amalnabil",
+        "linkedin": "https://www.linkedin.com/amalnabil",
+        "github": "https://www.github.com/amalnabil"
       }
     },
     {
@@ -43,9 +43,9 @@
       "id": 3,
       "profilepic" :"2.jfif",
       "socialmedia": {
-        "facebook": "",
-        "linkedin": "",
-        "github": ""
+        "facebook": "https://www.facebook.com/ibrahimmostafa",
+        "linkedin": "https://www.linkedin.com/ibrahimmostafa",
+        "github": "https://www.github.com/ibrahimmostafa"
       }
     },
     {
@@ -59,9 +59,9 @@
       "id": 4,
       "profilepic" :"1.jfif",
       "socialmedia": {
-        "facebook": "",
-        "linkedin": "",
-        "github": ""
+        "facebook": "https://www.facebook.com/somaiaibrahim",
+        "linkedin": "https://www.linkedin.com/somaiaibrahim",
+        "github": "https://www.github.com/somaiaibrahim"
       }
     },
     {
@@ -75,9 +75,9 @@
       "id": 5,
       "profilepic" :"profile.jpg",
       "socialmedia": {
-        "facebook": "",
-        "linkedin": "",
-        "github": ""
+        "facebook": "https://www.facebook.com/nouranour",
+        "linkedin": "https://www.linkedin.com/nouranour",
+        "github": "https://www.github.com/nouranour"
       }
     },
     {
@@ -91,9 +91,9 @@
       "id": 6,
       "profilepic" :"2.jfif",
       "socialmedia": {
-        "facebook": "",
-        "linkedin": "",
-        "github": ""
+        "facebook": "https://www.facebook.com/anasibrahim",
+        "linkedin": "https://www.linkedin.com/anasibrahim",
+        "github": "https://www.github.com/anasibrahim"
       }
 
     }
@@ -105,6 +105,7 @@
       "comments": [],
       "img_path": [],
       "userid": 1,
+      "userprofilepic" : "2s.jpg",
       "username": "Hoda Mosaad",
       "created_at": "1/7/2021, 6:34:33 PM",
       "tags" : ["Programming","Scientific"],
@@ -116,6 +117,7 @@
       "img_path": [],
       "comments": [],
       "userid": 1,
+      "userprofilepic" : "2s.jpg",
       "username":"Hoda Mosaad" ,
       "created_at":  "1/7/2021, 5:34:33 PM",
       "tags": ["Scientific"],
@@ -127,6 +129,7 @@
       "img_path": [],
       "comments": [],
       "userid": 3,
+      "userprofilepic" :"2.jfif",
       "username": "Ibrahim Mostafa",
       "created_at":  "1/7/2021, 6:34:33 PM",
       "tags": ["Programming"],
@@ -138,6 +141,7 @@
       "img_path": [],
       "comments": [],
       "userid": 4,
+      "userprofilepic" :"1.jfif",
       "username": "Somaia Ibrahim",
       "created_at": "1/7/2021, 2:34:33 PM",
       "tags": ["Scientific", "Entertainment"],
@@ -149,6 +153,7 @@
       "img_path": [],
       "comments": [],
       "userid": 2,
+      "userprofilepic" :"33.jpg",
       "username": "Amal Nabil",
       "created_at": "1/7/2021, 2:37:33 PM",
       "tags": ["Entertainment","CV"],
@@ -174,6 +179,7 @@
       "id": 1,
       "content": "this is comment1",
       "postid": 1,
+      "userprofilepic" : "2s.jpg",
       "userid": 2,
       "username": "jhghj gjhghj",
       "created_at": "1/7/2021, 6:34:33 PM"
@@ -183,6 +189,7 @@
       "content": "this is comment11",
       "postid": 1,
       "userid": 1,
+      "userprofilepic" : "2s.jpg",
       "username": "Hoda Mosaad",
       "created_at": "1/7/2021, 5:34:33 PM"
     },
@@ -190,6 +197,7 @@
       "id": 3,
       "content": "this is comment4",
       "postid": 4,
+      "userprofilepic" :"2.jfif",
       "userid": 3,
       "username": "Amal Nabil",
       "created_at": "1/7/2021, 6:34:00 PM"
