@@ -8,7 +8,13 @@
       "Fname": "Hoda",
       "Lname": "Mosaad",
       "bio": "bla bla bla",
-      "track": "System Development"
+      "track": "System Development",
+      "profilepic" : "2s.jpg",
+      "socialmedia": {
+        "facebook": "",
+        "linkedin": "",
+        "github": ""
+      }
     },
     {
       "id": 2,
@@ -18,7 +24,13 @@
       "Fname": "Amal",
       "Lname": "Nabil",
       "bio": "bla bla",
-      "track": "Big Data"
+      "track": "Big Data",
+      "profilepic" :"33.jpg",
+      "socialmedia": {
+        "facebook": "",
+        "linkedin": "",
+        "github": ""
+      }
     },
     {
       "email": "hodaz202000@gmail.com",
@@ -28,7 +40,13 @@
       "Lname": "Mostafa",
       "track": "System Development",
       "bio": "",
-      "id": 3
+      "id": 3,
+      "profilepic" :"2.jfif",
+      "socialmedia": {
+        "facebook": "",
+        "linkedin": "",
+        "github": ""
+      }
     },
     {
       "email": "hoda20@gmail.com",
@@ -38,7 +56,45 @@
       "Lname": "Ibrahim",
       "track": "Internet Of Things",
       "bio": "",
-      "id": 4
+      "id": 4,
+      "profilepic" :"1.jfif",
+      "socialmedia": {
+        "facebook": "",
+        "linkedin": "",
+        "github": ""
+      }
+    },
+    {
+      "email": "test@gmail.com",
+      "password": "1234567",
+      "role": "user",
+      "Fname": "Noura",
+      "Lname": "Nour",
+      "track": "Internet Of Things",
+      "bio": "",
+      "id": 5,
+      "profilepic" :"profile.jpg",
+      "socialmedia": {
+        "facebook": "",
+        "linkedin": "",
+        "github": ""
+      }
+    },
+    {
+      "email": "test2@gmail.com",
+      "password": "1234567",
+      "role": "user",
+      "Fname": "Anas",
+      "Lname": "Ibrahim",
+      "track": "System Development",
+      "bio": "",
+      "id": 6,
+      "profilepic" :"2.jfif",
+      "socialmedia": {
+        "facebook": "",
+        "linkedin": "",
+        "github": ""
+      }
     }
   ],
   "posts": [

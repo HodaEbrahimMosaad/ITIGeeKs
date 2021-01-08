@@ -46,7 +46,7 @@
             <div class="sticky">
             <div class="img-back"></div>
             <div class="img-cont">
-                <img src="img/profile.jpg">
+                <img  id="profilepic" src="img/profile.jpg">
                 <div class="info">
                     <p class="nm" id="FLname">Ahmed</p>
                     <p class="ttl" id="ttle">Developer</p>
@@ -81,7 +81,7 @@
             </form>
             <div class="post line-div">
                 <div class="head">
-                    <div class="img"><img src="img/profile.jpg"></div>
+                    <a id="prfLink" target="_blank"><div class="img"><img src="img/profile.jpg"></div></a>
                     <div class="info">
                         <div class="name">Ahmed Atef</div>
                         <div class="time"><i class="fa fa-history"></i> 3 min ago</div>
@@ -107,7 +107,7 @@
                         </div>
                     </div>
                 </div>
-                <div style="color:cornflowerblue;"><span id="likeCounter"> 4 </span> Likes</div>
+                <div class="" style="color:cornflowerblue;"><span id="likeCounter"> 4 </span> Likes</div>
                 <div class="react">
 
                     <div onclick="likeFun(this)" ><i class="fa fa-thumbs-o-up"> Like</i></div>
@@ -133,35 +133,22 @@
 
 
             <div class="profilesContainer" onmouseout="slider()" onmouseover="stop()" id="profilesContainer">
-
                 <div><h3>Top profiles</h3></div>
                 <i id="prev" onclick="funPrev()" class="fa fa-angle-left"></i>
-                <div class="person line-div" id="innerDiv1">
-                    <div class="img"><img src="img/profile.jpg"></div>
-                    <div class="name"><b>Ali Ahmed</b></div>
-                    <div class="title" style="color: #00000085;">Developer</div>
-                    <div><button class="btn">Follow</button></div>
-                </div>
-                <div class="person line-div" id="innerDiv2">
-                    <div class="img"><img src="img/profile.jpg"></div>
-                    <div class="name"><b>Ali Ahmed</b></div>
-                    <div class="title" style="color: #00000085;">Developer</div>
-                    <div><button class="btn">Follow</button></div>
-                </div>
-                <div class="person line-div" id="innerDiv3">
-                    <div class="img"><img src="img/profile.jpg"></div>
-                    <div class="name"><b>Ali Ahmed</b></div>
-                    <div class="title" style="color: #00000085;">Developer</div>
-                    <div><button class="btn">Follow</button></div>
-                </div>
-                <div class="person line-div" id="innerDiv4">
-                    <div class="img"><img src="img/profile.jpg" ></div>
-                    <div class="name"><b>Ali Ahmed</b></div>
-                    <div class="title" style="color: #00000085;">Developer</div>
-                    <div><button class="btn">Follow</button></div>
-                </div>
+                <span id="profCont">
+<!--                    <div class="person line-div" id="innerDiv1">-->
+<!--                        <div class="img"><img src="img/profile.jpg"></div>-->
+<!--                        <div class="name"><b>Ali Ahmed</b></div>-->
+<!--                        <div class="title" style="color: #00000085;">Developer</div>-->
+<!--                        <div><button class="btn">Follow</button></div>-->
+<!--                    </div>-->
+
+                </span>
+
                 <i id="next" onclick="funNext()" class="fa fa-angle-right"></i>
             </div>
+
+
         </div>
     </div>
     <div id="toDrag">
