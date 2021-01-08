@@ -8,6 +8,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
     <link rel="stylesheet" type="text/css" href="css/chat.css">
+    <script src="js/cookies.js"></script>
+    <script>
+        if (hasCookie("Fname") == false){
+            window.location = 'login.html';
+        }
+    </script>
+    <script>
+
+    </script>
 
 </head>
 <body>
@@ -18,14 +27,16 @@
                 <img src="img/tl.png" style="height: 45px;padding-top: 3px;">
                 <span>ITIGeeks</span>
             </div>
-            <div class="items" style="margin-right: 150px;">
+            <div class="items">
                 <ul id="navbar">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="">Friends</a></li>
                     <li><a href="">Groups</a></li>
                     <li><a href="profile.html">Profile</a></li>
+
                     <li><a href="Games.html">Entertainment</a></li>
-                    <li><a onclick="logoute()">Logout</a></li>
+                    <li><a onclick="logout()">Logout</a></li>
+
                 </ul>
             </div>
         </div>
@@ -37,23 +48,22 @@
             <div class="img-cont">
                 <img src="img/profile.jpg">
                 <div class="info">
-                    <p class="nm" id="FLname">Ahmed Atef</p>
+                    <p class="nm" id="FLname">Ahmed</p>
                     <p class="ttl" id="ttle">Developer</p>
                 </div>
             </div>
             <div class="f">
                 <p class="grayTxt">Following</p>
-                <p>34</p>
+                <p id="Following">34</p>
             </div>
             <div class="f">
                 <p class="grayTxt">Followers</p>
-                <p>100</p>
+                <p id="Followers">100</p>
             </div>
             <div class="f">
                 <p><a href="profile.html">View Profile</a></p>
             </div>
             </div>
-
         </div>
         <div class="ver-sec timeline">
             <form class="create-post line-div" id="_form">
@@ -69,8 +79,6 @@
                     <button id="post-btn" onclick="CreatePost()">Post</button>
                 </div>
             </form>
-
-
             <div class="post line-div">
                 <div class="head">
                     <div class="img"><img src="img/profile.jpg"></div>
@@ -83,7 +91,7 @@
                 <div class="body">
                     <span></span>
                     <p class="postP1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.</p>
-                    <div><a class="more">Read more..</a></div>
+                    <div><a class="see more">Read more..</a></div>
                     <div class="galary">
                         <div class="imgsContainer">
                             <i id="prev" class="fa fa-angle-left"></i>
@@ -99,8 +107,11 @@
                         </div>
                     </div>
                 </div>
+                <div style="color:cornflowerblue;"><span id="likeCounter"> 4 </span> Likes</div>
                 <div class="react">
+
                     <div onclick="likeFun(this)" ><i class="fa fa-thumbs-o-up"> Like</i></div>
+
                     <div><i class="fa fa-comments-o"></i> Comment</div>
                 </div>
                 <div class="comments">
@@ -114,14 +125,15 @@
                     </div>
                     <div class="ccmnt">
                         <div class="img"><img src="img/profile.jpg"></div>
-                        <textarea class="post-text" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
-                        <!-- <div class="post-text" contenteditable="true" data-placeholder="Write a comment.."></div> -->
+                        <textarea onkeypress="onTestChange(this);" id="comment" class="post-text commentPost" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
                         <div class="clearfix"></div>
                     </div>
                 </div>
             </div>
 
+
             <div class="profilesContainer" onmouseout="slider()" onmouseover="stop()" id="profilesContainer">
+
                 <div><h3>Top profiles</h3></div>
                 <i id="prev" onclick="funPrev()" class="fa fa-angle-left"></i>
                 <div class="person line-div" id="innerDiv1">
@@ -150,8 +162,6 @@
                 </div>
                 <i id="next" onclick="funNext()" class="fa fa-angle-right"></i>
             </div>
-
-
         </div>
     </div>
     <div id="toDrag">
@@ -159,9 +169,7 @@
             <img class="user-img"  style="box-shadow: 0px 0px 35px;" src="img/cartoon-robot-toy-object-for-small-children-to-vector-32859441.jpg" />
         </div>
         <section class="chatbox" id="myApp">
-
             <section class="chat-window" id="app">
-
             </section>
             <div id="con">
                 <div id="loading">
@@ -179,11 +187,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="js/script.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
-    <script src="js/cookies.js"></script>
-    <script src="js/conf.js"></script>
     <script src="js/action.js"></script>
     <script src="js/chat.js"></script>
     <script src="js/index-data.js"></script>
