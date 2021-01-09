@@ -21,34 +21,37 @@
 </head>
 <body>
 
-    <div class="nav">
-        <div class="container">
-            <div class="logo">
-                <img src="img/tl.png" style="height: 45px;padding-top: 3px;">
-                <span>ITIGeeks</span>
-            </div>
-            <div class="items">
-                <ul id="navbar">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="friends.html">Friends</a></li>
-                    <li><a href="profile.html">Profile</a></li>
-                    <li id="games" class="dropdown">
-                        <a class="dropbtn">Entertainment</a>
-                        <div class="dropdown-content">
-                            <a href="Ludo-game.html" target="_blank">Ludo game</a>
-                            <a href="connect-for.html" target="_blank">Connect 4</a>
-                        </div>
-                    </li>
-                    <!-- <li><a href="Games.html">Entertainment</a></li> -->
-                    <li><a onclick="logout()">Logout</a></li>
+<div class="nav">
+    <div class="container">
+        <div class="logo">
+            <img src="img/tl.png" style="height: 45px;padding-top: 3px;">
+            <span>ITIGeeks</span>
+        </div>
+        <div class="items">
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="friends.html">Friends</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li id="games" class="dropdown">
+                    <a class="dropbtn">Entertainment</a>
+                    <div class="dropdown-content">
+                        <a href="Ludo-game.html" target="_blank">Ludo game</a>
+                        <a href="connect-for.html" target="_blank">Connect 4</a>
+                    </div>
+                </li>
+                <!-- <li><a href="Games.html">Entertainment</a></li> -->
+                <li><a onclick="logout()">Logout</a></li>
 
-                </ul>
-            </div>
+            </ul>
         </div>
     </div>
-    <div class="container">
-        <div class="ver-sec profile-info">
-            <div class="sticky">
+</div>
+<div class="container">
+    <div id="ale">
+
+    </div>
+    <div class="ver-sec profile-info">
+        <div class="sticky">
             <div class="img-back"></div>
             <div class="img-cont">
                 <img  id="profilepic" src="img/profile.jpg">
@@ -68,124 +71,125 @@
             <div class="f">
                 <p><a href="profile.html">View Profile</a></p>
             </div>
+        </div>
+    </div>
+    <div class="ver-sec timeline">
+        <form class="create-post line-div" id="_form">
+            <div class="head">
+                <div class="img"><img class="profile" src="img/profile.jpg"></div>
+                <textarea class="post-text" placeholder="What's in your mind?" onkeyup="txtautoheight(this)" id="postBody"></textarea>
+                <!-- <div class="post-text" contenteditable="true" data-placeholder="What's in your mind?"></div> -->
+<!--                 <input class="" type="file" accept="image/*" multiple id="postImgs">-->
+                <div id='result'></div>
+            </div>
+            <div class="foot">
+                <div class="image-upload">
+                    <label for="postImgs">
+                        <img class="upImg" src="img/photo.png"/>
+                    </label>
+                    <input name="postImgs" id="postImgs"type="file" accept="image/*" multiple>
+                </div>
+                <button id="post-btn" onclick="CreatePost()">Post</button>
+            </div>
+        </form>
+        <div class="post line-div">
+            <div class="head">
+                <a id="prfLink" target="_blank"><div class="img"><img src="img/profile.jpg"></div></a>
+                <div class="info">
+                    <div class="name">Ahmed Atef</div>
+                    <div class="time"><i class="fa fa-history"></i> 3 min ago</div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="body">
+                <span></span>
+                <p class="postP1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.</p>
+                <div><a class="see more">Read more..</a></div>
+                <div class="galary">
+                    <div class="imgsContainer">
+                        <i id="prev" class="fa fa-angle-left"></i>
+                        <div>
+                            <img id="img1" class="left0" src="img/5.jpg">
+                            <img id="img2" class="left1" src="img/6.jpg">
+                            <img id="img3" class="left1" src="img/3.jpg">
+                            <img id="img4" class="left1" src="img/4.jpg">
+                            <img id="img5" class="left1" src="img/2.jpg">
+                            <img id="img6" class="left1" src="img/1.jpg">
+                        </div>
+                        <i id="next" class="fa fa-angle-right"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="" style="color:cornflowerblue;"><span id="likeCounter"> 4 </span> Likes</div>
+            <div class="react">
+
+                <div onclick="likeFun(this)" ><i class="fa fa-thumbs-o-up"> Like</i></div>
+
+                <div><i class="fa fa-comments-o"></i> Comment</div>
+            </div>
+            <div class="comments">
+                <div class="ccmnt">
+                    <div class="img"><img src="img/profile.jpg"></div>
+                    <div class="post-text">
+                        <p><b>Mostafa Ali</b></p>
+                        <p>agmd comment fel 3allam</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="ccmnt">
+                    <div class="img"><img src="img/profile.jpg"></div>
+                    <textarea onkeypress="onTestChange(this);" id="comment" class="post-text commentPost" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
+                    <div class="clearfix"></div>
+                </div>
             </div>
         </div>
-        <div class="ver-sec timeline">
-            <form class="create-post line-div" id="_form">
-                <div class="head">
-                    <div class="img"><img class="profile" src="img/profile.jpg"></div>
-                    <textarea class="post-text" placeholder="What's in your mind?" onkeyup="txtautoheight(this)" id="postBody"></textarea>
-                    <!-- <div class="post-text" contenteditable="true" data-placeholder="What's in your mind?"></div> -->
-                    <!-- <input class="" type="file" accept="image/*" multiple id="postImgs"> -->
-                    <div id='result'></div>
-                </div>
-                <div class="foot">   
-                    <div class="image-upload">
-                        <label for="postImgs">
-                          <img class="upImg" src="img/photo.png"/>
-                        </label>
-                        <input name="postImgs" id="postImgs"type="file" accept="image/*" multiple>
-                    </div>
-                    <button id="post-btn" onclick="CreatePost()">Post</button>
-                </div>
-            </form>
-            <div class="post line-div">
-                <div class="head">
-                    <a id="prfLink" target="_blank"><div class="img"><img src="img/profile.jpg"></div></a>
-                    <div class="info">
-                        <div class="name">Ahmed Atef</div>
-                        <div class="time"><i class="fa fa-history"></i> 3 min ago</div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="body">
-                    <span></span>
-                    <p class="postP1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.</p>
-                    <div><a class="see more">Read more..</a></div>
-                    <div class="galary">
-                        <div class="imgsContainer">
-                            <i id="prev" class="fa fa-angle-left"></i>
-                            <div>
-                                <img id="img1" class="left0" src="img/5.jpg">
-                                <img id="img2" class="left1" src="img/6.jpg">
-                                <img id="img3" class="left1" src="img/3.jpg">
-                                <img id="img4" class="left1" src="img/4.jpg">
-                                <img id="img5" class="left1" src="img/2.jpg">
-                                <img id="img6" class="left1" src="img/1.jpg">
-                            </div>
-                            <i id="next" class="fa fa-angle-right"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="" style="color:cornflowerblue;"><span id="likeCounter"> 4 </span> Likes</div>
-                <div class="react">
 
-                    <div onclick="likeFun(this)" ><i class="fa fa-thumbs-o-up"> Like</i></div>
-
-                    <div><i class="fa fa-comments-o"></i> Comment</div>
-                </div>
-                <div class="comments">
-                    <div class="ccmnt">
-                        <div class="img"><img src="img/profile.jpg"></div>
-                        <div class="post-text">
-                            <p><b>Mostafa Ali</b></p>
-                            <p>agmd comment fel 3allam</p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="ccmnt">
-                        <div class="img"><img src="img/profile.jpg"></div>
-                        <textarea onkeypress="onTestChange(this);" id="comment" class="post-text commentPost" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </div>
-
-<!--            onmouseout="slider()"-->
-            <div class="profilesContainer" onmouseover="stop()" id="profilesContainer">
-                <div><h3>Top profiles</h3></div>
-                <i id="prev" onclick="funPrev()" class="fa fa-angle-left"></i>
-                <span id="profCont">
+        <!--            onmouseout="slider()"-->
+        <div class="profilesContainer" onmouseover="stop()" id="profilesContainer">
+            <div><h3>Top profiles</h3></div>
+            <i id="prev" onclick="funPrev()" class="fa fa-angle-left"></i>
+            <span id="profCont">
 <!--                    <div class="person line-div" id="innerDiv1">-->
-<!--                        <div class="img"><img src="img/profile.jpg"></div>-->
-<!--                        <div class="name"><b>Ali Ahmed</b></div>-->
-<!--                        <div class="title" style="color: #00000085;">Developer</div>-->
-<!--                        <div><button class="btn">Follow</button></div>-->
-<!--                    </div>-->
+                <!--                        <div class="img"><img src="img/profile.jpg"></div>-->
+                <!--                        <div class="name"><b>Ali Ahmed</b></div>-->
+                <!--                        <div class="title" style="color: #00000085;">Developer</div>-->
+                <!--                        <div><button class="btn">Follow</button></div>-->
+                <!--                    </div>-->
 
                 </span>
 
-                <i id="next" onclick="funNext()" class="fa fa-angle-right"></i>
-            </div>
-
-
+            <i id="next" onclick="funNext()" class="fa fa-angle-right"></i>
         </div>
+
+
     </div>
-    <div id="toDrag">
-        <div id="cont">
-            <img class="user-img"  style="box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2)" src="img/cartoon-robot-toy-object-for-small-children-to-vector-32859441.jpg" />
-        </div>
-        <section class="chatbox" id="myApp">
-            <section class="chat-window" id="app">
-            </section>
-            <div id="con">
-                <div id="loading">
-                </div>
-            </div>
-            <form class="chat-input" onsubmit="return false;">
-                <input onkeyup="test2(this.keyCode)" type="text" id="input" autocomplete="on" placeholder="Type a message" />
-                <button id="bttn" onclick="test()">
-                    <img src="img/send.png">
-                </button>
-            </form>
+</div>
+<div id="toDrag">
+    <div id="cont">
+        <img class="user-img"  style="box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2)" src="img/cartoon-robot-toy-object-for-small-children-to-vector-32859441.jpg" />
+    </div>
+    <section class="chatbox" id="myApp">
+        <section class="chat-window" id="app">
         </section>
-    </div>
+        <div id="con">
+            <div id="loading">
+            </div>
+        </div>
+        <form class="chat-input" onsubmit="return false;">
+            <input onkeyup="test2(this.keyCode)" type="text" id="input" autocomplete="on" placeholder="Type a message" />
+            <button id="bttn" onclick="test()">
+                <img src="img/send.png">
+            </button>
+        </form>
+    </section>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/action.js"></script>
-    <script src="js/index-data.js"></script>
-    <script src="js/chat.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="js/action.js"></script>
+<script src="js/script.js"></script>
+
+<script src="js/index-data.js"></script>
+<script src="js/chat.js"></script>
 </body>
 </html>

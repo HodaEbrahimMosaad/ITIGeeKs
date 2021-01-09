@@ -5,7 +5,7 @@
       "email": "hoda2020@gmail.com",
       "password": "1234567",
       "role": "admin",
-      "Fname": "Hoda",
+      "Fname": "Hoda I.",
       "Lname": "Mosaad",
       "bio": "bla bla bla",
       "track": "System Development",
@@ -18,19 +18,19 @@
     },
     {
       "id": 2,
-      "email": "amal@gmail.com",
+      "email": "esraa@gmail.com",
       "password": "7654321",
       "role": "user",
-      "Fname": "Amal",
-      "Lname": "Nabil",
+      "Fname": "Esraa",
+      "Lname": "Mosallam",
       "bio": "bla bla... ...",
-      "track": "Big Data",
-      "profilepic" :"33.jpg",
+      "track": "Very Very Big Data",
+      "profilepic" :"esraa.jpg",
       "socialmedia": {
 
-        "facebook": "https://www.facebook.com/amalnabil",
-        "linkedin": "https://www.linkedin.com/amalnabil",
-        "github": "https://www.github.com/amalnabil"
+        "facebook": "https://www.facebook.com/esraamosallam",
+        "linkedin": "https://www.linkedin.com/esraamosallam",
+        "github": "https://www.github.com/esraamosallam"
 
       }
     },
@@ -59,7 +59,7 @@
       "track": "Internet Of Things",
       "bio": "",
       "id": 4,
-      "profilepic" :"1.jfif",
+      "profilepic" :"aliaa.jpeg",
       "socialmedia": {
         "facebook": "https://www.facebook.com/somaiaibrahim",
         "linkedin": "https://www.linkedin.com/somaiaibrahim",
@@ -70,16 +70,16 @@
       "email": "test@gmail.com",
       "password": "1234567",
       "role": "user",
-      "Fname": "Noura",
-      "Lname": "Nour",
+      "Fname": "Aliaa Y.",
+      "Lname": "Hussien",
       "track": "Internet Of Things",
       "bio": "",
       "id": 5,
-      "profilepic" :"profile.jpg",
+      "profilepic" :"aliaa.jpeg",
       "socialmedia": {
-        "facebook": "https://www.facebook.com/nouranour",
-        "linkedin": "https://www.linkedin.com/nouranour",
-        "github": "https://www.github.com/nouranour"
+        "facebook": "https://www.facebook.com/aliaayasser",
+        "linkedin": "https://www.linkedin.com/aliaayasser",
+        "github": "https://www.github.com/aliaayasser"
       }
     },
     {
@@ -111,7 +111,7 @@
       "username": "Hoda Mosaad",
       "created_at": "1/7/2021, 6:34:33 PM",
       "tags" : ["Programming","Scientific"],
-      "likes": 0
+      "likes": 4
     },
     {
       "id": 2,
@@ -123,7 +123,7 @@
       "username":"Hoda Mosaad" ,
       "created_at":  "1/7/2021, 5:34:33 PM",
       "tags": ["Scientific"],
-      "likes": 0
+      "likes": 7
     },
     {
       "id": 3,
@@ -142,9 +142,9 @@
       "body": "bla bla bla3",
       "img_path": [],
       "comments": [],
-      "userid": 4,
-      "userprofilepic" :"1.jfif",
-      "username": "Somaia Ibrahim",
+      "userid": 5,
+      "userprofilepic" :"aliaa.jpeg",
+      "username": "Aliaa Y. Hussien",
       "created_at": "1/7/2021, 2:34:33 PM",
       "tags": ["Scientific", "Entertainment"],
       "likes": 2
@@ -155,8 +155,8 @@
       "img_path": [],
       "comments": [],
       "userid": 2,
-      "userprofilepic" :"33.jpg",
-      "username": "Amal Nabil",
+      "userprofilepic" :"esraa.jpg",
+      "username": "Esraa Mosallam",
       "created_at": "1/7/2021, 2:37:33 PM",
       "tags": ["Entertainment","CV"],
       "likes": 5
@@ -168,12 +168,16 @@
       "followed" : 2
     },
     {
+      "follower": 1,
+      "followed" : 5
+    },
+    {
       "follower": 2,
       "followed" : 1
     },
     {
-      "follower": 1,
-      "followed": 4
+      "follower": 5,
+      "followed": 1
     }
   ],
   "comments": [
@@ -181,9 +185,9 @@
       "id": 1,
       "content": "this is comment1",
       "postid": 1,
-      "userprofilepic" : "33.jpg",
+      "userprofilepic" : "esraa.jpg",
       "userid": 2,
-      "username": "Amal Nabil",
+      "username": "Esraa Mosallam",
       "created_at": "1/7/2021, 6:34:33 PM"
     },
     {
@@ -198,10 +202,28 @@
     {
       "id": 3,
       "content": "this is comment4",
-      "postid": 4,
+      "postid": 5,
       "userprofilepic" :"85.jpg",
       "userid": 3,
       "username": "Ibrahim Mostafa",
+      "created_at": "1/7/2021, 6:34:00 PM"
+    },
+    {
+      "id": 4,
+      "content": "this is comment 5",
+      "postid": 5,
+      "userprofilepic" :"aliaa.jpeg",
+      "userid": 5,
+      "username": "Aliaa Y. Hussien",
+      "created_at": "1/7/2021, 6:34:00 PM"
+    },
+    {
+      "id": 5,
+      "content": "this is comment 6",
+      "postid": 2,
+      "userprofilepic" :"aliaa.jpeg",
+      "userid": 5,
+      "username": "Aliaa Y. Hussien",
       "created_at": "1/7/2021, 6:34:00 PM"
     }
   ],

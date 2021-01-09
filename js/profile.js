@@ -103,7 +103,6 @@ request1.done(function( following ) {
 request1.fail(function( jqXHR, textStatus ) {
     errorAlert("Request failed: " + textStatus );
 });
-
 /*var request = $.ajax({
     url: "http://localhost:3000/posts",
 
@@ -111,7 +110,7 @@ request1.fail(function( jqXHR, textStatus ) {
     data: {},
     dataType: "json"
 });*/
- var currentUser;
+
 /*request5.done(function(users) {
     
     usersss=users;
@@ -132,7 +131,7 @@ for(var i=0;i<usersss.length;i++){
     
 
     
-});*/
+/*});*/
 /*request5.fail(function( jqXHR, textStatus ) {
     errorAlert("Request failed: " + textStatus );
 });*/
@@ -293,7 +292,7 @@ btn2.onclick = function() {
         $('#ProfileImg').attr("src",path);
 
          $('#_bio').html(getCookie("bio"));
-        //location.reload(true);
+        location.reload(true);
 
 
     });
