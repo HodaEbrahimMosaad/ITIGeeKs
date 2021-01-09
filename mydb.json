@@ -59,7 +59,7 @@
       "track": "Internet Of Things",
       "bio": "",
       "id": 4,
-      "profilepic" :"aliaa.jpeg",
+      "profilepic" :"2.jfif",
       "socialmedia": {
         "facebook": "https://www.facebook.com/somaiaibrahim",
         "linkedin": "https://www.linkedin.com/somaiaibrahim",
@@ -86,7 +86,7 @@
       "email": "test2@gmail.com",
       "password": "1234567",
       "role": "user",
-      "Fname": "Anas",
+      "Fname": "Anas E.",
       "Lname": "Ibrahim",
       "track": "System Development",
       "bio": "",
@@ -178,6 +178,10 @@
     {
       "follower": 5,
       "followed": 1
+    },
+    {
+      "follower": 1,
+      "followed": 3
     }
   ],
   "comments": [
