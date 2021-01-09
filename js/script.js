@@ -33,6 +33,7 @@ window.onload=function(){
     },300)
 };
 var myNewPostImgLen=0;
+
 function CreatePost(){
     $("#_form").submit(function(e) {
         e.preventDefault();
@@ -160,7 +161,6 @@ function CreatePost(){
         myNewPostImgLen = files.length;
     }
 
-
     files = undefined;
     $('.create-post .post-text').val("");
     $('#result').html("");
@@ -238,7 +238,12 @@ $(function(){
     //
 })
 var i=1;
+var prevFlag = 0;
 function nextt(thiss){
+    if (!files){
+        console.log($(thiss).siblings('div').children('img').length)
+        myNewPostImgLen = $(thiss).siblings('div').children('img').length
+    }
     prevFlag = 0;
     $(`.galary>div #img${i}`).animate({left: '700px'});
     $('.galary img').css('left','-700px');
@@ -250,7 +255,11 @@ function nextt(thiss){
 
 }
 function prevv(thiss){
-    var prevFlag = 0;
+    if (!files){
+        console.log($(thiss).next('div').children('img').length)
+        myNewPostImgLen = $(thiss).next('div').children('img').length
+    }
+    prevFlag = 0;
 
     if(prevFlag == 0){
         $('.galary img').removeClass('left1');
@@ -268,5 +277,4 @@ function prevv(thiss){
     }
     if(i!=myNewPostImgLen)
         $(`.galary>div #img${++i}`).animate({right: '0px'});
-
 }
