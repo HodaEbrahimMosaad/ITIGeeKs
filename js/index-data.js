@@ -108,7 +108,11 @@ var setupPosts = function(posts){
                                 <i id="prevv" onclick="prevv(this)" class="fa fa-angle-left"></i>
                                 <div id="newPostImgs">`
                 for (var j=0; j< posts[i].img_path.length ; j++){
-                    li += `<img id="img${j+1}" class="left0" src="img/${posts[i].img_path[j]}">`
+                    if(j==0){
+                        li += `<img id="img${j+1}" class="left0" src="img/${posts[i].img_path[j]}">`
+                    }else{
+                        li += `<img id="img${j+1}" class="left1" src="img/${posts[i].img_path[j]}">`
+                    } 
                 }
                 li += `</div>
                         <i id="nextt" onclick="nextt(this)" class="fa fa-angle-right"></i>
