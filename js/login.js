@@ -172,7 +172,7 @@ loginForm.addEventListener('submit', (e) => {
                     setCookie("profilepic", users[i].profilepic);
                     setCookie('facebook',users[i].socialmedia.facebook )
                     setCookie('linkedin',users[i].socialmedia.linkedin )
-                    setCookie('linkedin',users[i].socialmedia.linkedin )
+                    setCookie('github',users[i].socialmedia.github )
                     window.location = 'index.html';
                     return;
                 }
@@ -194,22 +194,6 @@ loginForm.addEventListener('submit', (e) => {
 
 });
 
-function errorAlert(errorMessage) {
-    var aler = document.createElement('div')
-    aler.append(errorMessage);
-    aler.setAttribute('class', 'alertt')
-    aler.setAttribute('id', 'alert')
-    aler.style.width = "975px"
-    aler.style.textAlign = "center"
-    aler.style.margin = "45px auto 20px"
-    aler.style.backgroundColor = "darksalmon"
-    aler.style.padding = "20px"
-    aler.style.borderRadius = "10px"
-    document.body.prepend(aler);
-    setTimeout(function () {
-        $("#alert").slideUp(500);
-    },3000)
-}
 
 function successMess(errorMessage) {
     var aler = document.createElement('div')

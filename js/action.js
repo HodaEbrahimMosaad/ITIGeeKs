@@ -52,3 +52,20 @@ $('#games .dropbtn').click(function() {
     }
     
 });
+
+function errorAlert(errorMessage) {
+    var aler = document.createElement('div')
+    aler.append(errorMessage);
+    aler.setAttribute('class', 'alertt')
+    aler.setAttribute('id', 'alert')
+    aler.style.width = "975px"
+    aler.style.textAlign = "center"
+    aler.style.margin = "45px auto 20px"
+    aler.style.backgroundColor = "darksalmon"
+    aler.style.padding = "20px"
+    aler.style.borderRadius = "10px"
+    document.body.prepend(aler);
+    setTimeout(function () {
+        $("#alert").slideUp(500);
+    },3000)
+}

@@ -1,52 +1,52 @@
 $('.profile').attr('src', 'img/'+getCookie('profilepic'))
 var files ;
-
 window.onload=function(){
-    if (window.File && window.FileList && window.FileReader) {
-        var filesInput = document.getElementById("postImgs");
-        filesInput.addEventListener("change", function(event) {
-            files = event.target.files; //FileList object
-            var output = document.getElementById("result");
-            for (var i = 0; i < files.length; i++) {
-            var file = files[i];
-                console.log(files[i]['name'],i);
-            //Only pics
-            if (!file.type.match('image'))
-                continue;
-            var picReader = new FileReader();
-            picReader.addEventListener("load", function(event) {
-                var picFile = event.target;
-                //var div = document.createElement("div");
-                
-                output.innerHTML += "<img class='thumbnail' src='" + picFile.result + "'" +
-                "title='" + picFile.name + "'/>";
-                //output.insertBefore(div, null);
-                let fileUpload =files[i];
-                console.log(files);  
+    setTimeout(function () {
+        if (window.File && window.FileList && window.FileReader) {
+            var filesInput = document.getElementById("postImgs");
+            filesInput.addEventListener("change", function(event) {
+                files = event.target.files; //FileList object
+                var output = document.getElementById("result");
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    console.log(files[i]['name'],i);
+                    //Only pics
+                    if (!file.type.match('image'))
+                        continue;
+                    var picReader = new FileReader();
+                    picReader.addEventListener("load", function(event) {
+                        var picFile = event.target;
+                        //var div = document.createElement("div");
+                        output.innerHTML += "<img class='thumbnail' src='" + picFile.result + "'" +
+                            "title='" + picFile.name + "'/>";
+                        //output.insertBefore(div, null);
+                        let fileUpload =files[i];
+                        console.log(files);
+                    });
+                    //Read the image
+                    picReader.readAsDataURL(file);
+                }
             });
-            //Read the image
-            picReader.readAsDataURL(file);
-            }
-        });
-    } else {
-    console.log("Your browser does not support File API");
-    } 
-}
+        } else {
+            console.log("Your browser does not support File API");
+        }
+    },300)
+};
 var myNewPostImgLen=0;
 function CreatePost(){
     $("#_form").submit(function(e) {
         e.preventDefault();
     });
     console.log(files,"files from create post")
-     var PostBody=$('#postBody').val();
+    var PostBody=$('#postBody').val();
     if(files!=undefined){
         var n ='', p='';
-        if(files.length>1) 
+        if(files.length>1)
         {
             p = `<i id="prevv" onclick="prevv(this)" class="fa fa-angle-left"></i>`;
             n = `<i id="nextt" onclick="nextt(this)" class="fa fa-angle-right"></i>`;
         }
-            var postDiv=`
+        var postDiv=`
             <div class="post line-div">
                 <div class="head">
                     <div class="img"><img src="img/profile.jpg"></div>
@@ -97,9 +97,9 @@ function CreatePost(){
         $('#_form').after(postDiv);
         $('#newPostBody').append( PostBody);
         console.log(PostBody)
-         for (var i = 0; i < files.length; i++) {
+        for (var i = 0; i < files.length; i++) {
             var file = files[i];
-                console.log(files[i]['name'],i);
+            console.log(files[i]['name'],i);
             //Only pics
             if (!file.type.match('image'))
                 continue;
@@ -111,17 +111,17 @@ function CreatePost(){
                     c++;
                 }
                 else{
-                        $('#newPostImgs').append("<img id='img"+c+"' class='left1' src='" + picFile.result + "'" +"title='" + picFile.name + "'/>");
+                    $('#newPostImgs').append("<img id='img"+c+"' class='left1' src='" + picFile.result + "'" +"title='" + picFile.name + "'/>");
                     c++;
                 }
                 //var fileUpload =files[i];
                 console.log(files);
             });
-                
+
             //Read the image
             picReader.readAsDataURL(file);
-            
-            }
+
+        }
     }
     else{
         var postDiv=`
@@ -243,36 +243,36 @@ $(function(){
     });
     //
 })
-    var i=1;
-    function nextt(thiss){
-        prevFlag = 0;
-        $(`.galary>div #img${i}`).animate({left: '700px'});
-        $('.galary img').css('left','-700px');
-        if(i>=myNewPostImgLen){
-            i =0;
-        }
-        if(i!=myNewPostImgLen)
-            $(`.galary>div #img${++i}`).animate({left: '0px'});
-    
+var i=1;
+function nextt(thiss){
+    prevFlag = 0;
+    $(`.galary>div #img${i}`).animate({left: '700px'});
+    $('.galary img').css('left','-700px');
+    if(i>=myNewPostImgLen){
+        i =0;
     }
+    if(i!=myNewPostImgLen)
+        $(`.galary>div #img${++i}`).animate({left: '0px'});
+
+}
 function prevv(thiss){
-        var prevFlag = 0;
-   
-        if(prevFlag == 0){
-            $('.galary img').removeClass('left1');
-            $('.galary img').removeAttr('style');
-            $('.galary #img1').removeClass('left0');
-            $('.galary img').css('right','-700px');
-            $(`.galary>div #img${i}`).css('right','0px');
-            prevFlag = 1;
-        }
-        //$('.galary img').removeAttr('style');
-        $(`.galary>div #img${i}`).animate({right: '700px'});
+    var prevFlag = 0;
+
+    if(prevFlag == 0){
+        $('.galary img').removeClass('left1');
+        $('.galary img').removeAttr('style');
+        $('.galary #img1').removeClass('left0');
         $('.galary img').css('right','-700px');
-        if(i>=myNewPostImgLen){
-            i =0;
-        }
-        if(i!=myNewPostImgLen)
-            $(`.galary>div #img${++i}`).animate({right: '0px'});
-    
+        $(`.galary>div #img${i}`).css('right','0px');
+        prevFlag = 1;
+    }
+    //$('.galary img').removeAttr('style');
+    $(`.galary>div #img${i}`).animate({right: '700px'});
+    $('.galary img').css('right','-700px');
+    if(i>=myNewPostImgLen){
+        i =0;
+    }
+    if(i!=myNewPostImgLen)
+        $(`.galary>div #img${++i}`).animate({right: '0px'});
+
 }
