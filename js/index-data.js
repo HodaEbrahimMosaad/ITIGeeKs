@@ -83,7 +83,7 @@ request.done(function( posts ) {
 var postsList = document.querySelector('.timeline');
 // setup guides
 var setupPosts = function(posts){
-    let html = '';
+    var html = '';
     for (var i=0; i< posts.length; i++){
         var href = 'profile.html';
         if (posts[i].userid != id) {
@@ -210,13 +210,15 @@ var maxLen=30;
 
 var nextFlag=0;
 
+var countFlat=0;
+/*function funNext(){
+    
 
 function funNext(){
-
     if(usersss.length>=4&&nextFlag==0){
         for(var iz=1;iz<=4;iz++){
                 $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+iz+"'"+">\
-                    <div class='img'><img src='"+usersss[iz-1].profilepic+"'></div>\
+                    <div class='img'><img src='img/"+usersss[iz-1].profilepic+"'></div>\
                     <div class='name'><b>"+usersss[iz-1].Fname +"  "+ usersss[iz-1].Lname +"</b></div>\
                     <div class='title' style='color: #00000085;'>"+ usersss[iz-1].track+"</div>\
                     <div><button class='btn'>Follow</button></div>\
@@ -229,20 +231,28 @@ function funNext(){
     }
     else{
     
-            $("#innerDiv"+start).hide();
+       $("#innerDiv"+start).hide();     
     if(count==count2 &&count<=usersss.length){
+        
         console.log(count,"count")
+             if(count!=usersss.length+1&&countFlat==0){  
     $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+count+"'"+">\
                     <div class='img'><img src='img/"+usersss[count-1].profilepic+"'></div>\
                     <div class='name'><b>"+usersss[count-1].Fname +"  "+ usersss[count-1].Lname +"</b></div>\
                     <div class='title' style='color: #00000085;'>"+ usersss[count-1].track+"</div>\
                     <div><button class='btn'>Follow</button></div>\
                 </div>");
-count++;
+ 
+            count++;
+                
+                
+        }
+            
+         
           //$(this).show("slide", { direction: "left" }, 1000);
     }
-    $("#innerDiv"+count2).show();
-    if(start<count && count2<count)
+   $("#innerDiv"+count2).show();
+    if(start<usersss.length && count2<usersss.length)
         {
             start++;
             count2++;
@@ -252,31 +262,45 @@ count++;
     }
     }
 
-}
+}*/
 function funPrev(){
-
-   if(start!=1){
-        start--;
-       count2--;
+ console.log("start"+start,"coun 2",count2,"cputn",count)
+   if(start>=1){
+        
        $("#innerDiv"+count2).hide();
 
        $("#innerDiv"+start).show(); 
+       if(start!=1){
+            count2--;
+            start--;
+       }
+      
+
    }
     else{
         flagToOutSlid=1;
     }
 }
+var xx=1;
+var ff=0;
 function slider(){
+   
+    
     timerId = setInterval(function () {
-        if(flagToOutSlid==0&&start>=1){
-            funPrev();
+        
+        if(xx<=usersss.length&&ff==0){
+            funNext();
+            xx++;
         }
         else {
-            if(flagToOutSlid==1){
-                funNext();
+            ff=1
+            funPrev();
+            xx--;
+            if(xx==1){
+                ff=0;
             }
         }
-    }, 700);
+    }, 1000,xx);
 };
 function stop(){
     clearInterval(timerId);
@@ -302,8 +326,11 @@ $(window).on('load', function() {
 
 
     }
+
     console.log(usersss,"ussssssssssssssss")
     },500)
+
+
 });
 
 
@@ -400,3 +427,70 @@ postForm.addEventListener('submit', function(e){
 
 */
 
+
+
+
+
+
+
+
+function funNext(){
+    
+    /if(count!=15){/
+    console.log("start"+start,"coun 2",count2,"cputn",count)
+    console.log(usersss,"userss");
+
+    if(usersss.length>=4&&nextFlag==0){
+        for(var iz=1;iz<=4;iz++){
+                $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+iz+"'"+">\
+                    <div class='img'><img src='img/"+usersss[iz-1].profilepic+"'></div>\
+                    <div class='name'><b>"+usersss[iz-1].Fname +"  "+ usersss[iz-1].Lname +"</b></div>\
+                    <div class='title' style='color: #00000085;'>"+ usersss[iz-1].track+"</div>\
+                    <div><button class='btn'>Follow</button></div>\
+                </div>");
+           
+        }
+        nextFlag=1;
+        
+ 
+    }
+    else{
+     $("#innerDiv"+start).hide(); 
+       
+             if(count==usersss.length&&$("#innerDiv"+count).length==0){
+                  $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+count+"'"+">\
+                    <div class='img'><img src='img/"+usersss[count-1].profilepic+"'></div>\
+                    <div class='name'><b>"+usersss[count-1].Fname +"  "+ usersss[count-1].Lname +"</b></div>\
+                    <div class='title' style='color: #00000085;'>"+ usersss[count-1].track+"</div>\
+                    <div><button class='btn'>Follow</button></div>\
+                </div>");
+                 
+          }  
+ 
+     
+        if(count<usersss.length){  
+    $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+count+"'"+">\
+                    <div class='img'><img src='img/"+usersss[count-1].profilepic+"'></div>\
+                    <div class='name'><b>"+usersss[count-1].Fname +"  "+ usersss[count-1].Lname +"</b></div>\
+                    <div class='title' style='color: #00000085;'>"+ usersss[count-1].track+"</div>\
+                    <div><button class='btn'>Follow</button></div>\
+                </div>");
+            count++;
+        }
+        
+            
+
+        
+         $("#innerDiv"+count2).show();
+        if(count2<usersss.length){
+            count2++;
+            start++;      
+        }
+            
+
+    if(count2==usersss.length){
+        flagToOutSlid=0;
+    }
+    }
+
+}

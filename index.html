@@ -13,14 +13,27 @@
         if (hasCookie("Fname") == false){
             window.location = 'login.html';
         }
-    </script>
-    <script>
 
+        // 
+        
     </script>
-
 </head>
 <body>
-
+<style>
+    .selected-tag{border: 2px solid #80bb38;}
+    .post-tags {
+        padding: 15px;
+        margin-bottom: 8px;
+        text-align: center;
+    }
+    .post-tags span {
+        cursor: pointer;
+        background: #f2f2f2;
+        color: #00000085;
+        padding: 5px 8px;
+        border-radius: 16px;
+    }
+</style>
 <div class="nav">
     <div class="container">
         <div class="logo">
@@ -81,6 +94,14 @@
                 <!-- <div class="post-text" contenteditable="true" data-placeholder="What's in your mind?"></div> -->
                 <!--                 <input class="" type="file" accept="image/*" multiple id="postImgs">-->
                 <div id='result'></div>
+            </div>
+            <div class="post-tags" id="post-tags">
+                <span><a onclick="addtag(event)">Scientific</a></span>
+                <span><a onclick="addtag(event)">Entertainment</a></span>
+                <span><a onclick="addtag(event)">Data Science</a></span>
+                <span><a onclick="addtag(event)">Big Data</a></span>
+                <span><a onclick="addtag(event)">AI</a></span>
+                <span><a onclick="addtag(event)">Programming</a></span>
             </div>
             <div class="foot">
                 <div class="image-upload">
@@ -191,5 +212,23 @@
 
 <script src="js/index-data.js"></script>
 <script src="js/chat.js"></script>
+<script>
+    var tagsArr = {};
+    function addtag(e){
+        var targett = e.target;
+        console.log(targett);
+        $(targett).parent().toggleClass("selected-tag");
+        var text = targett.innerText||targett.textContent;
+        console.log(text);
+        //
+    }
+    $( function() {
+        
+            // $('.post-tags span').each(thiss.click(function(){
+            //     console.log(this);
+            //     console.log("this");
+            // }))
+    });
+</script>
 </body>
 </html>
