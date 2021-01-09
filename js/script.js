@@ -52,10 +52,10 @@ function CreatePost(){
             var postDiv=`
                 <div class="post line-div">
                     <div class="head">
-                        <div class="img"><img src="img/profile.jpg"></div>
+                        <div class="img"><img src="img/${getCookie('profilepic')}"></div>
                         <div class="info">
-                            <div class="name">Ahmed Atef</div>
-                            <div class="time"><i class="fa fa-history"></i> 3 min ago</div>
+                            <div class="name">${getCookie('Fname')} ${getCookie('Lname')}</div>
+                            <div class="time"><i class="fa fa-history"></i> ${(new Date).toDateString()}</div>
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -82,7 +82,7 @@ function CreatePost(){
                     <div class="comments">
                        
                         <div class="ccmnt">
-                            <div class="img"><img src="img/profile.jpg"></div>
+                            <div class="img"><img src="img/${getCookie('profilepic')}"></div>
                             <textarea class="post-text" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
                             <!-- <div class="post-text" contenteditable="true" data-placeholder="Write a comment.."></div> -->
                             <div class="clearfix"></div>
