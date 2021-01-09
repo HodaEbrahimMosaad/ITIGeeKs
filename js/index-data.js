@@ -61,9 +61,6 @@ request.done(function( posts ) {
         dataType: "json"
     });
     request2.done(function(comments) {
-        console.log(all_posts)
-        console.log(comments)
-        console.log("/////////////////");
         for (var i=0; i < comments.length; i++){
             for (var j=0; j<all_posts.length; j++){
                 if (comments[i].postid == all_posts[j].id){
@@ -76,7 +73,6 @@ request.done(function( posts ) {
             if (a.created_at < b.created_at) return -1;
             return 0;
         });
-        console.log(all_posts);
         setupPosts(all_posts)
     });
     request2.fail(function( jqXHR, textStatus ) {
@@ -105,8 +101,22 @@ var setupPosts = function(posts){
             <div class="clearfix"></div>
             <div class="body">
                 <p class="postP1">${posts[i].body}</p>
-                <div><a class="see more">Read more..</a></div>
-            </div>
+                <div><a class="see more">Read more..</a></div>`
+            if (posts[i].img_path.length != 0){
+                li += `<div class="galary">
+                            <div class="imgsContainer">
+                                <i id="prevv" onclick="prevv(this)" class="fa fa-angle-left"></i>
+                                <div id="newPostImgs">`
+                for (var j=0; j< posts[i].img_path.length ; j++){
+                    li += `<img id="img${j+1}" class="left0" src="img/${posts[i].img_path[j]}">`
+                }
+                li += `</div>
+                        <i id="nextt" onclick="nextt(this)" class="fa fa-angle-right"></i>
+                    </div>
+                </div>`
+            }
+
+            li += `</div>
             <div style="color:cornflowerblue;"><span id="likeCounter">${posts[i].likes} </span> Likes <div style="color:cornflowerblue;"></div></div>
             <div class="react">
                 <div onclick="likeFun(this)"><i class="fa fa-thumbs-o-up"></i> Like</div>
@@ -204,9 +214,7 @@ var countFlat=0;
 /*function funNext(){
     
 
-    console.log("start"+start,"coun 2",count2,"cputn",count)
-    console.log(usersss,"userss");
-
+function funNext(){
     if(usersss.length>=4&&nextFlag==0){
         for(var iz=1;iz<=4;iz++){
                 $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+iz+"'"+">\
@@ -267,7 +275,7 @@ function funPrev(){
             start--;
        }
       
-       console.log(usersss,"usess")
+
    }
     else{
         flagToOutSlid=1;

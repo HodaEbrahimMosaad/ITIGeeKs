@@ -171,9 +171,9 @@ function speak(string){
     speechSynthesis.speak(utterance);
 }
 function getTagPsts(e) {
-    var target = e.target
+    var target = e.target;
     var tag = target.textContent || target.innerText;
-    console.log(tag)
+    console.log(tag);
     var tagPosts = [];
     var request = $.ajax({
         url: "http://localhost:3000/posts",

@@ -214,6 +214,18 @@
       "created_at": "1/7/2021, 2:37:33 PM",
       "tags": ["Entertainment","CV"],
       "likes": 5
+    },
+    {
+      "id": 6,
+      "body": "we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and ",
+      "img_path": ["uchiha.jpg","3.jpg","4.jpg","5.jpg","6.jpg"],
+      "comments": [],
+      "userid": 2,
+      "userprofilepic" :"esraa.jpg",
+      "username": "Esraa Mosallam",
+      "created_at": "1/7/2020, 2:37:33 PM",
+      "tags": ["Entertainment","CV"],
+      "likes": 5
     }
   ],
   "following": [

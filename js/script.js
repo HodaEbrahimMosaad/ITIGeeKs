@@ -33,6 +33,7 @@ window.onload=function(){
     },300)
 };
 var myNewPostImgLen=0;
+
 function CreatePost(){
     $("#_form").submit(function(e) {
         e.preventDefault();
@@ -49,52 +50,45 @@ function CreatePost(){
                 n = `<i id="nextt" onclick="nextt(this)" class="fa fa-angle-right"></i>`;
             }
             var postDiv=`
-                <div class="post line-div">
-                    <div class="head">
-                        <div class="img"><img src="img/profile.jpg"></div>
-                        <div class="info">
-                            <div class="name">Ahmed Atef</div>
-                            <div class="time"><i class="fa fa-history"></i> 3 min ago</div>
-                        </div>
+            <div class="post line-div">
+                <div class="head">
+                    <div class="img"><img src="img/profile.jpg"></div>
+                    <div class="info">
+                        <div class="name">Ahmed Atef</div>
+                        <div class="time"><i class="fa fa-history"></i> 3 min ago</div>
                     </div>
-                    <div class="clearfix"></div>
-                    <div class="body">
-                        <span></span>
-                        <p class="postP1" id="newPostBody"></p>
-                        <div><a c[lass="more">Read more..</a></div>
-                        <div class="galary">
-                            <div class="imgsContainer">
+                </div>
+                <div class="clearfix"></div>
+                <div class="body">
+                    <span></span>
+                    <p class="postP1" id="newPostBody"></p>
+                    <div><a c[lass="more">Read more..</a></div>
+                    <div class="galary">
+                        <div class="imgsContainer">
+                            
+                            ${p}
+                            <div id="newPostImgs">
                                 
-                                ${p}
-                                <div id="newPostImgs">
-                                    
-                                </div>
-                                ${n}
                             </div>
+                            ${n}
                         </div>
                     </div>
-                    <div class="react">
-                        <div onclick="likeFun(this)" ><i class="fa fa-thumbs-o-up"> Like</i></div>
-                        <div><i class="fa fa-comments-o"></i> Comment</div>
+                </div>
+                <div style="color:cornflowerblue;"><span id="likeCounter">0 </span> Likes <div style="color:cornflowerblue;"></div></div>
+                <div class="react">
+                    <div onclick="likeFun(this)" ><i class="fa fa-thumbs-o-up"> Like</i></div>
+                    <div><i class="fa fa-comments-o"></i> Comment</div>
+                </div>
+                <div class="comments">
+                   
+                    <div class="ccmnt">
+                        <div class="img"><img src="img/profile.jpg"></div>
+                        <textarea class="post-text" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
+                        <!-- <div class="post-text" contenteditable="true" data-placeholder="Write a comment.."></div> -->
+                        <div class="clearfix"></div>
                     </div>
-                    <div class="comments">
-                        <div class="ccmnt">
-                            <div class="img"><img src="img/profile.jpg"></div>
-                            <div class="post-text">
-                                <p><b>Mostafa Ali</b></p>
-                                <p>agmd comment fel 3allam</p>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="ccmnt">
-                            <div class="img"><img src="img/profile.jpg"></div>
-                            <textarea class="post-text" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
-                            <!-- <div class="post-text" contenteditable="true" data-placeholder="Write a comment.."></div> -->
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>`;
-
+                </div>
+            </div>`;
             var c=1;
             $('#_form').after(postDiv);
             $('#newPostBody').append( PostBody);
@@ -245,7 +239,12 @@ $(function(){
     //
 })
 var i=1;
+var prevFlag = 0;
 function nextt(thiss){
+    if (!files){
+        console.log($(thiss).siblings('div').children('img').length)
+        myNewPostImgLen = $(thiss).siblings('div').children('img').length
+    }
     prevFlag = 0;
     $(`.galary>div #img${i}`).animate({left: '700px'});
     $('.galary img').css('left','-700px');
@@ -257,7 +256,11 @@ function nextt(thiss){
 
 }
 function prevv(thiss){
-    var prevFlag = 0;
+    if (!files){
+        console.log($(thiss).next('div').children('img').length)
+        myNewPostImgLen = $(thiss).next('div').children('img').length
+    }
+    prevFlag = 0;
 
     if(prevFlag == 0){
         $('.galary img').removeClass('left1');
@@ -275,5 +278,4 @@ function prevv(thiss){
     }
     if(i!=myNewPostImgLen)
         $(`.galary>div #img${++i}`).animate({right: '0px'});
-
 }
