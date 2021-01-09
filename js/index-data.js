@@ -105,7 +105,11 @@ var setupPosts = function(posts){
                                 <i id="prevv" onclick="prevv(this)" class="fa fa-angle-left"></i>
                                 <div id="newPostImgs">`
                 for (var j=0; j< posts[i].img_path.length ; j++){
-                    li += `<img id="img${j+1}" class="left0" src="img/${posts[i].img_path[j]}">`
+                    if(j==0){
+                        li += `<img id="img${j+1}" class="left0" src="img/${posts[i].img_path[j]}">`
+                    }else{
+                        li += `<img id="img${j+1}" class="left1" src="img/${posts[i].img_path[j]}">`
+                    } 
                 }
                 li += `</div>
                         <i id="nextt" onclick="nextt(this)" class="fa fa-angle-right"></i>
@@ -478,23 +482,15 @@ function fontFamily(){
     if(FintFamilyCount==0){
         
         $('#postBody').css("font-family","Cursive");
-       /* $("#_align").removeClass("fa-align-right");
-        $("#_align").addClass("fa-align-left");*/
-        
         FintFamilyCount++;
     }
      else if(FintFamilyCount==1){
         
         $('#postBody').css("font-family","Sans-serif");
-       /* $("#_align").removeClass("fa-align-left");
-        $("#_align").addClass("fa-align-center");*/
-        
         FintFamilyCount++;
     }
     else if(FintFamilyCount==2){
         $('#postBody').css("font-family","Fantasy");
-        /*$("#_align").removeClass("fa-align-center");
-        $("#_align").addClass("fa-align-right");*/
         FintFamilyCount=0;       
     }
  
@@ -504,9 +500,7 @@ function fontFamily(){
 
 var ColorCount=0;
 function fontColor(){
-  
     if(ColorCount==0){
-        
         $('#postBody').css("color","#919397");
         $("#_Color").css("color","#919397");
         //$("#_Color").addClass("fa-align-left");*/
