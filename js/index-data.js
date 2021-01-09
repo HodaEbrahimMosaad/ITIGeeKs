@@ -89,7 +89,7 @@ var setupPosts = function(posts){
         var li =
         `<div class="post line-div">
             <div class="head">
-                 <div class="img"><a href="${href}" id="prfLink" target="_blank"><img src="img/${posts[i].userprofilepic}"></a></div>
+                 <div class="img"><a href="${href}" class="prfLink" target="_blank"><img src="img/${posts[i].userprofilepic}"></a></div>
                 <div class="info">
                     <div class="name"><a style="text-decoration: none;" href="${href}" id="prfLink" target="_blank">${posts[i].username}</a></div>
                     <div class="time"><i class="fa fa-history"></i> ${(posts[i].created_at)}</div>
@@ -284,8 +284,8 @@ $(window).on('load', function() {
 
 
                 $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+iz+"'"+">\
-                            <div class='img'><img src='img/"+usersss[iz-1].profilepic+"'></div>\
-                            <div class='name'><b>"+usersss[iz-1].Fname +"  "+ usersss[iz-1].Lname +"</b></div>\
+                            <div class='img'><a href='profile.html?id=" + usersss[iz-1].id + "' class='prfLink' target='_blank'><img src='img/"+usersss[iz-1].profilepic+"'></a></div>\
+                            <div class='name'><b><a href='profile.html?id=" + usersss[iz-1].id + "' class='prfLink' target='_blank'>"+usersss[iz-1].Fname +"  "+ usersss[iz-1].Lname +"</a></b></div>\
                             <div class='title' style='color: #00000085;'>"+ usersss[iz-1].track+"</div>" +bt + "</div>")
 
         }
@@ -347,8 +347,8 @@ function funNext(){
 
 
             $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+iz+"'"+">\
-                            <div class='img'><img src='img/"+usersss[iz-1].profilepic+"'></div>\
-                            <div class='name'><b>"+usersss[iz-1].Fname +"  "+ usersss[iz-1].Lname +"</b></div>\
+                            <div class='img'><a href='profile.html?id=" + usersss[iz-1].id + "' class='prfLink' target='_blank'><img src='img/"+usersss[iz-1].profilepic+"'></a></div>\
+                            <div class='name'><b><a href='profile.html?id=" + usersss[iz-1].id + "' class='prfLink' target='_blank'>"+usersss[iz-1].Fname +"  "+ usersss[iz-1].Lname +"</a></b></div>\
                             <div class='title' style='color: #00000085;'>"+ usersss[iz-1].track+"</div>" +bt + "</div>")
 
 
@@ -372,8 +372,8 @@ function funNext(){
 
 
                  $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+count+"'"+">\
-                            <div class='img'><img src='img/"+usersss[count-1].profilepic+"'></div>\
-                            <div class='name'><b>"+usersss[count-1].Fname +"  "+ usersss[count-1].Lname +"</b></div>\
+                            <div class='img'><a href='profile.html?id=" + usersss[count-1].id + "' class='prfLink' target='_blank'><img src='img/"+usersss[count-1].profilepic+"'></a></div>\
+                            <div class='name'><b><a href='profile.html?id=" + usersss[count-1].id + "' class='prfLink' target='_blank'>"+usersss[count-1].Fname +"  "+ usersss[count-1].Lname +"</a></b></div>\
                             <div class='title' style='color: #00000085;'>"+ usersss[count-1].track+"</div>" +bt + "</div>")
                  
           }
@@ -392,8 +392,8 @@ function funNext(){
 
 
             $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+count+"'"+">\
-                            <div class='img'><img src='img/"+usersss[count-1].profilepic+"'></div>\
-                            <div class='name'><b>"+usersss[count-1].Fname +"  "+ usersss[count-1].Lname +"</b></div>\
+                            <div class='img'><a href='profile.html?id=" + usersss[count-1].id + "' class='prfLink' target='_blank'><img src='img/"+usersss[count-1].profilepic+"'></a></div>\
+                            <div class='name'><b><a href='profile.html?id=" + usersss[count-1].id + "' class='prfLink' target='_blank'>"+usersss[count-1].Fname +"  "+ usersss[count-1].Lname +"</a></b></div>\
                             <div class='title' style='color: #00000085;'>"+ usersss[count-1].track+"</div>" +bt + "</div>")
             count++;
         }
