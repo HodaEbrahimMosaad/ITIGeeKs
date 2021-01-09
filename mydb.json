@@ -9,7 +9,7 @@
       "Lname": "Mosaad",
       "bio": "bla bla bla",
       "track": "System Development",
-      "profilepic" : "2s.jpg",
+      "profilepic" : "hoda1.jpeg",
       "socialmedia": {
         "facebook": "https://www.facebook.com/hodamosaad",
         "linkedin": "https://www.linkedin.com/hodamosaad",
@@ -43,7 +43,7 @@
       "track": "System Development",
       "bio": "",
       "id": 3,
-      "profilepic" :"2.jfif",
+      "profilepic" :"anas.jpg",
       "socialmedia": {
         "facebook": "https://www.facebook.com/anasibrahim",
         "linkedin": "https://www.linkedin.com/anasibrahim",
@@ -90,7 +90,7 @@
       "Lname": "Mostafa",
       "track": "System Development",
       "bio": "",
-      "id": 3,
+      "id": 6,
       "profilepic" :"85.jpg",
       "socialmedia": {
         "facebook": "https://www.facebook.com/ibrahimmostafa",
@@ -99,7 +99,7 @@
       }
     },
     {
-      "id": 6,
+      "id": 7,
       "email": "Mostafa@gmail.com",
       "password": "7654321",
       "role": "user",
@@ -117,7 +117,7 @@
       }
     },
     {
-      "id": 7,
+      "id": 8,
       "email": "Mohamed@gmail.com",
       "password": "7654321",
       "role": "user",
@@ -160,7 +160,7 @@
       "comments": [],
       "img_path": [],
       "userid": 1,
-      "userprofilepic" : "2s.jpg",
+      "userprofilepic" : "hoda1.jpeg",
       "username": "Hoda Mosaad",
       "created_at": "1/7/2021, 6:34:33 PM",
       "tags" : ["Programming","Scientific"],
@@ -172,7 +172,7 @@
       "img_path": [],
       "comments": [],
       "userid": 1,
-      "userprofilepic" : "2s.jpg",
+      "userprofilepic" : "hoda1.jpeg",
       "username":"Hoda Mosaad" ,
       "created_at":  "1/7/2021, 5:34:33 PM",
       "tags": ["Scientific"],
@@ -184,8 +184,8 @@
       "img_path": [],
       "comments": [],
       "userid": 3,
-      "userprofilepic" :"85.jpg",
-      "username": "Ibrahim Mostafa",
+      "userprofilepic" :"anas.jpg",
+      "username": "Anas Ibrahim",
       "created_at":  "1/7/2021, 6:34:33 PM",
       "tags": ["Programming"],
       "likes": 3
@@ -272,7 +272,7 @@
       "content": "this is comment11",
       "postid": 1,
       "userid": 1,
-      "userprofilepic" : "2s.jpg",
+      "userprofilepic" : "hoda1.jpeg",
       "username": "Hoda Mosaad",
       "created_at": "1/7/2021, 5:34:33 PM"
     },

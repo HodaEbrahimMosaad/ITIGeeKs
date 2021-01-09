@@ -1,4 +1,24 @@
 $('.profile').attr('src', 'img/'+getCookie('profilepic'))
+
+var request11 = $.ajax({
+    url: "http://localhost:3000/tags",
+    method: "GET",
+    data: {},
+    dataType: "json"
+});
+request11.done(function( tags ) {
+    var html = ``
+    for (var i=0; i < tags.length; i++){
+        html += `<span style="margin-right: 5px;"><a onclick="addtag(event)">${tags[i]}</a></span>`
+    }
+    document.getElementById('post-tags').innerHTML += html
+});
+request11.fail(function( jqXHR, textStatus ) {
+    errorAlert("Request failed: " + textStatus );
+});
+
+
+
 var files ;
 var selectedTags = [];
 function addtag(e){
