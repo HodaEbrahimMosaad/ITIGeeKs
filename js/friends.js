@@ -15,7 +15,6 @@ request1.done(function( following ) {
         }
     }
     var _users = []
-
     var request5 = $.ajax({
         url: "http://localhost:3000/users",
         method: "GET",
@@ -35,12 +34,10 @@ request1.done(function( following ) {
                         <div class="img"><a style="text-decoration: none;" href="profile.html?id=${_users[i].id}" id="prfLink" target="_blank"><img src="img/${_users[i].profilepic}"></a></div>
                         <div class="name"><b><a style="text-decoration: none;" href="profile.html?id=${_users[i].id}" id="prfLink" target="_blank">${_users[i].Fname} ${_users[i].Lname}</a></b></div>
                         <div class="title" style="color: #00000085;">${_users[i].track}</div>
-                        <div><button class="btn follow">Unfollow</button></div>
+                        <div><button onclick="toggleFollow(this)" class="btn follow">Unfollow</button></div>
                      </div>`
-
             html += li
         }
-
         $('#profCont').append(html)
     });
     request5.fail(function( jqXHR, textStatus ) {
@@ -50,6 +47,14 @@ request1.done(function( following ) {
 request1.fail(function( jqXHR, textStatus ) {
     errorAlert("Request failed: " + textStatus );
 });
-
-
-
+function toggleFollow(btn) {
+    if($(btn).hasClass('follow')){
+        $(btn).addClass('unfollow')
+        $(btn).removeClass('follow')
+        $(btn).text('Follow')
+    } else {
+        $(btn).addClass('follow')
+        $(btn).removeClass('unfollow')
+        $(btn).text('Unfollow')
+    }
+}

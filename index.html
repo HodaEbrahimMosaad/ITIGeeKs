@@ -33,6 +33,10 @@
         padding: 5px 8px;
         border-radius: 16px;
     }
+    .textIcons{
+        width: 213px;
+        margin-left: 30px;
+    }
 </style>
 <div class="nav">
     <div class="container">
@@ -110,6 +114,14 @@
                     </label>
                     <input name="postImgs" id="postImgs"type="file" accept="image/*" multiple>
                 </div>
+                <!-- lolo -->
+                <div class="textIcons">
+                    <i id="_align" onclick="AlignFun()" class="fa fa-align-left" style="font-size:36px;"></i>
+                    <i id="_fontFamily" onclick="fontFamily()" class="fa fa-font" style="font-size:36px;"></i>
+                    <i id="_Color" onclick="fontColor()" class="fa fa-list-alt" style="font-size:36px;"></i>
+                    
+                </div>
+                 <!-- lolo -->
                 <button id="post-btn" onclick="CreatePost()">Post</button>
             </div>
         </form>

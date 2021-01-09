@@ -494,3 +494,123 @@ function funNext(){
     }
 
 }
+//lolo
+var AlignCount=1;
+function AlignFun(){
+   debugger
+    if(AlignCount==0){
+        
+        $('#postBody').css("text-align","left");
+        $("#_align").removeClass("fa-align-right");
+        $("#_align").addClass("fa-align-left");
+        
+        AlignCount++;
+    }
+     else if(AlignCount==1){
+        
+        $('#postBody').css("text-align","center");
+        $("#_align").removeClass("fa-align-left");
+        $("#_align").addClass("fa-align-center");
+        
+        AlignCount++;
+    }
+    else if(AlignCount==2){
+        $('#postBody').css("text-align","right");
+        $("#_align").removeClass("fa-align-center");
+        $("#_align").addClass("fa-align-right");
+        AlignCount=0;       
+    }
+ 
+}
+
+
+
+
+var AlignCount=1;
+function AlignFun(){
+ 
+    if(AlignCount==0){
+        
+        $('#postBody').css("text-align","left");
+        $("#_align").removeClass("fa-align-right");
+        $("#_align").addClass("fa-align-left");
+        
+        AlignCount++;
+    }
+     else if(AlignCount==1){
+        
+        $('#postBody').css("text-align","center");
+        $("#_align").removeClass("fa-align-left");
+        $("#_align").addClass("fa-align-center");
+        
+        AlignCount++;
+    }
+    else if(AlignCount==2){
+        $('#postBody').css("text-align","right");
+        $("#_align").removeClass("fa-align-center");
+        $("#_align").addClass("fa-align-right");
+        AlignCount=0;       
+    }
+ 
+}
+
+
+
+var FintFamilyCount=0;
+function fontFamily(){
+  
+    if(FintFamilyCount==0){
+        
+        $('#postBody').css("font-family","Cursive");
+       /* $("#_align").removeClass("fa-align-right");
+        $("#_align").addClass("fa-align-left");*/
+        
+        FintFamilyCount++;
+    }
+     else if(FintFamilyCount==1){
+        
+        $('#postBody').css("font-family","Sans-serif");
+       /* $("#_align").removeClass("fa-align-left");
+        $("#_align").addClass("fa-align-center");*/
+        
+        FintFamilyCount++;
+    }
+    else if(FintFamilyCount==2){
+        $('#postBody').css("font-family","Fantasy");
+        /*$("#_align").removeClass("fa-align-center");
+        $("#_align").addClass("fa-align-right");*/
+        FintFamilyCount=0;       
+    }
+ 
+}
+
+
+
+var ColorCount=0;
+function fontColor(){
+  
+    if(ColorCount==0){
+        
+        $('#postBody').css("color","#919397");
+        $("#_Color").css("color","#919397");
+        //$("#_Color").addClass("fa-align-left");*/
+        
+        ColorCount++;
+    }
+     else if(ColorCount==1){
+        
+        $('#postBody').css("color","#1e52a7");
+        $("#_Color").css("color","#1e52a7");
+       // $("#_Color").addClass("fa-align-center");*/
+        
+        ColorCount++;
+    }
+    else if(ColorCount==2){
+        $('#postBody').css("color","#000");
+        $("#_Color").css("color","#000");
+       /* $("#_Color").addClass("fa-align-right");*/
+        ColorCount=0;       
+    }
+    
+ 
+}
