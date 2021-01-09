@@ -5,7 +5,7 @@
       "email": "hoda2020@gmail.com",
       "password": "1234567",
       "role": "admin",
-      "Fname": "Hoda I.",
+      "Fname": "Hoda",
       "Lname": "Mosaad",
       "bio": "bla bla bla",
       "track": "System Development",
@@ -24,7 +24,7 @@
       "Fname": "Esraa",
       "Lname": "Mosallam",
       "bio": "bla bla... ...",
-      "track": "Very Very Big Data",
+      "track": "Big Data",
       "profilepic" :"esraa.jpg",
       "socialmedia": {
 
@@ -70,9 +70,9 @@
       "email": "test@gmail.com",
       "password": "1234567",
       "role": "user",
-      "Fname": "Aliaa Y.",
+      "Fname": "Aliaa",
       "Lname": "Hussien",
-      "track": "Internet Of Things",
+      "track": "Java Development",
       "bio": "",
       "id": 5,
       "profilepic" :"aliaa.jpeg",
@@ -86,7 +86,7 @@
       "email": "test2@gmail.com",
       "password": "1234567",
       "role": "user",
-      "Fname": "Anas E.",
+      "Fname": "Anas",
       "Lname": "Ibrahim",
       "track": "System Development",
       "bio": "",
@@ -98,6 +98,60 @@
         "github": "https://www.github.com/anasibrahim"
       }
 
+    },
+    {
+      "id": 7,
+      "email": "Mostafa@gmail.com",
+      "password": "7654321",
+      "role": "user",
+      "Fname": "Mostafa",
+      "Lname": "Mosa",
+      "bio": "Front-end web developer",
+      "track": "User interface",
+      "profilepic" :"p222.jpg",
+      "socialmedia": {
+
+        "facebook": "https://www.facebook.com/Mostafamosa",
+        "linkedin": "https://www.linkedin.com/Mostafamosa",
+        "github": "https://www.github.com/Mostafamosa"
+
+      }
+    },
+    {
+      "id": 8,
+      "email": "Mohamed@gmail.com",
+      "password": "7654321",
+      "role": "user",
+      "Fname": "Mohamed",
+      "Lname": "Atef",
+      "bio": "Agmad Developer",
+      "track": "Mobile Native",
+      "profilepic" :"p333.jpg",
+      "socialmedia": {
+
+        "facebook": "https://www.facebook.com/mohamedAtef",
+        "linkedin": "https://www.linkedin.com/mohamedAtef",
+        "github": "https://www.github.com/mohamedAtef"
+
+      }
+    },
+    {
+      "id": 9,
+      "email": "Rami@gmail.com",
+      "password": "7654321",
+      "role": "user",
+      "Fname": "Rami N.",
+      "Lname": "Mekrem",
+      "bio": "Tester gamed",
+      "track": "Quality Assurance",
+      "profilepic" :"profile.jpg",
+      "socialmedia": {
+
+        "facebook": "https://www.facebook.com/ramimekrem",
+        "linkedin": "https://www.linkedin.com/ramimekrem",
+        "github": "https://www.github.com/ramimekrem"
+
+      }
     }
   ],
   "posts": [

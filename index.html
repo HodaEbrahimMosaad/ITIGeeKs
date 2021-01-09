@@ -13,14 +13,27 @@
         if (hasCookie("Fname") == false){
             window.location = 'login.html';
         }
-    </script>
-    <script>
 
+        // 
+        
     </script>
-
 </head>
 <body>
-
+<style>
+    .selected-tag{border: 2px solid #80bb38;}
+    .post-tags {
+        padding: 15px;
+        margin-bottom: 8px;
+        text-align: center;
+    }
+    .post-tags span {
+        cursor: pointer;
+        background: #f2f2f2;
+        color: #00000085;
+        padding: 5px 8px;
+        border-radius: 16px;
+    }
+</style>
 <div class="nav">
     <div class="container">
         <div class="logo">
@@ -54,7 +67,7 @@
         <div class="sticky">
             <div class="img-back"></div>
             <div class="img-cont">
-                <img  id="profilepic" src="img/profile.jpg">
+                <img  id="profilepic" src="img/def.jfif">
                 <div class="info">
                     <p class="nm" id="FLname">Ahmed</p>
                     <p class="ttl" id="ttle">Developer</p>
@@ -76,11 +89,19 @@
     <div class="ver-sec timeline">
         <form class="create-post line-div" id="_form">
             <div class="head">
-                <div class="img"><img class="profile" src="img/profile.jpg"></div>
+                <div class="img"><img class="profile" src="img/def.jfif"></div>
                 <textarea class="post-text" placeholder="What's in your mind?" onkeyup="txtautoheight(this)" id="postBody"></textarea>
                 <!-- <div class="post-text" contenteditable="true" data-placeholder="What's in your mind?"></div> -->
 <!--                 <input class="" type="file" accept="image/*" multiple id="postImgs">-->
                 <div id='result'></div>
+            </div>
+            <div class="post-tags" id="post-tags">
+                <span><a onclick="addtag(event)">Scientific</a></span>
+                <span><a onclick="addtag(event)">Entertainment</a></span>
+                <span><a onclick="addtag(event)">Data Science</a></span>
+                <span><a onclick="addtag(event)">Big Data</a></span>
+                <span><a onclick="addtag(event)">AI</a></span>
+                <span><a onclick="addtag(event)">Programming</a></span>
             </div>
             <div class="foot">
                 <div class="image-upload">
@@ -94,7 +115,7 @@
         </form>
         <div class="post line-div">
             <div class="head">
-                <a id="prfLink" target="_blank"><div class="img"><img src="img/profile.jpg"></div></a>
+                <a id="prfLink" target="_blank"><div class="img"><img src="img/def.jfif"></div></a>
                 <div class="info">
                     <div class="name">Ahmed Atef</div>
                     <div class="time"><i class="fa fa-history"></i> 3 min ago</div>
@@ -129,7 +150,7 @@
             </div>
             <div class="comments">
                 <div class="ccmnt">
-                    <div class="img"><img src="img/profile.jpg"></div>
+                    <div class="img"><img src="img/def.jfif"></div>
                     <div class="post-text">
                         <p><b>Mostafa Ali</b></p>
                         <p>agmd comment fel 3allam</p>
@@ -137,7 +158,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="ccmnt">
-                    <div class="img"><img src="img/profile.jpg"></div>
+                    <div class="img"><img src="img/def.jfif"></div>
                     <textarea onkeypress="onTestChange(this);" id="comment" class="post-text commentPost" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
                     <div class="clearfix"></div>
                 </div>
@@ -150,7 +171,7 @@
             <i id="prev" onclick="funPrev()" class="fa fa-angle-left"></i>
             <span id="profCont">
 <!--                    <div class="person line-div" id="innerDiv1">-->
-                <!--                        <div class="img"><img src="img/profile.jpg"></div>-->
+                <!--                        <div class="img"><img src="img/def.jfif"></div>-->
                 <!--                        <div class="name"><b>Ali Ahmed</b></div>-->
                 <!--                        <div class="title" style="color: #00000085;">Developer</div>-->
                 <!--                        <div><button class="btn">Follow</button></div>-->
@@ -191,5 +212,23 @@
 
 <script src="js/index-data.js"></script>
 <script src="js/chat.js"></script>
+<script>
+    var tagsArr = {};
+    function addtag(e){
+        var targett = e.target;
+        console.log(targett);
+        $(targett).parent().toggleClass("selected-tag");
+        var text = targett.innerText||targett.textContent;
+        console.log(text);
+        //
+    }
+    $( function() {
+        
+            // $('.post-tags span').each(thiss.click(function(){
+            //     console.log(this);
+            //     console.log("this");
+            // }))
+    });
+</script>
 </body>
 </html>

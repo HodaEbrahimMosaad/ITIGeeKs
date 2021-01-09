@@ -39,139 +39,140 @@ function CreatePost(){
     });
     console.log(files,"files from create post")
     var PostBody=$('#postBody').val();
-    if(files!=undefined){
-        var n ='', p='';
-        if(files.length>1)
-        {
-            p = `<i id="prevv" onclick="prevv(this)" class="fa fa-angle-left"></i>`;
-            n = `<i id="nextt" onclick="nextt(this)" class="fa fa-angle-right"></i>`;
-        }
-        var postDiv=`
-            <div class="post line-div">
-                <div class="head">
-                    <div class="img"><img src="img/profile.jpg"></div>
-                    <div class="info">
-                        <div class="name">Ahmed Atef</div>
-                        <div class="time"><i class="fa fa-history"></i> 3 min ago</div>
+    if(PostBody!=""||files)
+    {
+        if(files!=undefined){
+            var n ='', p='';
+            if(files.length>1)
+            {
+                p = `<i id="prevv" onclick="prevv(this)" class="fa fa-angle-left"></i>`;
+                n = `<i id="nextt" onclick="nextt(this)" class="fa fa-angle-right"></i>`;
+            }
+            var postDiv=`
+                <div class="post line-div">
+                    <div class="head">
+                        <div class="img"><img src="img/profile.jpg"></div>
+                        <div class="info">
+                            <div class="name">Ahmed Atef</div>
+                            <div class="time"><i class="fa fa-history"></i> 3 min ago</div>
+                        </div>
                     </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="body">
-                    <span></span>
-                    <p class="postP1" id="newPostBody"></p>
-                    <div><a c[lass="more">Read more..</a></div>
-                    <div class="galary">
-                        <div class="imgsContainer">
-                            
-                            ${p}
-                            <div id="newPostImgs">
+                    <div class="clearfix"></div>
+                    <div class="body">
+                        <span></span>
+                        <p class="postP1" id="newPostBody"></p>
+                        <div><a c[lass="more">Read more..</a></div>
+                        <div class="galary">
+                            <div class="imgsContainer">
                                 
+                                ${p}
+                                <div id="newPostImgs">
+                                    
+                                </div>
+                                ${n}
                             </div>
-                            ${n}
                         </div>
                     </div>
-                </div>
-                <div class="react">
-                    <div onclick="likeFun(this)" ><i class="fa fa-thumbs-o-up"> Like</i></div>
-                    <div><i class="fa fa-comments-o"></i> Comment</div>
-                </div>
-                <div class="comments">
-                    <div class="ccmnt">
-                        <div class="img"><img src="img/profile.jpg"></div>
-                        <div class="post-text">
-                            <p><b>Mostafa Ali</b></p>
-                            <p>agmd comment fel 3allam</p>
+                    <div class="react">
+                        <div onclick="likeFun(this)" ><i class="fa fa-thumbs-o-up"> Like</i></div>
+                        <div><i class="fa fa-comments-o"></i> Comment</div>
+                    </div>
+                    <div class="comments">
+                        <div class="ccmnt">
+                            <div class="img"><img src="img/profile.jpg"></div>
+                            <div class="post-text">
+                                <p><b>Mostafa Ali</b></p>
+                                <p>agmd comment fel 3allam</p>
+                            </div>
+                            <div class="clearfix"></div>
                         </div>
-                        <div class="clearfix"></div>
+                        <div class="ccmnt">
+                            <div class="img"><img src="img/profile.jpg"></div>
+                            <textarea class="post-text" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
+                            <!-- <div class="post-text" contenteditable="true" data-placeholder="Write a comment.."></div> -->
+                            <div class="clearfix"></div>
+                        </div>
                     </div>
-                    <div class="ccmnt">
-                        <div class="img"><img src="img/profile.jpg"></div>
-                        <textarea class="post-text" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
-                        <!-- <div class="post-text" contenteditable="true" data-placeholder="Write a comment.."></div> -->
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </div>`;
+                </div>`;
 
-        var c=1;
-        $('#_form').after(postDiv);
-        $('#newPostBody').append( PostBody);
-        console.log(PostBody)
-        for (var i = 0; i < files.length; i++) {
-            var file = files[i];
-            console.log(files[i]['name'],i);
-            //Only pics
-            if (!file.type.match('image'))
-                continue;
-            var picReader = new FileReader();
-            picReader.addEventListener("load", function(event) {
-                var picFile = event.target;
-                if(c==1){
-                    $('#newPostImgs').append("<img id='img"+c+"' class='left0' src='" + picFile.result + "'" +"title='" + picFile.name + "'/>");
-                    c++;
-                }
-                else{
-                    $('#newPostImgs').append("<img id='img"+c+"' class='left1' src='" + picFile.result + "'" +"title='" + picFile.name + "'/>");
-                    c++;
-                }
-                //var fileUpload =files[i];
-                console.log(files);
-            });
+            var c=1;
+            $('#_form').after(postDiv);
+            $('#newPostBody').append( PostBody);
+            console.log(PostBody)
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                console.log(files[i]['name'],i);
+                //Only pics
+                if (!file.type.match('image'))
+                    continue;
+                var picReader = new FileReader();
+                picReader.addEventListener("load", function(event) {
+                    var picFile = event.target;
+                    if(c==1){
+                        $('#newPostImgs').append("<img id='img"+c+"' class='left0' src='" + picFile.result + "'" +"title='" + picFile.name + "'/>");
+                        c++;
+                    }
+                    else{
+                        $('#newPostImgs').append("<img id='img"+c+"' class='left1' src='" + picFile.result + "'" +"title='" + picFile.name + "'/>");
+                        c++;
+                    }
+                    //var fileUpload =files[i];
+                    console.log(files);
+                });
 
-            //Read the image
-            picReader.readAsDataURL(file);
+                //Read the image
+                picReader.readAsDataURL(file);
 
+            }
         }
-    }
-    else{
-        var postDiv=`
-            <div class="post line-div">
-                <div class="head">
-                    <div class="img"><img src="img/${getCookie('profilepic')}"></div>
-                    <div class="info">
-                        <div class="name">${getCookie('Fname')} ${getCookie('Lname')}</div>
-                        <div class="time"><i class="fa fa-history"></i> ${(new Date).toDateString()}</div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="body">
-                    <span></span>
-                    <p class="postP1" id="newPostBody"></p>
-                    <div><a class="see more">Read more..</a></div>
-                </div>
-                <div style="color:cornflowerblue;"><span id="likeCounter">0 </span> Likes <div style="color:cornflowerblue;"></div></div>
-                <div class="react">
-                    <div onclick="likeFun(this)" ><i class="fa fa-thumbs-o-up"> Like</i></div>
-                    <div><i class="fa fa-comments-o"></i> Comment</div>
-                </div>
-                <div class="comments">
-                    <div class="ccmnt">
+        else{
+            var postDiv=`
+                <div class="post line-div">
+                    <div class="head">
                         <div class="img"><img src="img/${getCookie('profilepic')}"></div>
-                        <textarea onkeypress="onTestChange(this);" class="post-text" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
-                        <!-- <div class="post-text" contenteditable="true" data-placeholder="Write a comment.."></div> -->
-                        <div class="clearfix"></div>
+                        <div class="info">
+                            <div class="name">${getCookie('Fname')} ${getCookie('Lname')}</div>
+                            <div class="time"><i class="fa fa-history"></i> ${(new Date).toDateString()}</div>
+                        </div>
                     </div>
-                </div>
-            </div>`;
-        $('#_form').after(postDiv);
-        $('#newPostBody').append( PostBody);
-    }
-
-    $('.postP1').each(function(i, obj) {
-        if (Number.parseInt($(obj).text().length) <= 355){
-            $(obj).next().css({"display": "none"})
+                    <div class="clearfix"></div>
+                    <div class="body">
+                        <span></span>
+                        <p class="postP1" id="newPostBody"></p>
+                        <div><a class="see more">Read more..</a></div>
+                    </div>
+                    <div style="color:cornflowerblue;"><span id="likeCounter">0 </span> Likes <div style="color:cornflowerblue;"></div></div>
+                    <div class="react">
+                        <div onclick="likeFun(this)" ><i class="fa fa-thumbs-o-up"> Like</i></div>
+                        <div><i class="fa fa-comments-o"></i> Comment</div>
+                    </div>
+                    <div class="comments">
+                        <div class="ccmnt">
+                            <div class="img"><img src="img/${getCookie('profilepic')}"></div>
+                            <textarea onkeypress="onTestChange(this);" class="post-text" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
+                            <!-- <div class="post-text" contenteditable="true" data-placeholder="Write a comment.."></div> -->
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>`;
+            $('#_form').after(postDiv);
+            $('#newPostBody').append( PostBody);
         }
-    });
-    if (files){
-        myNewPostImgLen = files.length;
+
+        $('.postP1').each(function(i, obj) {
+            if (Number.parseInt($(obj).text().length) <= 355){
+                $(obj).next().css({"display": "none"})
+            }
+        });
+        if (files){
+            myNewPostImgLen = files.length;
+        }
+        files = undefined;
+        $('.create-post .post-text').val("");
+        $('.create-post .post-text').removeAttr("style");
+        $('#result').html("");
+
     }
-
-
-    files = undefined;
-    $('.create-post .post-text').val("");
-    $('#result').html("");
-
-
 }
 
 //text area auto height

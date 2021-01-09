@@ -9,6 +9,7 @@ textarea{outline: none !important;}
     width: 1170px;
     margin: auto;
 }
+button:focus{outline: 0;}
 a{cursor: pointer;}
 .btn {
     background-color: #7cde7c;
@@ -145,6 +146,10 @@ a{cursor: pointer;}
     font-weight: bold;
     margin-bottom: 5px;
 }
+.line-div a{
+    color: #000000bf!important;
+    text-decoration: none;
+}
 .react {
     border-bottom: 1px solid #e9e7e7;
     border-top: 1px solid #e9e7e7;
@@ -252,6 +257,7 @@ div:empty:before {
     text-align: center;
     display: inline-block;
     margin: 0 5px;
+    height: 160px;
 }
 .profilesContainer {
     text-align: center;
@@ -342,4 +348,10 @@ li a, .dropbtn {
     font-size: 16px;
     text-align: left;
     padding: 10px;
+}
+.person .name, .person .title{
+    white-space: nowrap;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    font-size: 14px;
 }
