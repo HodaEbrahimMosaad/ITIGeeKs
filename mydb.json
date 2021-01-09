@@ -35,20 +35,21 @@
       }
     },
     {
-      "email": "hodaz202000@gmail.com",
+      "email": "test2@gmail.com",
       "password": "1234567",
       "role": "user",
-      "Fname": "Ibrahim",
-      "Lname": "Mostafa",
+      "Fname": "Anas",
+      "Lname": "Ibrahim",
       "track": "System Development",
       "bio": "",
       "id": 3,
-      "profilepic" :"85.jpg",
+      "profilepic" :"2.jfif",
       "socialmedia": {
-        "facebook": "https://www.facebook.com/ibrahimmostafa",
-        "linkedin": "https://www.linkedin.com/ibrahimmostafa",
-        "github": "https://www.github.com/ibrahimmostafa"
+        "facebook": "https://www.facebook.com/anasibrahim",
+        "linkedin": "https://www.linkedin.com/anasibrahim",
+        "github": "https://www.github.com/anasibrahim"
       }
+
     },
     {
       "email": "hoda20@gmail.com",
@@ -81,26 +82,24 @@
         "linkedin": "https://www.linkedin.com/aliaayasser",
         "github": "https://www.github.com/aliaayasser"
       }
-    },
-    {
-      "email": "test2@gmail.com",
+    },{
+      "email": "hodaz202000@gmail.com",
       "password": "1234567",
       "role": "user",
-      "Fname": "Anas",
-      "Lname": "Ibrahim",
+      "Fname": "Ibrahim",
+      "Lname": "Mostafa",
       "track": "System Development",
       "bio": "",
-      "id": 6,
-      "profilepic" :"2.jfif",
+      "id": 3,
+      "profilepic" :"85.jpg",
       "socialmedia": {
-        "facebook": "https://www.facebook.com/anasibrahim",
-        "linkedin": "https://www.linkedin.com/anasibrahim",
-        "github": "https://www.github.com/anasibrahim"
+        "facebook": "https://www.facebook.com/ibrahimmostafa",
+        "linkedin": "https://www.linkedin.com/ibrahimmostafa",
+        "github": "https://www.github.com/ibrahimmostafa"
       }
-
     },
     {
-      "id": 7,
+      "id": 6,
       "email": "Mostafa@gmail.com",
       "password": "7654321",
       "role": "user",
@@ -118,7 +117,7 @@
       }
     },
     {
-      "id": 8,
+      "id": 7,
       "email": "Mohamed@gmail.com",
       "password": "7654321",
       "role": "user",
@@ -247,11 +246,15 @@
     },
     {
       "follower": 1,
-      "followed": 3
+      "followed": 6
     },
     {
       "follower": 1,
       "followed": 4
+    },
+    {
+      "follower": 4,
+      "followed": 1
     }
   ],
   "comments": [

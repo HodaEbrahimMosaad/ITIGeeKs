@@ -6,11 +6,7 @@ var count2=count;
 var id = getCookie("id");
 console.log(id);
 var followersId = [];
-
-
-
-
-
+var followedId = []
 
 var request1 = $.ajax({
     url: "http://localhost:3000/following",
@@ -27,6 +23,7 @@ request1.done(function( following ) {
             _follower += 1
         }
         if (following[i].followed == id){
+            followedId.push(following[i].follower)
             _followed += 1
         }
     }
@@ -120,7 +117,18 @@ var setupPosts = function(posts){
                 </div>`
             }
 
-            li += `</div>
+
+
+            li += `
+
+            <div class="post-tags" style="text-align: initial;" id="post-tags">`
+                        for (var h=0; h< posts[i].tags.length; h++){
+
+                            li += `<span style="margin-right: 10px;"> <a> ${posts[i].tags[h]} </a> </span>`
+                        }
+                    li += `</div>
+                        
+                    </div>
             <div style="color:cornflowerblue;"><span id="likeCounter">${posts[i].likes} </span> Likes <div style="color:cornflowerblue;"></div></div>
             <div class="react">
                 <div onclick="likeFun(this)"><i class="fa fa-thumbs-o-up"></i> Like</div>
@@ -215,58 +223,7 @@ var maxLen=30;
 var nextFlag=0;
 
 var countFlat=0;
-/*function funNext(){
-    
 
-function funNext(){
-    if(usersss.length>=4&&nextFlag==0){
-        for(var iz=1;iz<=4;iz++){
-                $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+iz+"'"+">\
-                    <div class='img'><img src='img/"+usersss[iz-1].profilepic+"'></div>\
-                    <div class='name'><b>"+usersss[iz-1].Fname +"  "+ usersss[iz-1].Lname +"</b></div>\
-                    <div class='title' style='color: #00000085;'>"+ usersss[iz-1].track+"</div>\
-                    <div><button class='btn'>Follow</button></div>\
-                </div>");
-           
-        }
-        nextFlag=1;
-        
- 
-    }
-    else{
-    
-       $("#innerDiv"+start).hide();     
-    if(count==count2 &&count<=usersss.length){
-        
-        console.log(count,"count")
-             if(count!=usersss.length+1&&countFlat==0){  
-    $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+count+"'"+">\
-                    <div class='img'><img src='img/"+usersss[count-1].profilepic+"'></div>\
-                    <div class='name'><b>"+usersss[count-1].Fname +"  "+ usersss[count-1].Lname +"</b></div>\
-                    <div class='title' style='color: #00000085;'>"+ usersss[count-1].track+"</div>\
-                    <div><button class='btn'>Follow</button></div>\
-                </div>");
- 
-            count++;
-                
-                
-        }
-            
-         
-          //$(this).show("slide", { direction: "left" }, 1000);
-    }
-   $("#innerDiv"+count2).show();
-    if(start<usersss.length && count2<usersss.length)
-        {
-            start++;
-            count2++;
-        }
-    if(count2==usersss.length){
-        flagToOutSlid=0;
-    }
-    }
-
-}*/
 function funPrev(){
  console.log("start"+start,"coun 2",count2,"cputn",count)
    if(start>=1){
@@ -278,7 +235,7 @@ function funPrev(){
             count2--;
             start--;
        }
-      
+
 
    }
     else{
@@ -288,10 +245,10 @@ function funPrev(){
 var xx=1;
 var ff=0;
 function slider(){
-   
-    
+
+
     timerId = setInterval(function () {
-        
+
         if(xx<=usersss.length&&ff==0){
             funNext();
             xx++;
@@ -318,26 +275,43 @@ $(window).on('load', function() {
 
         if(usersss.length>=4&&nextFlag==0){
         for(var iz=1;iz<=4;iz++){
+
+            if (followersId.includes(usersss[iz].id)){
+                var bt = `<div><button onclick="toggleFollow(this)" class='btn follow'>Unfollow</button></div>`
+            } else {
+                var bt = `<div><button onclick="toggleFollow(this)" class='btn unfollow'>Follow</button></div>`
+            }
+
+
                 $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+iz+"'"+">\
-                    <div class='img'><img src='img/"+usersss[iz-1].profilepic+"'></div>\
-                    <div class='name'><b>"+usersss[iz-1].Fname +"  "+ usersss[iz-1].Lname +"</b></div>\
-                    <div class='title' style='color: #00000085;'>"+ usersss[iz-1].track+"</div>\
-                    <div><button class='btn'>Follow</button></div>\
-                </div>");
+                            <div class='img'><img src='img/"+usersss[iz-1].profilepic+"'></div>\
+                            <div class='name'><b>"+usersss[iz-1].Fname +"  "+ usersss[iz-1].Lname +"</b></div>\
+                            <div class='title' style='color: #00000085;'>"+ usersss[iz-1].track+"</div>" +bt + "</div>")
 
         }
-        nextFlag=1;
 
 
-    }
+            nextFlag=1;
 
-    console.log(usersss,"ussssssssssssssss")
-    },500)
+
+    }},500)
+
+
 
 
 });
 
-
+function toggleFollow(btn) {
+    if($(btn).hasClass('follow')){
+        $(btn).addClass('unfollow')
+        $(btn).removeClass('follow')
+        $(btn).text('Follow')
+    } else {
+        $(btn).addClass('follow')
+        $(btn).removeClass('unfollow')
+        $(btn).text('Unfollow')
+    }
+}
 
 var request5 = $.ajax({
     url: "http://localhost:3000/users",
@@ -349,110 +323,37 @@ var request5 = $.ajax({
 
 request5.done(function(users) {
     var html = "";
-   
+
     usersss=users;
-  
+
     $('#profCont').append(html)
 });
-  console.log(usersss,"\sers")
 request5.fail(function( jqXHR, textStatus ) {
     errorAlert("Request failed: " + textStatus );
 });
 
 
-
-
-// data.forEach(doc => {
-//
-//     var post = doc.data();
-//     var time = doc.data().created_at;
-//     var date = time.toDate();
-//     var shortDate = date.toDateString();
-//     var shortTime = date.toLocaleTimeString();
-//
-// });
-/*
-db.collection("blogs").where("userid", "==", id)
-    .onSnapshot(function(querySnapshot) {
-        console.log(querySnapshot)
-    }, function (err) {
-        console.log(err.message)
-    });
-auth.onAuthStateChanged(function(user){
-    if (user) {
-        db.collection('users').doc(user.uid).get().then(function (doc) {
-            console.log(doc);
-            document.getElementById('FLname').innerHTML = doc.data().Fname + " " + doc.data().Lname
-            document.getElementById('ttle').innerHTML = doc.data().track;
-            if (getCookie("Role") == "admin"){
-                var li = document.createElement('li');
-                var a = document.createElement('a');
-                var text = document.createTextNode('Manage Users');
-                li.append(a);
-                a.append(text);
-                a.setAttribute('href', 'adminpanel.html');
-                document.getElementById('navbar').append(li)
-            }
-            db.collection("blogs").where("userid", "==", user.uid).orderBy('created_at','desc')
-                .onSnapshot(function(querySnapshot) {
-                    setupPosts(querySnapshot);
-
-                }, function (err) {
-                    console.log(err.message)
-                });
-
-        })
-    } else {
-        setupPosts([]);
-    }
-});
-
-
-var postForm = document.querySelector('#createPost');
-postForm.addEventListener('submit', function(e){
-    e.preventDefault();
-    // get post info
-    //var title = postForm['title'].value;
-    var body = postForm['body'].value;
-    db.collection('blogs').add({
-        body: body,
-        title: "test",
-        userid: auth.currentUser.uid,
-        created_at: firebase.firestore.FieldValue.serverTimestamp()
-    }).then(function () {
-        console.log("Done");
-        postForm.reset();
-        location.reload(true)
-    }).catch(function (error) {
-        var errorMessage = error.message;
-        console.log(errorMessage)
-    })
-});
-
-*/
-
-
-
-
-
-
-
-
 function funNext(){
     
-    /if(count!=15){/
-    console.log("start"+start,"coun 2",count2,"cputn",count)
-    console.log(usersss,"userss");
+
 
     if(usersss.length>=4&&nextFlag==0){
         for(var iz=1;iz<=4;iz++){
-                $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+iz+"'"+">\
-                    <div class='img'><img src='img/"+usersss[iz-1].profilepic+"'></div>\
-                    <div class='name'><b>"+usersss[iz-1].Fname +"  "+ usersss[iz-1].Lname +"</b></div>\
-                    <div class='title' style='color: #00000085;'>"+ usersss[iz-1].track+"</div>\
-                    <div><button class='btn'>Follow</button></div>\
-                </div>");
-           
+            if (followersId.includes(usersss[iz].id)){
+                var bt = `<div><button onclick="toggleFollow(this)" class='btn follow'>Unfollow</button></div>`
+            } else {
+                var bt = `<div><button onclick="toggleFollow(this)" class='btn unfollow'>Follow</button></div>`
+            }
+
+
+            $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+iz+"'"+">\
+                            <div class='img'><img src='img/"+usersss[iz-1].profilepic+"'></div>\
+                            <div class='name'><b>"+usersss[iz-1].Fname +"  "+ usersss[iz-1].Lname +"</b></div>\
+                            <div class='title' style='color: #00000085;'>"+ usersss[iz-1].track+"</div>" +bt + "</div>")
+
+
+
+
         }
         nextFlag=1;
         
@@ -462,29 +363,44 @@ function funNext(){
      $("#innerDiv"+start).hide(); 
        
              if(count==usersss.length&&$("#innerDiv"+count).length==0){
-                  $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+count+"'"+">\
-                    <div class='img'><img src='img/"+usersss[count-1].profilepic+"'></div>\
-                    <div class='name'><b>"+usersss[count-1].Fname +"  "+ usersss[count-1].Lname +"</b></div>\
-                    <div class='title' style='color: #00000085;'>"+ usersss[count-1].track+"</div>\
-                    <div><button class='btn'>Follow</button></div>\
-                </div>");
+
+                 if (followersId.includes(usersss[count-1].id)){
+                     var bt = `<div><button onclick="toggleFollow(this)" class='btn follow'>Unfollow</button></div>`
+                 } else {
+                     var bt = `<div><button onclick="toggleFollow(this)" class='btn unfollow'>Follow</button></div>`
+                 }
+
+
+                 $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+count+"'"+">\
+                            <div class='img'><img src='img/"+usersss[count-1].profilepic+"'></div>\
+                            <div class='name'><b>"+usersss[count-1].Fname +"  "+ usersss[count-1].Lname +"</b></div>\
+                            <div class='title' style='color: #00000085;'>"+ usersss[count-1].track+"</div>" +bt + "</div>")
                  
-          }  
- 
-     
-        if(count<usersss.length){  
-    $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+count+"'"+">\
-                    <div class='img'><img src='img/"+usersss[count-1].profilepic+"'></div>\
-                    <div class='name'><b>"+usersss[count-1].Fname +"  "+ usersss[count-1].Lname +"</b></div>\
-                    <div class='title' style='color: #00000085;'>"+ usersss[count-1].track+"</div>\
-                    <div><button class='btn'>Follow</button></div>\
-                </div>");
+          }
+
+
+             console.log(followersId)
+             console.log('------')
+
+        if(count<usersss.length){
+
+            if (followersId.includes(usersss[count-1].id)){
+                var bt = `<div><button onclick="toggleFollow(this)" class='btn follow'>Unfollow</button></div>`
+            } else {
+                var bt = `<div><button onclick="toggleFollow(this)" class='btn unfollow'>Follow</button></div>`
+            }
+
+
+            $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+count+"'"+">\
+                            <div class='img'><img src='img/"+usersss[count-1].profilepic+"'></div>\
+                            <div class='name'><b>"+usersss[count-1].Fname +"  "+ usersss[count-1].Lname +"</b></div>\
+                            <div class='title' style='color: #00000085;'>"+ usersss[count-1].track+"</div>" +bt + "</div>")
             count++;
         }
-        
-            
 
-        
+
+
+
          $("#innerDiv"+count2).show();
         if(count2<usersss.length){
             count2++;
@@ -515,7 +431,7 @@ function AlignFun(){
         $('#postBody').css("text-align","center");
         $("#_align").removeClass("fa-align-left");
         $("#_align").addClass("fa-align-center");
-        
+
         AlignCount++;
     }
     else if(AlignCount==2){
@@ -532,9 +448,9 @@ function AlignFun(){
 
 var AlignCount=1;
 function AlignFun(){
- 
+
     if(AlignCount==0){
-        
+
         $('#postBody').css("text-align","left");
         $("#_align").removeClass("fa-align-right");
         $("#_align").addClass("fa-align-left");
@@ -562,7 +478,7 @@ function AlignFun(){
 
 var FintFamilyCount=0;
 function fontFamily(){
-  
+
     if(FintFamilyCount==0){
         
         $('#postBody').css("font-family","Cursive");
