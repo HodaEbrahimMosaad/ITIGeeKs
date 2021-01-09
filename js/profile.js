@@ -267,12 +267,12 @@ btn2.onclick = function() {
     var _bio=getCookie("bio");
     $('#UserFullName').html(_fname +" "+_lName)
     $('#UserTrack').html(_Track);
-    //========================display user info=================================//
+    //========================display user info===========//
         $('#FnameEdite').val(_fname);
         console.log(_fname,"jj")
         $('#LnameEdite').val(_lName);
         $('#emailEdite').val(_Email);
-        $('#bioEdite').value=_bio;
+        $('#bioEdite').val(_bio);
     //==============get & set  new data=================//
     $("#editProfileBtn").click(function(){
         _fname=$('#FnameEdite').val();
@@ -285,27 +285,26 @@ btn2.onclick = function() {
         console.log(newProfileImg,"profile img")
         setCookie("Fname", _fname);
         setCookie("Lname", _lName);
-
         var _newProfileImg=newProfileImg.replace(/^.*[\\\/]/, '');
-        setCookie("profilepic", _newProfileImg);
+        if (_newProfileImg != ""){
+            setCookie("profilepic", _newProfileImg);
+        }
         var path="/img/"+_newProfileImg;
         $('#ProfileImg').attr("src",path);
 
          $('#_bio').html(getCookie("bio"));
         location.reload(true);
-
-
     });
-}
+};
 span2.onclick = function() {
   modal2.style.display = "none";
-}
+};
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal2) {
     modal2.style.display = "none";
   }
-}
+};
 //   select cover
   if(hasCookie('coverImg'))
     {
@@ -356,8 +355,6 @@ function onTestChange(me) {
     var key = window.event.keyCode;
     if (key === 13) {
         console.log(me.value)
-
-
         var comContent =  me.value
         var comm = `<div class="ccmnt">
                         <div class="img"><a style="text-decoration: none;" href="profile.html" id="prfLink" target="_blank"><img src="img/${getCookie("profilepic")}"></a></div>
