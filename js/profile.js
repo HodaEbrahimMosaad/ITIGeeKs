@@ -1,4 +1,6 @@
 var href = window.top.location.href;
+
+var usersss;
 try{
     var id = Number.parseInt(href.split("?")[1].split("=")[1])
     var flag = true;
@@ -9,14 +11,49 @@ try{
 if (flag && id != getCookie("id")){
     $("#edit-profile").css({"display": "none"})
 }
+
+
+var id=getCookie("id")
+var request5 = $.ajax({
+    url: "http://localhost:3000/users",
+    method: "GET",
+    data: {},
+    dataType: "json"
+});
+ var currentUser;
+request5.done(function(users) {
+    
+    usersss=users;
+       
+    console.log(usersss,"userss")
+for(var i=0;i<usersss.length;i++){
+        
+    if(usersss[i].id==id){
+        currentUser=usersss[i];
+        break;
+    }
+}
+    
+    $("#facebookId").attr("href",currentUser.socialmedia["facebook"]);
+   $("#facebookId").html(currentUser.socialmedia["facebook"])
+     $("#githubId").attr("href",currentUser.socialmedia["github"]).html(currentUser.socialmedia["github"])
+     $("#linkedInId").attr("href",currentUser.socialmedia["linkedin"]).html(currentUser.socialmedia["linkedin"])
+    
+
+    
+});
+request5.fail(function( jqXHR, textStatus ) {
+    errorAlert("Request failed: " + textStatus );
+});
+
+var all_posts = [];
+var postsId = [];
 var request = $.ajax({
     url: "http://localhost:3000/posts",
     method: "GET",
     data: {},
     dataType: "json"
 });
-var all_posts = [];
-var postsId = [];
 request.done(function( posts ) {
     for (var i=0; i < posts.length; i++){
         if (posts[i].userid == id){
@@ -177,8 +214,12 @@ btn2.onclick = function() {
         console.log(newProfileImg,"profile img")
         setCookie("Fname", _fname);
         setCookie("Lname", _lName);
-        //var _newProfileImg=newProfileImg.replace(/^.*[\\\/]/, '');
-        debugger
+        var _newProfileImg=newProfileImg.replace(/^.*[\\\/]/, '');
+        setCookie("profilepic", _newProfileImg);
+        var path="/img/"+_newProfileImg;
+        $('#ProfileImg').attr("src",path);
+
+         $('#_bio').html(getCookie("bio"));
         //location.reload(true);
 
     });
@@ -222,7 +263,16 @@ $( function() {
   $('#myposts').css("display","block");
   $( "#tabs" ).tabs();
   // edit modal
-
+    
+    var firstname =getCookie("Fname");
+    var lastName=getCookie("Lname")
+    var Track=getCookie("track");
+    
+    $('#UserFullName,.UserName').html(firstname +" "+lastName)
+    $('#UserTrack').html(Track);
+    $('#_bio').html(getCookie("bio"));
+    var path="img/"+getCookie("profilepic");
+    $("#ProfileImg").attr("src",path);
   $('#editProfileBtn').click(function(){
     setCookie("email", $('#email').val());
     setCookie("bio", $('#bio').val());
@@ -233,12 +283,5 @@ $( function() {
 
 } );
 
-window.onload=function(){
-    var firstname =getCookie("Fname");
-    var lastName=getCookie("Lname")
-    var Track=getCookie("track");
-    
-    $('#UserFullName,.UserName').html(firstname +" "+lastName)
-    $('#UserTrack').html(Track);
-}
+
 

@@ -23,13 +23,13 @@
       "role": "user",
       "Fname": "Amal",
       "Lname": "Nabil",
-      "bio": "bla bla",
+      "bio": "bla bla... ...",
       "track": "Big Data",
       "profilepic" :"33.jpg",
       "socialmedia": {
-        "facebook": "",
-        "linkedin": "",
-        "github": ""
+        "facebook": "ww.facebook.com",
+        "linkedin": "www.linkedin.com",
+        "github": "ww.github.com"
       }
     },
     {

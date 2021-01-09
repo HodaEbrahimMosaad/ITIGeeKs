@@ -301,21 +301,11 @@ var request5 = $.ajax({
     data: {},
     dataType: "json"
 });
-var count=1;
-var count2=count;
+
 request5.done(function(users) {
-    var html = ``;
-    for (var i=0; i < users.length; i++){
-        var li = `<div class='person line-div' id='innerDiv${count}'>
-                    <div class='img'><img src='img/profile.jpg'></div>
-                    <div class='name'><b>Aliaa Ahmed</b></div>
-                    <div class='title' style='color: #00000085;'>Developer</div>
-                    <div><button class='btn'>Follow</button></div>
-                </div>`
-        html += li
-        count++;
-    }
-    $('#profCont').append(html)
+    usersss=users;
+
+    
 });
 request5.fail(function( jqXHR, textStatus ) {
     errorAlert("Request failed: " + textStatus );
@@ -325,7 +315,8 @@ var start=1;
 var flagToOutSlid=0;
 var timerId = 0;
 var maxLen=30;
-
+//var len=usersss.length;
+var nextFlag=0;
 
 function funNext(){
     /*if(count!=15){*/
@@ -333,15 +324,34 @@ function funNext(){
     
     console.log("start"+start,"coun 2",count2,"cputn",count)
     console.log(usersss,"userss");
-    $("#innerDiv"+start).hide();
-    if(count==count2){
-    $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+count+"'"+">\
-                    <div class='img'><img src='img/profile.jpg'></div>\
-                    <div class='name'><b>user name</b></div>\
-                    <div class='title' style='color: #00000085;'>Developer</div>\
+    debugger
+    
+    if(usersss.length>=4&&nextFlag==0){
+        for(var iz=1;iz<=4;iz++){
+                $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+iz+"'"+">\
+                    <div class='img'><img src='"+usersss[iz-1].profilepic+"'></div>\
+                    <div class='name'><b>"+usersss[iz-1].Fname +"  "+ usersss[iz-1].Lname +"</b></div>\
+                    <div class='title' style='color: #00000085;'>"+ usersss[iz-1].track+"</div>\
                     <div><button class='btn'>Follow</button></div>\
                 </div>");
-
+           
+        }
+        nextFlag=1;
+        
+ 
+    }
+    else{
+    
+            $("#innerDiv"+start).hide();
+    if(count==count2 &&count<=usersss.length){
+        console.log(count,"count")
+    $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+count+"'"+">\
+                    <div class='img'><img src='img/"+usersss[count-1].profilepic+"'></div>\
+                    <div class='name'><b>"+usersss[count-1].Fname +"  "+ usersss[count-1].Lname +"</b></div>\
+                    <div class='title' style='color: #00000085;'>"+ usersss[count-1].track+"</div>\
+                    <div><button class='btn'>Follow</button></div>\
+                </div>");
+count++;
           //$(this).show("slide", { direction: "left" }, 1000);
 
     }
@@ -351,14 +361,16 @@ function funNext(){
             start++;
             count2++;
         }
-    if(count2==6){
+    if(count2==usersss.length){
         flagToOutSlid=0;
     }
+    }
+
 }
 
 
 function funPrev(){
-
+debugger
    if(start!=1){
 
      
@@ -403,25 +415,25 @@ function stop(){
 
 
 
-
-
-
-var request5 = $.ajax({
-    url: "http://localhost:3000/users",
-    method: "GET",
-    data: {},
-    dataType: "json"
+$(window).on('load', function() {
+    setTimeout(function(){
+       
+        if(usersss.length>=4&&nextFlag==0){
+        for(var iz=1;iz<=4;iz++){
+                $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+iz+"'"+">\
+                    <div class='img'><img src='img/"+usersss[iz-1].profilepic+"'></div>\
+                    <div class='name'><b>"+usersss[iz-1].Fname +"  "+ usersss[iz-1].Lname +"</b></div>\
+                    <div class='title' style='color: #00000085;'>"+ usersss[iz-1].track+"</div>\
+                    <div><button class='btn'>Follow</button></div>\
+                </div>");
+           
+        } 
+        nextFlag=1;
+        
+ 
+    }
+    console.log(usersss,"ussssssssssssssss") 
+    },100)
 });
 
 
-request5.done(function(users) {
-    var html = "";
-   
-    usersss=users;
-  
-    $('#profCont').append(html)
-});
-  console.log(usersss,"\sers")
-request5.fail(function( jqXHR, textStatus ) {
-    errorAlert("Request failed: " + textStatus );
-});
