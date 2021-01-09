@@ -11,18 +11,6 @@
     
 </head>
 <body>
-<style>
-    .edit-modal-content input,.edit-modal-content  textarea {
-        padding: 5px;
-        border: 1px solid gray;
-        width: 250px;
-        margin: 8px;
-    }
-    .modal-content.edit-modal-content {
-        width: 40%;
-        padding: 20px 30px;
-    }
-</style>
 <div class="nav">
     <div class="container">
         <div class="logo">
@@ -33,11 +21,16 @@
         <div class="items">
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="">Friends</a></li>
-                <li><a href="">Groups</a></li>
+                <li><a href="friends.html">Friends</a></li>
                 <li><a href="profile.html">Profile</a></li>
-                <li><a href="">Entertainment</a></li>
-                <li><a onclick="logoute()">Logout</a></li>
+                <li id="games" class="dropdown">
+                  <a class="dropbtn">Entertainment</a>
+                  <div class="dropdown-content">
+                      <a href="Ludo-game.html" target="_blank">Ludo game</a>
+                      <a href="connect-for.html" target="_blank">Connect 4</a>
+                  </div>
+              </li>
+                <li><a onclick="logout()">Logout</a></li>
             </ul>
         </div>
     </div>
@@ -63,19 +56,25 @@
     <div class="f sm">
         <p>
             <i class="fa fa-facebook-square" style="color: #34aace;"></i>
-            <a id="facebookId"  href="https://www.facebook.com/miaratama" > https://www.facebook.com/esramosllam </a>
+
+            <a id="facebook" href="https://www.facebook.com/miaratama">https://www.facebook.com/esramosllam</a>
+
         </p>
     </div>
     <div class="f sm">
         <p>
             <i class="fa fa-github-square" style="color: #a315bc;"></i>
-            <a id="githubId"  href= "https://www.github.com/miaratama" > https://www.github.com/esramosllam </a>
+
+            <a id="github" href="https://www.github.com/miaratama">https://www.github.com/esramosllam</a>
+
         </p>
     </div>
     <div class="f sm">
         <p>
             <i class="fa fa-linkedin-square" style="color: #d2664c;"></i>
-            <a  id ="linkedInId" href="https://www.linkedin.com/miaratama">https://www.linkedin.com/esramosllam</a>
+
+            <a id="linkedin" href="https://www.linkedin.com/miaratama">https://www.linkedin.com/esramosllam</a>
+
         </p>
     </div>
   </div>
@@ -98,63 +97,14 @@
       </ul>
       <div class="clearfix"></div>
       <div id="myposts" class="myposts">
-        <div class="post line-div">
-          <div class="head">
-              <div class="img"><img src="img/profile.jpg"></div>
-              <div class="info">
-                  <div class="name UserName" ></div>
-                  <div class="time"><i class="fa fa-history"></i> 3 min ago</div>
-              </div>
-          </div>
-          <div class="clearfix"></div>
-          <div class="body">
-              <span></span>
-              <p class="postP1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.</p>
-              <div><a class="more">Read more..</a></div>
-              <div class="galary">
-                  <div class="imgsContainer">
-                      <i id="prev" class="fa fa-angle-left"></i>
-                      <div>
-                          <img id="img1" class="left0" src="img/5.jpg">
-                          <img id="img2" class="left1" src="img/6.jpg">
-                          <img id="img3" class="left1" src="img/3.jpg">
-                          <img id="img4" class="left1" src="img/4.jpg">
-                          <img id="img5" class="left1" src="img/2.jpg">
-                          <img id="img6" class="left1" src="img/1.jpg">
-                      </div>
-                      <i id="next" class="fa fa-angle-right"></i>
-                  </div>
-              </div>
-          </div>
-          <div class="react">
-              <div><i class="fa fa-thumbs-o-up"></i> Like</div>
-              <div><i class="fa fa-comments-o"></i> Comment</div>
-          </div>
-          <div class="comments">
-              <div class="ccmnt">
-                  <div class="img"><img src="img/profile.jpg"></div>
-                  <div class="post-text">
-                      <p><b>Mostafa Ali</b></p>
-                      <p>agmd comment fel 3allam</p>
-                  </div>
-                  <div class="clearfix"></div>
-              </div>
-              <div class="ccmnt">
-                  <div class="img"><img src="img/profile.jpg"></div>
-                  <textarea class="post-text" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
-                  <!-- <div class="post-text" contenteditable="true" data-placeholder="Write a comment.."></div> -->
-                  <div class="clearfix"></div>
-              </div>
-          </div>
-        
-      </div>
+
       </div>
       <div id="myinfo" class="">
         <div class="post line-div">
             <h3>Overview</h3>
-            <p id="_bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. Nunc eu augue nec arcu efficitur faucibus. Aliquam accumsan ac magna convallis bibendum. Quisque laoreet augue eget augue fermentum scelerisque. Vivamus dignissim mollis est dictum blandit. Nam porta auctor neque sed congue. Nullam rutrum eget ex at maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget vestibulum lorem.</p>
-            
-          
+
+            <p id="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. Nunc eu augue nec arcu efficitur faucibus. Aliquam accumsan ac magna convallis bibendum. Quisque laoreet augue eget augue fermentum scelerisque. Vivamus dignissim mollis est dictum blandit. Nam porta auctor neque sed congue. Nullam rutrum eget ex at maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget vestibulum lorem.</p>
+
         </div>
       </div>
     </div>
@@ -236,8 +186,9 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="js/cookies.js"></script>
+    <script src="js/action.js"></script>
     <script src="js/profile.js"></script>
-   
+
     <script>
       
       </script>

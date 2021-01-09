@@ -170,6 +170,9 @@ loginForm.addEventListener('submit', (e) => {
                     setCookie("Fname", users[i].Fname);
                     setCookie("Lname", users[i].Lname);
                     setCookie("profilepic", users[i].profilepic);
+                    setCookie('facebook',users[i].socialmedia.facebook )
+                    setCookie('linkedin',users[i].socialmedia.linkedin )
+                    setCookie('linkedin',users[i].socialmedia.linkedin )
                     window.location = 'index.html';
                     return;
                 }

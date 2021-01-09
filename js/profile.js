@@ -8,20 +8,111 @@ try{
     var flag = false;
 }
 
+
 if (flag && id != getCookie("id")){
-    $("#edit-profile").css({"display": "none"})
+    var request5 = $.ajax({
+        url: "http://localhost:3000/users/"+id,
+        method: "GET",
+        data: {},
+        dataType: "json"
+    });
+    request5.done(function(user) {
+        console.log(user)
+        $("#edit-profile").css({"display": "none"})
+        $("#coverModal").css({"display": "none"})
+
+        $('#facebook').text(user.socialmedia.facebook)
+        $('#facebook').attr("href",user.socialmedia.facebook)
+
+        $('#github').text(user.socialmedia.github)
+        $('#github').attr("href",user.socialmedia.github)
+
+        $('#linkedin').text(user.socialmedia.linkedin)
+        $('#linkedin').attr("href",user.socialmedia.linkedin)
+
+        $('#ProfileImg').attr("src","img/"+user.profilepic)
+        $('#UserFullName').text(user.Fname + " " + user.Lname)
+        $('#UserTrack').html(user.track);
+        if (user.bio.trim() == ""){
+            $('#bio').html("There is no bio yet.")
+        } else {
+            $('#bio').html(user.bio);
+        }
+
+
+    });
+    request5.fail(function( jqXHR, textStatus ) {
+        errorAlert("Request failed: " + textStatus );
+    });
+
+
+} else {
+    if (!id ){
+        var id = getCookie('id')
+    }
+    var firstname =getCookie("Fname");
+    var lastName=getCookie("Lname")
+    var Track=getCookie("track");
+
+    $('#UserFullName,.UserName').html(firstname +" "+lastName)
+    if (getCookie('bio').trim() == ""){
+        $('#bio').html("There is no bio yet.")
+    } else {
+        $('#bio').html(getCookie('bio'))
+    }
+    $('#UserTrack').html(Track);
+    $('#ProfileImg').attr("src","img/"+getCookie('profilepic'))
+    $('#facebook').text(getCookie('facebook'))
+    $('#facebook').attr("href",getCookie('facebook'))
+
+    $('#github').text(getCookie('github'))
+    $('#github').attr("href",getCookie('github'))
+
+    $('#linkedin').text(getCookie('linkedin'))
+    $('#linkedin').attr("href",getCookie('linkedin'))
 }
 
 
-var id=getCookie("id")
+
+/*var id=getCookie("id")
 var request5 = $.ajax({
     url: "http://localhost:3000/users",
+    */
+
+var request1 = $.ajax({
+    url: "http://localhost:3000/following",
     method: "GET",
     data: {},
     dataType: "json"
 });
+var __follower = 0;
+var __followed = 0;
+request1.done(function( following ) {
+    for (var i=0; i < following.length; i++){
+        console.log(following[i])
+        if (following[i].follower == id){
+            __follower += 1
+        }
+        if (following[i].followed == id){
+            __followed += 1
+        }
+    }
+    $('#profileFolowing').text(__follower)
+    $('#profileFollowers').text(__followed)
+});
+request1.fail(function( jqXHR, textStatus ) {
+    errorAlert("Request failed: " + textStatus );
+});
+
+/*var request = $.ajax({
+    url: "http://localhost:3000/posts",
+
+    method: "GET",
+    data: {},
+    dataType: "json"
+});*/
  var currentUser;
-request5.done(function(users) {
+/*request5.done(function(users) {
     
     usersss=users;
        
@@ -34,17 +125,17 @@ for(var i=0;i<usersss.length;i++){
     }
 }
     
-    $("#facebookId").attr("href",currentUser.socialmedia["facebook"]);
+    /*$("#facebookId").attr("href",currentUser.socialmedia["facebook"]);
    $("#facebookId").html(currentUser.socialmedia["facebook"])
      $("#githubId").attr("href",currentUser.socialmedia["github"]).html(currentUser.socialmedia["github"])
-     $("#linkedInId").attr("href",currentUser.socialmedia["linkedin"]).html(currentUser.socialmedia["linkedin"])
+     $("#linkedInId").attr("href",currentUser.socialmedia["linkedin"]).html(currentUser.socialmedia["linkedin"])*/
     
 
     
-});
-request5.fail(function( jqXHR, textStatus ) {
+});*/
+/*request5.fail(function( jqXHR, textStatus ) {
     errorAlert("Request failed: " + textStatus );
-});
+});*/
 
 var all_posts = [];
 var postsId = [];
@@ -68,9 +159,6 @@ request.done(function( posts ) {
         dataType: "json"
     });
     request2.done(function(comments) {
-        console.log(all_posts)
-        console.log(comments)
-        console.log("/////////////////");
         for (var i=0; i < comments.length; i++){
             for (var j=0; j<all_posts.length; j++){
                 if (comments[i].postid == all_posts[j].id){
@@ -83,14 +171,12 @@ request.done(function( posts ) {
             if (a.created_at < b.created_at) return -1;
             return 0;
         });
-        console.log(all_posts);
         setupPosts(all_posts)
     });
     request2.fail(function( jqXHR, textStatus ) {
         errorAlert("Request failed: " + textStatus );
     });
 });
-
 var postsList = document.querySelector('#myposts');
 // setup guides
 var setupPosts = function(posts){
@@ -101,12 +187,12 @@ var setupPosts = function(posts){
             href = href + "?id=" + posts[i].userid
         }
         var li =
-            `<div class="post line-div">
+         `<div class="post line-div">
             <div class="head">
-                 <div class="img"><a href="${href}" id="prfLink" target="_blank"><img src="img/profile.jpg"></a></div>
+                 <div class="img"><a href="${href}" id="prfLink" target="_blank"><img src="img/${posts[i].userprofilepic}"></a></div>
                 <div class="info">
                     <div class="name"><a style="text-decoration: none;" href="${href}" id="prfLink" target="_blank">${posts[i].username}</a></div>
-                    <div class="time"><i class="fa fa-history"></i>${posts[i].created_at}</div>
+                    <div class="time"><i class="fa fa-history"></i> ${posts[i].created_at}</div>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -114,8 +200,8 @@ var setupPosts = function(posts){
                 <p class="postP1">${posts[i].body}</p>
                 <div><a class="see more">Read more..</a></div>
             </div>
-            <div style="color:cornflowerblue;"><span id="likeCounter">${posts[i].likes} </span> Likes             <div style="color:cornflowerblue;"><span id="likeCounter">${posts[i].likes} &#128514;</span> Likes</div>
-</div>
+            <div style="color:cornflowerblue;"><span id="likeCounter">${posts[i].likes} </span> Likes <div style="color:cornflowerblue;"></div>
+         </div>
             <div class="react">
                 <div onclick="likeFun(this)"><i class="fa fa-thumbs-o-up"></i> Like</div>
                 <div><i class="fa fa-comments-o"></i> Comment</div>
@@ -128,16 +214,16 @@ var setupPosts = function(posts){
         });
         for (var j=0; j< posts[i].comments.length; j++){
             li += `<div class="ccmnt">
-                    <div class="img"><img src="img/profile.jpg"></div>
+                    <div class="img"><a href="profile.html?id=${posts[i].comments[j].userid}" id="prfLink" target="_blank"><img src="img/${posts[i].comments[j].userprofilepic}"></a></div>
                     <div class="post-text">
-                        <p><b>${posts[i].comments[j].username}</b></p>
+                        <p><b><a href="profile.html?id=${posts[i].comments[j].userid}" id="prfLink" target="_blank">${posts[i].comments[j].username}</a></b></p>
                         <p>${posts[i].comments[j].content}</p>
                     </div>
                     <div class="clearfix"></div>
                 </div>`
         }
         li +=`<div class="ccmnt">
-                    <div class="img"><img src="img/profile.jpg"></div>
+                    <div class="img"><img src="img/${getCookie('profilepic')}"></div>
                     <textarea onkeypress="onTestChange(this);" id="comment" class="post-text commentPost" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
                     <!-- <div class="post-text" contenteditable="true" data-placeholder="Write a comment.."></div> -->
                     <div class="clearfix"></div>
@@ -147,8 +233,6 @@ var setupPosts = function(posts){
         html += li;
     }
     postsList.innerHTML += html
-
-
     $('.postP1').each(function(i, obj) {
         if (Number.parseInt($(obj).text().length) <= 355){
             console.log(Number.parseInt($(obj).css('-webkit-line-clamp')) + "---")
@@ -156,30 +240,27 @@ var setupPosts = function(posts){
         }
     });
 };
-
-
 var modal = document.getElementById("myModal");
 var btn = document.getElementById("coverModal");
 var span = document.getElementsByClassName("close")[0];
 btn.onclick = function() {
   modal.style.display = "block";
-}
+};
 span.onclick = function() {
   modal.style.display = "none";
-}
+};
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-}
+};
 // edit profile modal
 var modal2 = document.getElementById("editModal");
 var btn2 = document.getElementById("edit-profile");
 var span2 = document.getElementsByClassName("close")[1];
 btn2.onclick = function() {
   modal2.style.display = "block";
-    
     var _fname =getCookie("Fname");
     var _lName=getCookie("Lname")
     var _Track=getCookie("track");
@@ -187,23 +268,14 @@ btn2.onclick = function() {
     var _bio=getCookie("bio");
     $('#UserFullName').html(_fname +" "+_lName)
     $('#UserTrack').html(_Track);
-
     //========================display user info=================================//
-
-
-   
         $('#FnameEdite').val(_fname);
         console.log(_fname,"jj")
         $('#LnameEdite').val(_lName);
         $('#emailEdite').val(_Email);
         $('#bioEdite').value=_bio;
-     
-    //===============get & set  new data=================//
+    //==============get & set  new data=================//
     $("#editProfileBtn").click(function(){
-         /*deleteCookie("Fname");
-        deleteCookie("Lname");
-        deleteCookie("email");
-        deleteCookie("bio");*/
         _fname=$('#FnameEdite').val();
         _lName=$('#LnameEdite').val();
         _Email=$('#emailEdite').val();
@@ -214,6 +286,7 @@ btn2.onclick = function() {
         console.log(newProfileImg,"profile img")
         setCookie("Fname", _fname);
         setCookie("Lname", _lName);
+
         var _newProfileImg=newProfileImg.replace(/^.*[\\\/]/, '');
         setCookie("profilepic", _newProfileImg);
         var path="/img/"+_newProfileImg;
@@ -222,10 +295,8 @@ btn2.onclick = function() {
          $('#_bio').html(getCookie("bio"));
         //location.reload(true);
 
-    });
 
-    
-    
+    });
 }
 span2.onclick = function() {
   modal2.style.display = "none";
@@ -255,8 +326,6 @@ window.onclick = function(event) {
       setCookie('coverImg',mysrc,365)
       modal.style.display = "none";
   }
-
-
 // jquery
 $( function() {
   // $("#tabs .ui-tabs-active a").css("color","green");
@@ -284,4 +353,26 @@ $( function() {
 } );
 
 
+function onTestChange(me) {
+    var key = window.event.keyCode;
+    if (key === 13) {
+        console.log(me.value)
 
+
+        var comContent =  me.value
+        var comm = `<div class="ccmnt">
+                        <div class="img"><a style="text-decoration: none;" href="profile.html" id="prfLink" target="_blank"><img src="img/${getCookie("profilepic")}"></a></div>
+                        <div class="post-text">
+                            <p><b><a style="text-decoration: none;" href="profile.html" id="prfLink" target="_blank">${getCookie("Fname")} ${getCookie("Lname")}</a></b></p>
+                            <p>${comContent}</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>`
+        $(me).parent().parent().prepend(comm)
+        me.value = ""
+        return false;
+    }
+    else {
+        return true;
+    }
+}
