@@ -134,7 +134,6 @@ request.done(function( posts ) {
         errorAlert("Request failed: " + textStatus );
     });
 });
-
 var postsList = document.querySelector('#myposts');
 // setup guides
 var setupPosts = function(posts){
@@ -150,7 +149,7 @@ var setupPosts = function(posts){
                  <div class="img"><a href="${href}" id="prfLink" target="_blank"><img src="img/${posts[i].userprofilepic}"></a></div>
                 <div class="info">
                     <div class="name"><a style="text-decoration: none;" href="${href}" id="prfLink" target="_blank">${posts[i].username}</a></div>
-                    <div class="time"><i class="fa fa-history"></i>${posts[i].created_at}</div>
+                    <div class="time"><i class="fa fa-history"></i> ${posts[i].created_at}</div>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -172,9 +171,9 @@ var setupPosts = function(posts){
         });
         for (var j=0; j< posts[i].comments.length; j++){
             li += `<div class="ccmnt">
-                    <div class="img"><a href="${href}" id="prfLink" target="_blank"><img src="img/${posts[i].comments[j].userprofilepic}"></a></div>
+                    <div class="img"><a href="profile.html?id=${posts[i].comments[j].userid}" id="prfLink" target="_blank"><img src="img/${posts[i].comments[j].userprofilepic}"></a></div>
                     <div class="post-text">
-                        <p><b><a href="${href}" id="prfLink" target="_blank">${posts[i].comments[j].username}</a></b></p>
+                        <p><b><a href="profile.html?id=${posts[i].comments[j].userid}" id="prfLink" target="_blank">${posts[i].comments[j].username}</a></b></p>
                         <p>${posts[i].comments[j].content}</p>
                     </div>
                     <div class="clearfix"></div>
@@ -203,23 +202,22 @@ var btn = document.getElementById("coverModal");
 var span = document.getElementsByClassName("close")[0];
 btn.onclick = function() {
   modal.style.display = "block";
-}
+};
 span.onclick = function() {
   modal.style.display = "none";
-}
+};
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-}
+};
 // edit profile modal
 var modal2 = document.getElementById("editModal");
 var btn2 = document.getElementById("edit-profile");
 var span2 = document.getElementsByClassName("close")[1];
 btn2.onclick = function() {
   modal2.style.display = "block";
-    
     var _fname =getCookie("Fname");
     var _lName=getCookie("Lname")
     var _Track=getCookie("track");
@@ -314,4 +312,3 @@ function onTestChange(me) {
         return true;
     }
 }
-

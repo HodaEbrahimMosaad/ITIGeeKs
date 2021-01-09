@@ -1,5 +1,3 @@
-
-
 var start=1;
 var count=5;
 var usersss;
@@ -96,7 +94,7 @@ var setupPosts = function(posts){
                  <div class="img"><a href="${href}" id="prfLink" target="_blank"><img src="img/${posts[i].userprofilepic}"></a></div>
                 <div class="info">
                     <div class="name"><a style="text-decoration: none;" href="${href}" id="prfLink" target="_blank">${posts[i].username}</a></div>
-                    <div class="time"><i class="fa fa-history"></i> ${posts[i].created_at}</div>
+                    <div class="time"><i class="fa fa-history"></i> ${(posts[i].created_at)}</div>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -104,8 +102,7 @@ var setupPosts = function(posts){
                 <p class="postP1">${posts[i].body}</p>
                 <div><a class="see more">Read more..</a></div>
             </div>
-            <div style="color:cornflowerblue;"><span id="likeCounter">${posts[i].likes} </span> Likes <div style="color:cornflowerblue;"></div>
-        </div>
+            <div style="color:cornflowerblue;"><span id="likeCounter">${posts[i].likes} </span> Likes <div style="color:cornflowerblue;"></div></div>
             <div class="react">
                 <div onclick="likeFun(this)"><i class="fa fa-thumbs-o-up"></i> Like</div>
                 <div><i class="fa fa-comments-o"></i> Comment</div>
@@ -149,15 +146,10 @@ var setupPosts = function(posts){
         }
     });
 };
-
-
-
 var fullname = getCookie("Fname") + " " + getCookie("Lname")
 $('#FLname').text(fullname)
 $('#ttle').text(getCookie("track"))
 $('#profilepic').attr("src","img/"+getCookie("profilepic"))
-
-
 function onTestChange(me) {
     var key = window.event.keyCode;
     if (key === 13) {
