@@ -21,6 +21,7 @@
 </head>
 <body>
 
+<<<<<<< Updated upstream
     <div class="nav">
         <div class="container">
             <div class="logo">
@@ -44,6 +45,29 @@
 
                 </ul>
             </div>
+=======
+<div class="nav">
+    <div class="container">
+        <div class="logo">
+            <img src="img/tl.png" style="height: 45px;padding-top: 3px;">
+            <span>ITIGeeks</span>
+        </div>
+        <div class="items">
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="friends.html">Friends</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li id="games" class="dropdown">
+                    <a class="dropbtn">Entertainment</a>
+                    <div class="dropdown-content">
+                        <a href="Ludo-game.html" target="_blank">Ludo game</a>
+                        <a href="connect-for.html" target="_blank">Connect 4</a>
+                    </div>
+                </li>
+                <!-- <li><a href="Games.html">Entertainment</a></li> -->
+                <li><a onclick="logout()">Logout</a></li>
+            </ul>
+>>>>>>> Stashed changes
         </div>
     </div>
     <div class="container">
@@ -51,7 +75,7 @@
             <div class="sticky">
             <div class="img-back"></div>
             <div class="img-cont">
-                <img  id="profilepic" src="img/profile.jpg">
+                <img  id="profilepic" src="img/def.jfif">
                 <div class="info">
                     <p class="nm" id="FLname">Ahmed</p>
                     <p class="ttl" id="ttle">Developer</p>
@@ -68,6 +92,19 @@
             <div class="f">
                 <p><a href="profile.html">View Profile</a></p>
             </div>
+<<<<<<< Updated upstream
+=======
+        </div>
+    </div>
+    <div class="ver-sec timeline">
+        <form class="create-post line-div" id="_form">
+            <div class="head">
+                <div class="img"><img class="profile" src="img/def.jfif"></div>
+                <textarea class="post-text" placeholder="What's in your mind?" onkeyup="txtautoheight(this)" id="postBody"></textarea>
+                <!-- <div class="post-text" contenteditable="true" data-placeholder="What's in your mind?"></div> -->
+<!--                 <input class="" type="file" accept="image/*" multiple id="postImgs">-->
+                <div id='result'></div>
+>>>>>>> Stashed changes
             </div>
         </div>
         <div class="ver-sec timeline">
@@ -79,6 +116,7 @@
                     <!-- <input class="" type="file" accept="image/*" multiple id="postImgs"> -->
                     <div id='result'></div>
                 </div>
+<<<<<<< Updated upstream
                 <div class="foot">   
                     <div class="image-upload">
                         <label for="postImgs">
@@ -87,6 +125,17 @@
                         <input name="postImgs" id="postImgs"type="file" accept="image/*" multiple>
                     </div>
                     <button id="post-btn" onclick="CreatePost()">Post</button>
+=======
+                <button id="post-btn" onclick="CreatePost()">Post</button>
+            </div>
+        </form>
+        <div class="post line-div">
+            <div class="head">
+                <a id="prfLink" target="_blank"><div class="img"><img src="img/def.jfif"></div></a>
+                <div class="info">
+                    <div class="name">Ahmed Atef</div>
+                    <div class="time"><i class="fa fa-history"></i> 3 min ago</div>
+>>>>>>> Stashed changes
                 </div>
             </form>
             <div class="post line-div">
@@ -122,6 +171,7 @@
 
                     <div onclick="likeFun(this)" ><i class="fa fa-thumbs-o-up"> Like</i></div>
 
+<<<<<<< Updated upstream
                     <div><i class="fa fa-comments-o"></i> Comment</div>
                 </div>
                 <div class="comments">
@@ -138,6 +188,23 @@
                         <textarea onkeypress="onTestChange(this);" id="comment" class="post-text commentPost" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
                         <div class="clearfix"></div>
                     </div>
+=======
+                <div><i class="fa fa-comments-o"></i> Comment</div>
+            </div>
+            <div class="comments">
+                <div class="ccmnt">
+                    <div class="img"><img src="img/def.jfif"></div>
+                    <div class="post-text">
+                        <p><b>Mostafa Ali</b></p>
+                        <p>agmd comment fel 3allam</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="ccmnt">
+                    <div class="img"><img src="img/def.jfif"></div>
+                    <textarea onkeypress="onTestChange(this);" id="comment" class="post-text commentPost" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
+                    <div class="clearfix"></div>
+>>>>>>> Stashed changes
                 </div>
             </div>
 

@@ -71,19 +71,13 @@ function CreatePost(){
                         </div>
                     </div>
                 </div>
+                <div style="color:cornflowerblue;"><span id="likeCounter">0 </span> Likes <div style="color:cornflowerblue;"></div></div>
                 <div class="react">
                     <div onclick="likeFun(this)" ><i class="fa fa-thumbs-o-up"> Like</i></div>
                     <div><i class="fa fa-comments-o"></i> Comment</div>
                 </div>
                 <div class="comments">
-                    <div class="ccmnt">
-                        <div class="img"><img src="img/profile.jpg"></div>
-                        <div class="post-text">
-                            <p><b>Mostafa Ali</b></p>
-                            <p>agmd comment fel 3allam</p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
+                   
                     <div class="ccmnt">
                         <div class="img"><img src="img/profile.jpg"></div>
                         <textarea class="post-text" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
