@@ -13,6 +13,8 @@ request1.done(function( following ) {
             followersId.push(following[i].followed)
             _follower++;
         }
+
+        console.log(followersId)
     }
     var _users = []
     var request5 = $.ajax({

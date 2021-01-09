@@ -20,7 +20,7 @@
 </head>
 <body>
 <style>
-    .selected-tag{border: 2px solid #80bb38;}
+
     .post-tags {
         padding: 15px;
         margin-bottom: 8px;
@@ -32,11 +32,13 @@
         color: #00000085;
         padding: 5px 8px;
         border-radius: 16px;
+        //border: 2px solid #f2f2f2;
     }
     .textIcons{
         width: 213px;
         margin-left: 30px;
     }
+    .selected-tag{border: 2px solid #80bb38;}
 </style>
 <div class="nav">
     <div class="container">
@@ -224,23 +226,6 @@
 
 <script src="js/index-data.js"></script>
 <script src="js/chat.js"></script>
-<script>
-    var tagsArr = {};
-    function addtag(e){
-        var targett = e.target;
-        console.log(targett);
-        $(targett).parent().toggleClass("selected-tag");
-        var text = targett.innerText||targett.textContent;
-        console.log(text);
-        //
-    }
-    $( function() {
-        
-            // $('.post-tags span').each(thiss.click(function(){
-            //     console.log(this);
-            //     console.log("this");
-            // }))
-    });
-</script>
+
 </body>
 </html>

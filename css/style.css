@@ -20,6 +20,12 @@ a{cursor: pointer;}
     box-shadow: 1px 1px 3px #8080807d;
     color: #fff;
 }
+.follow {
+    background-color: #F44336;
+}
+.unfollow{
+    background-color: #7cde7c;
+}
 /* navbar */
 .nav {
     background-color: #031c32!important;

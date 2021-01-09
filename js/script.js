@@ -1,5 +1,20 @@
 $('.profile').attr('src', 'img/'+getCookie('profilepic'))
 var files ;
+var selectedTags = [];
+function addtag(e){
+    var targett = e.target;
+    var text = targett.innerText||targett.textContent;
+    if ($(targett).parent().hasClass('selected-tag')){
+        $(targett).parent().removeClass("selected-tag");
+        var index = selectedTags.indexOf(text);
+        if (index > -1) {
+            selectedTags.splice(index, 1);
+        }
+    } else {
+        $(targett).parent().addClass("selected-tag");
+        selectedTags.push(text)
+    }
+}
 window.onload=function(){
     setTimeout(function () {
         if (window.File && window.FileList && window.FileReader) {
@@ -35,6 +50,7 @@ window.onload=function(){
 var myNewPostImgLen=0;
 
 function CreatePost(){
+    console.log(selectedTags)
     $("#_form").submit(function(e) {
         e.preventDefault();
     });
@@ -74,6 +90,12 @@ function CreatePost(){
                             </div>
                         </div>
                     </div>
+                    <div class="post-tags" style="text-align: initial;" id="post-tags">`
+                        for (var h=0; h< selectedTags.length; h++){
+
+                            postDiv += `<span style="margin-right: 10px;"> <a> ${selectedTags[h]} </a> </span>`
+                        }
+                    postDiv += `</div>
                     <div style="color:cornflowerblue;"><span id="likeCounter">0 </span> Likes <div style="color:cornflowerblue;"></div></div>
                     <div class="react">
                         <div onclick="likeFun(this)" ><i class="fa fa-thumbs-o-up"> Like</i></div>
@@ -88,8 +110,7 @@ function CreatePost(){
                             <div class="clearfix"></div>
                         </div>
                     </div>
-                </div>`;
-    
+                </div>`
             var c=1;
             $('#_form').after(postDiv);
             $('#newPostBody').append( PostBody);
@@ -117,7 +138,6 @@ function CreatePost(){
     
                 //Read the image
                 picReader.readAsDataURL(file);
-    
             }
         }
         else{
@@ -135,6 +155,13 @@ function CreatePost(){
                         <span></span>
                         <p class="postP1" id="newPostBody"></p>
                         <div><a class="see more">Read more..</a></div>
+                        <div class="post-tags" style="text-align: initial;" id="post-tags">`
+                        for (var h=0; h< selectedTags.length; h++){
+
+                            postDiv += `<span style="margin-right: 10px;"> <a> ${selectedTags[h]} </a> </span>`
+                        }
+                    postDiv += `</div>
+                        
                     </div>
                     <div style="color:cornflowerblue;"><span id="likeCounter">0 </span> Likes <div style="color:cornflowerblue;"></div></div>
                     <div class="react">
@@ -167,6 +194,8 @@ function CreatePost(){
         $('.create-post .post-text').removeAttr("style");
         $('#result').html("");
     }
+    selectedTags = [];
+    $('.selected-tag').removeClass('selected-tag')
 }
 
 //text area auto height
