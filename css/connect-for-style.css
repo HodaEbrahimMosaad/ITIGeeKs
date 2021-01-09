@@ -100,8 +100,9 @@ cursor: pointer;
 background-color: #7cde7c;
 font-size: 18px;
 padding: 5px 20px;
-margin-top: 15px;
 border: 0;
 box-shadow: 1px 1px 3px #8080807d;
 color: #fff;
+display: block;
+margin: 20px auto;
 }
