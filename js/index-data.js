@@ -7,6 +7,11 @@ var id = getCookie("id");
 console.log(id);
 var followersId = [];
 
+
+
+
+
+
 var request1 = $.ajax({
     url: "http://localhost:3000/following",
     method: "GET",
@@ -200,8 +205,7 @@ function funNext(){
     /*if(count!=15){*/
     console.log("start"+start,"coun 2",count2,"cputn",count)
     console.log(usersss,"userss");
-    debugger
-    
+
     if(usersss.length>=4&&nextFlag==0){
         for(var iz=1;iz<=4;iz++){
                 $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+iz+"'"+">\
@@ -277,7 +281,7 @@ function stop(){
 
 $(window).on('load', function() {
     setTimeout(function(){
-       
+
         if(usersss.length>=4&&nextFlag==0){
         for(var iz=1;iz<=4;iz++){
                 $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+iz+"'"+">\
@@ -286,14 +290,14 @@ $(window).on('load', function() {
                     <div class='title' style='color: #00000085;'>"+ usersss[iz-1].track+"</div>\
                     <div><button class='btn'>Follow</button></div>\
                 </div>");
-           
-        } 
+
+        }
         nextFlag=1;
-        
- 
+
+
     }
-    console.log(usersss,"ussssssssssssssss") 
-    },100)
+    console.log(usersss,"ussssssssssssssss")
+    },500)
 });
 
 
