@@ -35,6 +35,19 @@ window.onload=function(){
 var myNewPostImgLen=0;
 
 function CreatePost(){
+    var fontfamilys = "system-ui";
+    var fontcolors = "#000";
+    var aligns = 'left'
+    if($('#_align').hasClass('fa-align-right'))
+        aligns = 'right';
+    else if($('#_align').hasClass('fa-align-center'))
+        aligns = 'center';
+    //
+    //if($('#_Color').style.color)
+    fontcolors = $('#_Color').css("color");
+    fontfamilys = $("#postBody").css('font-family');
+    console.log(fontfamilys);
+    //
     $("#_form").submit(function(e) {
         e.preventDefault();
     });
@@ -133,7 +146,7 @@ function CreatePost(){
                     <div class="clearfix"></div>
                     <div class="body">
                         <span></span>
-                        <p class="postP1" id="newPostBody"></p>
+                        <p class="postP1" id="newPostBody" style = "text-align:${aligns}; color:${fontcolors}; font-family:${fontfamilys};"></p>
                         <div><a class="see more">Read more..</a></div>
                     </div>
                     <div style="color:cornflowerblue;"><span id="likeCounter">0 </span> Likes <div style="color:cornflowerblue;"></div></div>
@@ -153,7 +166,6 @@ function CreatePost(){
             $('#_form').after(postDiv);
             $('#newPostBody').append( PostBody);
         }
-    
         $('.postP1').each(function(i, obj) {
             if (Number.parseInt($(obj).text().length) <= 355){
                 $(obj).next().css({"display": "none"})
