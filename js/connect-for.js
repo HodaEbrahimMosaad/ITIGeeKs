@@ -100,16 +100,23 @@ function checkWon(){
             }
         }
         if(flagR){
-            setTimeout(() =>alert("player one(Red) wins "), 200)
+            setTimeout(function(){
+                document.querySelector('.winner').innerHTML= '<h3>player one(Red) wins</h3>';
+            },200)
+            //setTimeout(() =>alert("player one(Red) wins "), 200)
             setTimeout(() =>restart.style.display="block", 500)
 
         }else if(flagB){
-            setTimeout(() =>alert("player two(Blue) wins"), 200)
+            setTimeout(function(){
+                document.querySelector('.winner').innerHTML= '<h3>player two(Blue) wins</h3>';
+            },200)
+            //setTimeout(() =>alert("player two(Blue) wins"), 200)
             setTimeout(() =>restart.style.display="block", 500)
         }
     }
 }
 function reset(){
+    console.log('reset')
     board.innerHTML=""
     loadDOM()
     restart.style.display="none"

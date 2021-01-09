@@ -14,6 +14,7 @@
 /* side div */
 .side-div img {
     width: 220px;
+    height: 220px;
     border-radius: 50%;
     border: 2px solid #fff;
 }
@@ -135,8 +136,4 @@
 .modal-content.edit-modal-content {
     width: 40%;
     padding: 20px 30px;
-}
-#ProfileImg{
-    width: 220px;
-    height: 220px;
 }

@@ -156,6 +156,7 @@ function CreatePost(){
         $('#_form').after(postDiv);
         $('#newPostBody').append( PostBody);
     }
+
     $('.postP1').each(function(i, obj) {
         if (Number.parseInt($(obj).text().length) <= 355){
             $(obj).next().css({"display": "none"})
@@ -164,6 +165,7 @@ function CreatePost(){
     if (files){
         myNewPostImgLen = files.length;
     }
+
 
     files = undefined;
     $('.create-post .post-text').val("");
