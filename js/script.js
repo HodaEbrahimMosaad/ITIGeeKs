@@ -1,6 +1,6 @@
-
+$('.profile').attr('src', 'img/'+getCookie('profilepic'))
 var files ;
-var myNewPostImgLen=0;
+
 window.onload=function(){
     if (window.File && window.FileList && window.FileReader) {
         var filesInput = document.getElementById("postImgs");
@@ -32,7 +32,7 @@ window.onload=function(){
     console.log("Your browser does not support File API");
     } 
 }
-
+var myNewPostImgLen=0;
 function CreatePost(){
     $("#_form").submit(function(e) {
         e.preventDefault();
@@ -127,34 +127,27 @@ function CreatePost(){
         var postDiv=`
             <div class="post line-div">
                 <div class="head">
-                    <div class="img"><img src="img/profile.jpg"></div>
+                    <div class="img"><img src="img/${getCookie('profilepic')}"></div>
                     <div class="info">
-                        <div class="name">Ahmed Atef</div>
-                        <div class="time"><i class="fa fa-history"></i> 3 min ago</div>
+                        <div class="name">${getCookie('Fname')} ${getCookie('Lname')}</div>
+                        <div class="time"><i class="fa fa-history"></i> ${(new Date).toDateString()}</div>
                     </div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="body">
                     <span></span>
                     <p class="postP1" id="newPostBody"></p>
-                    <div><a class="more">Read more..</a></div>
+                    <div><a class="see more">Read more..</a></div>
                 </div>
+                <div style="color:cornflowerblue;"><span id="likeCounter">0 </span> Likes <div style="color:cornflowerblue;"></div></div>
                 <div class="react">
                     <div onclick="likeFun(this)" ><i class="fa fa-thumbs-o-up"> Like</i></div>
                     <div><i class="fa fa-comments-o"></i> Comment</div>
                 </div>
                 <div class="comments">
                     <div class="ccmnt">
-                        <div class="img"><img src="img/profile.jpg"></div>
-                        <div class="post-text">
-                            <p><b>Mostafa Ali</b></p>
-                            <p>agmd comment fel 3allam</p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="ccmnt">
-                        <div class="img"><img src="img/profile.jpg"></div>
-                        <textarea class="post-text" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
+                        <div class="img"><img src="img/${getCookie('profilepic')}"></div>
+                        <textarea onkeypress="onTestChange(this);" class="post-text" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
                         <!-- <div class="post-text" contenteditable="true" data-placeholder="Write a comment.."></div> -->
                         <div class="clearfix"></div>
                     </div>
@@ -163,10 +156,22 @@ function CreatePost(){
         $('#_form').after(postDiv);
         $('#newPostBody').append( PostBody);
     }
-    myNewPostImgLen = files.length;
+
+    $('.postP1').each(function(i, obj) {
+        if (Number.parseInt($(obj).text().length) <= 355){
+            $(obj).next().css({"display": "none"})
+        }
+    });
+    if (files){
+        myNewPostImgLen = files.length;
+    }
+
+
     files = undefined;
-    $('.create-post .post-text').val="";
+    $('.create-post .post-text').val("");
     $('#result').html("");
+
+
 }
 
 //text area auto height
