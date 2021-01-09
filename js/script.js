@@ -74,7 +74,7 @@ function CreatePost(){
                     <div class="clearfix"></div>
                     <div class="body">
                         <span></span>
-                        <p class="postP1" id="newPostBody"></p>
+                        <p class="postP1" id="newPostBody" style = "text-align:${aligns}; color:${fontcolors}; font-family:${fontfamilys};"></p>
                         <div><a c[lass="more">Read more..</a></div>
                         <div class="galary">
                             <div class="imgsContainer">
