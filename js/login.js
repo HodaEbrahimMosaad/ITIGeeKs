@@ -37,7 +37,6 @@ document.getElementById("Fname").onblur = function(){
 var LnameInput = 'Lname';
 var LnameMess = 'LnameMess';
 var LnameFlag = { flag: false };
-
 document.getElementById("Lname").onkeyup = function(){
     nameChecking(LnameInput,LnameMess,LnameFlag)
 };
@@ -50,15 +49,16 @@ var emailFlag = false;
 function emailChecking(){
     var email = document.getElementById("email").value;
     var EmailMess = document.getElementById('EmailMess');
+    var re = new RegExp('^[a-zA-Z0-9]+\.[a-zA-Z0-9]+@[a-z]{5,7}\.[a-z]{3,5}$');
     if ( email.length == 0){
         EmailMess.innerHTML = "Email can't Be empty!";
         EmailMess.style.color = 'red';
         emailFlag = false;
-    } /*else if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-                EmailMess.innerHTML = 'Invalid Email Format!';
-                EmailMess.style.color = 'red';
-                emailFlag = false;
-            }*/ else {
+    } else if (!re.test(email)) {
+        EmailMess.innerHTML = 'Invalid Email Format!';
+        EmailMess.style.color = 'red';
+        emailFlag = false;
+    }else {
         EmailMess.innerHTML = 'Valid Email Format!';
         EmailMess.style.color = 'green';
         emailFlag = true;
@@ -84,18 +84,18 @@ function passwordChecking(){
 }
 
 var selectFlag = false;
-function selectChecking() {
-    var trackMesss = document.querySelector('#trackMessage');
+function selectCheck() {
+    var trackMessg = document.getElementById('trackMessageAlert');
     var track = document.getElementById('track').value;
-
     if(track == ""){
         selectFlag = false;
-        trackMesss = 'You Should Select A Track';
-        trackMesss.style.color = 'red';
+        trackMessg.innerText = 'You Should Select A Track';
+        document.getElementById('track').style.border = '1px solid red';
+        trackMessg.style.color = 'red';
     } else {
         selectFlag = true;
-        trackMesss = 'You Selected a Track';
-        trackMesss.style.color = 'green';
+        trackMessg.innerText = '';
+        document.getElementById('track').style.border = '1px solid green';
     }
 }
 
@@ -130,85 +130,15 @@ $(function(){
         $('.login').show();
     });
     $('.register-btn').click(function(){
-
         $('.login').hide();
         $('.register').show();
     });
 });
 
-
-// log the user in
-var loginForm = document.querySelector('#login-form');
-loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    // get user info
-    var _email = loginForm['email-login'].value;
-    var password = loginForm['password-login'].value;
-
-    var request = $.ajax({
-        url: "http://localhost:3000/users",
-        method: "GET",
-        data: {},
-        dataType: "json"
-    });
-    var emailFounded = false;
-    var passwordFounded = false;
-
-    request.done(function( users ) {
-        console.log(users)
-        for (var i=0; i < users.length; i++){
-            console.log(users[i].email+"++")
-            if (users[i].email == _email){
-                emailFounded = true;
-                if (users[i].password == password){
-                    passwordFounded = true;
-                    setCookie("id", users[i].id);
-                    setCookie("email", users[i].email);
-                    setCookie("bio", users[i].bio);
-                    setCookie("track", users[i].track);
-                    setCookie("role", users[i].role);
-                    setCookie("Fname", users[i].Fname);
-                    setCookie("Lname", users[i].Lname);
-                    setCookie("profilepic", users[i].profilepic);
-                    setCookie('facebook',users[i].socialmedia.facebook )
-                    setCookie('linkedin',users[i].socialmedia.linkedin )
-                    setCookie('github',users[i].socialmedia.github )
-                    window.location = 'index.html';
-                    return;
-                }
-            }
-        }
-        if (emailFounded == false && passwordFounded == false){
-            errorAlert("Wrong Email And Password")
-        }else if (emailFounded == false){
-            errorAlert("No User Founded with this email")
-        } else if (passwordFounded == false){
-            errorAlert("Wrong Password")
-        }
-
-    });
-
-    request.fail(function( jqXHR, textStatus ) {
-        errorAlert("Request failed: " + textStatus );
-    });
-
-});
-
-
-function successMess(errorMessage) {
-    var aler = document.createElement('div')
-    aler.append(errorMessage);
-    aler.setAttribute('class', 'succ')
-    aler.setAttribute('id', 'succ')
-    document.body.prepend(aler);
-    setTimeout(function () {
-        $("#succ").slideUp(500);
-    },3000)
-}
 // signup
 var signupForm = document.querySelector('#signup-form');
 signupForm.addEventListener('submit', function(e){
-    if (!FnameFlag.flag || !LnameFlag.flag || !emailFlag || !passwordFlag || !passwordRepFlag){
+    if (!FnameFlag.flag || !LnameFlag.flag || !emailFlag || !passwordFlag || !passwordRepFlag || !selectFlag){
         console.log('invalid data');
         errorAlert("Invalid Data Entered!")
         e.preventDefault();
@@ -240,35 +170,99 @@ signupForm.addEventListener('submit', function(e){
                 "email": _email,
                 "password": password,
                 "role": "user",
-                profile: [
-                    {
-                        "Fname": signupForm['Fname'].value,
-                        "Lname": signupForm['Lname'].value,
-                        "track": signupForm['track'].value,
-                        "bio": signupForm['bio'].value
-                    }
-                ]
-
+                "Fname": signupForm['Fname'].value,
+                "Lname": signupForm['Lname'].value,
+                "track": signupForm['track'].value,
+                "bio": signupForm['bio'].value,
+                "profilepic": "def.jfif"
             },
             dataType: "json"
         });
-        request2.done(function(msg) {
-            successMess("User Signed Up")
-            setCookie("id", users[i].id);
-            setCookie("email", _email);
-            setCookie("bio", signupForm['bio'].value);
-            setCookie("Fname", signupForm['Fname'].value);
-            setCookie("Lname",  signupForm['Lname'].value);
-            setCookie("track", signupForm['track'].value,);
-            setCookie("role", "user");
-            setCookie("profilepic", "def.jfif");
+        request2.done(function(user) {
+            console.log(user)
+            setCookie("email", user.email);
+            setCookie("id", user.id);
+            setCookie("bio", user.bio);
+            setCookie("Fname",user.Fname);
+            setCookie("Lname",  user.Lname);
+            setCookie("track", user.track);
+            setCookie("role", user.role);
+            setCookie("profilepic", user.profilepic);
             window.location = 'index.html';
         });
         request2.fail(function( jqXHR, textStatus ) {
-            alert( "Request failed: " + textStatus );
+            errorAlert( "Request failed: " + textStatus );
         });
     });
     request1.fail(function( jqXHR, textStatus ) {
         errorAlert( "Request failed: " + textStatus );
     });
 });
+
+// log the user in
+var loginForm = document.querySelector('#login-form');
+loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // get user info
+    var _email = loginForm['email-login'].value;
+    var password = loginForm['password-login'].value;
+
+    var request = $.ajax({
+        url: "http://localhost:3000/users",
+        method: "GET",
+        data: {},
+        dataType: "json"
+    });
+    var emailFounded = false;
+    var passwordFounded = false;
+
+    request.done(function( users ) {
+        console.log(users)
+        for (var i=0; i < users.length; i++){
+            if (users[i].email == _email){
+                console.log(users[i].email+"++")
+                emailFounded = true;
+                if (users[i].password == password){
+                    passwordFounded = true;
+                    setCookie("id", users[i].id);
+                    setCookie("email", users[i].email);
+                    setCookie("bio", users[i].bio);
+                    setCookie("track", users[i].track);
+                    setCookie("role", users[i].role);
+                    setCookie("Fname", users[i].Fname);
+                    setCookie("Lname", users[i].Lname);
+                    setCookie("profilepic", users[i].profilepic);
+                    setCookie('facebook',users[i].socialmedia.facebook )
+                    setCookie('linkedin',users[i].socialmedia.linkedin )
+                    setCookie('github',users[i].socialmedia.github )
+                    window.location = 'index.html';
+                    return;
+                }
+            }
+        }
+        if (_email.trim() == "" || password.trim() == ""){
+            errorAlert("Email And Password Couldn't Be Empty!")
+        }else if (emailFounded == false){
+            errorAlert("No User Founded With This Email")
+        } else if (emailFounded == false && passwordFounded == false){
+            errorAlert("Wrong Email Or Password")
+        } else if (passwordFounded == false){
+            errorAlert("Wrong Password")
+        }
+    });
+    request.fail(function( jqXHR, textStatus ) {
+        errorAlert("Request failed: " + textStatus );
+    });
+
+});
+
+function successMess(errorMessage) {
+    var aler = document.createElement('div')
+    aler.append(errorMessage);
+    aler.setAttribute('class', 'succ')
+    aler.setAttribute('id', 'succ')
+    document.body.prepend(aler);
+    setTimeout(function () {
+        $("#succ").slideUp(500);
+    },3000)
+}

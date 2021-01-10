@@ -233,9 +233,9 @@ function setupTagPosts(tagPosts) {
                 var li =
                     `<div class="post line-div">
                         <div class="head">
-                            <div class="img"><img src="img/profile.jpg"></div>
+                            <div class="img"><img src="img/${tagPosts[i].userprofilepic}"></div>
                             <div class="info">
-                                <div class="name">${getCookie("Fname")} ${getCookie("Lname")}</div>
+                                <div class="name">${tagPosts[i].username}</div>
                                 <div class="time">${tagPosts[i].created_at}</div>
                             </div>
                         </div>
@@ -244,9 +244,9 @@ function setupTagPosts(tagPosts) {
                             <p class="postP1">${tagPosts[i].body}</p>
                             <div><a class="see more">Read more..</a></div>
                         </div>
-            
+                        <div style="color:cornflowerblue;"><span id="likeCounter">${tagPosts[i].likes} </span> Likes <div style="color:cornflowerblue;"></div></div>
                         <div class="react">
-                            <div><i class="fa fa-thumbs-o-up"></i> Like</div>
+                            <div onclick="likeFun(this)"><i class="fa fa-thumbs-o-up"></i> Like</div>
                             <div><i class="fa fa-comments-o"></i> Comment</div>
                         </div>
                         <div class="comments">`
@@ -257,17 +257,17 @@ function setupTagPosts(tagPosts) {
                 });
                 for (var j = 0; j < tagPosts[i].comments.length; j++) {
                     li += `<div class="ccmnt">
-                                <div class="img"><img src="img/profile.jpg"></div>
+                                <div class="img"><a style="text-decoration: none;" href="profile.html?id=${tagPosts[i].comments[j].userid}" id="prfLink" target="_blank"><img src="img/${tagPosts[i].comments[j].userprofilepic}"></a></div>
                                 <div class="post-text">
-                                    <p><b>${tagPosts[i].comments[j].username}</b></p>
+                                    <p><b><a style="text-decoration: none;" href="profile.html?id=${tagPosts[i].comments[j].userid}" id="prfLink" target="_blank">${tagPosts[i].comments[j].username}</a></b></p>
                                     <p>${tagPosts[i].comments[j].content}</p>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>`
                 }
                 li +=`<div class="ccmnt">
-                                <div class="img"><img src="img/profile.jpg"></div>
-                                <textarea class="post-text" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
+                                <div class="img"><img src="img/${getCookie('profilepic')}"></div>
+                                <textarea onkeypress="onTestChange(this);" class="post-text" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
                                 <div class="clearfix"></div>
                             </div>
                         </div>
@@ -278,4 +278,6 @@ function setupTagPosts(tagPosts) {
         }
     }
 }
+
+
 

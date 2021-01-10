@@ -138,7 +138,7 @@ function CreatePost(){
                        
                         <div class="ccmnt">
                             <div class="img"><img src="img/${getCookie('profilepic')}"></div>
-                            <textarea class="post-text" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
+                            <textarea onkeypress="onTestChange(this);" class="post-text" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
                             <!-- <div class="post-text" contenteditable="true" data-placeholder="Write a comment.."></div> -->
                             <div class="clearfix"></div>
                         </div>
@@ -205,7 +205,6 @@ function CreatePost(){
                         <div class="ccmnt">
                             <div class="img"><img src="img/${getCookie('profilepic')}"></div>
                             <textarea onkeypress="onTestChange(this);" class="post-text" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
-                            <!-- <div class="post-text" contenteditable="true" data-placeholder="Write a comment.."></div> -->
                             <div class="clearfix"></div>
                         </div>
                     </div>
