@@ -69,3 +69,4 @@ function errorAlert(errorMessage) {
         $("#alert").slideUp(500);
     },3000)
 }
+

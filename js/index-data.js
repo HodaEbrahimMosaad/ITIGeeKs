@@ -150,7 +150,7 @@ var setupPosts = function(posts){
         }
         li +=`<div class="ccmnt">
                     <div class="img"><img src="img/${getCookie("profilepic")}"></div>
-                    <textarea onkeypress="onTestChange(this);" id="comment" class="post-text commentPost" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
+                    <textarea onkeypress="onTestChange(this)" id="comment" class="post-text commentPost" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
                     <!-- <div class="post-text" contenteditable="true" data-placeholder="Write a comment.."></div> -->
                     <div class="clearfix"></div>
                 </div>
@@ -184,6 +184,7 @@ function onTestChange(me) {
                     </div>`
         $(me).parent().parent().prepend(comm)
         me.value = ""
+        $(me).val('')
         return false;
     }
     else {

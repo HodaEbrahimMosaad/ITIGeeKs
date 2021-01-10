@@ -138,7 +138,7 @@ function CreatePost(){
                        
                         <div class="ccmnt">
                             <div class="img"><img src="img/${getCookie('profilepic')}"></div>
-                            <textarea class="post-text" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
+                            <textarea onkeypress="onTestChange(this);" class="post-text" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
                             <!-- <div class="post-text" contenteditable="true" data-placeholder="Write a comment.."></div> -->
                             <div class="clearfix"></div>
                         </div>
@@ -205,7 +205,6 @@ function CreatePost(){
                         <div class="ccmnt">
                             <div class="img"><img src="img/${getCookie('profilepic')}"></div>
                             <textarea onkeypress="onTestChange(this);" class="post-text" placeholder="Write a comment.." onkeyup="txtautoheight(this)"></textarea>
-                            <!-- <div class="post-text" contenteditable="true" data-placeholder="Write a comment.."></div> -->
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -339,26 +338,4 @@ function prevv(thiss){
     }
     if(i!=myNewPostImgLen)
         $(`.galary>div #img${++i}`).animate({right: '0px'});
-}
-function onTestChange(me) {
-    var key = window.event.keyCode;
-    if (key === 13) {
-        console.log(me.value)
-
-        var comContent =  me.value
-        var comm = `<div class="ccmnt">
-                        <div class="img"><a style="text-decoration: none;" href="profile.html" id="prfLink" target="_blank"><img src="img/${getCookie("profilepic")}"></a></div>
-                        <div class="post-text">
-                            <p><b><a style="text-decoration: none;" href="profile.html" id="prfLink" target="_blank">${getCookie("Fname")} ${getCookie("Lname")}</a></b></p>
-                            <p>${comContent}</p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>`
-        $(me).parent().parent().prepend(comm)
-        me.value = ""
-        return false;
-    }
-    else {
-        return true;
-    }
 }
