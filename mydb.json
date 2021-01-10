@@ -9,7 +9,7 @@
       "Lname": "Mosaad",
       "bio": "bla bla bla",
       "track": "System Development",
-      "profilepic" : "hoda1.jpeg",
+      "profilepic": "hoda1.jpeg",
       "socialmedia": {
         "facebook": "https://www.facebook.com/hodamosaad",
         "linkedin": "https://www.linkedin.com/hodamosaad",
@@ -25,13 +25,11 @@
       "Lname": "Mosallam",
       "bio": "MEAN stack developer",
       "track": "Big Data",
-      "profilepic" :"esraa.jpg",
+      "profilepic": "esraa.jpg",
       "socialmedia": {
-
         "facebook": "https://www.facebook.com/esraamosallam",
         "linkedin": "https://www.linkedin.com/esraamosallam",
         "github": "https://www.github.com/esraamosallam"
-
       }
     },
     {
@@ -43,13 +41,12 @@
       "track": "System Development",
       "bio": "",
       "id": 3,
-      "profilepic" :"anas.jpg",
+      "profilepic": "anas.jpg",
       "socialmedia": {
         "facebook": "https://www.facebook.com/anasibrahim",
         "linkedin": "https://www.linkedin.com/anasibrahim",
         "github": "https://www.github.com/anasibrahim"
       }
-
     },
     {
       "email": "hoda20@gmail.com",
@@ -60,7 +57,7 @@
       "track": "Internet Of Things",
       "bio": "",
       "id": 4,
-      "profilepic" :"2.jfif",
+      "profilepic": "2.jfif",
       "socialmedia": {
         "facebook": "https://www.facebook.com/somaiaibrahim",
         "linkedin": "https://www.linkedin.com/somaiaibrahim",
@@ -76,13 +73,14 @@
       "track": "Java Development",
       "bio": "",
       "id": 5,
-      "profilepic" :"aliaa.jpeg",
+      "profilepic": "aliaa.jpeg",
       "socialmedia": {
         "facebook": "https://www.facebook.com/aliaayasser",
         "linkedin": "https://www.linkedin.com/aliaayasser",
         "github": "https://www.github.com/aliaayasser"
       }
-    },{
+    },
+    {
       "email": "hodaz202000@gmail.com",
       "password": "1234567",
       "role": "user",
@@ -91,7 +89,7 @@
       "track": "System Development",
       "bio": "",
       "id": 6,
-      "profilepic" :"85.jpg",
+      "profilepic": "85.jpg",
       "socialmedia": {
         "facebook": "https://www.facebook.com/ibrahimmostafa",
         "linkedin": "https://www.linkedin.com/ibrahimmostafa",
@@ -107,13 +105,11 @@
       "Lname": "Mosa",
       "bio": "Front-end web developer",
       "track": "User interface",
-      "profilepic" :"p222.jpg",
+      "profilepic": "p222.jpg",
       "socialmedia": {
-
         "facebook": "https://www.facebook.com/Mostafamosa",
         "linkedin": "https://www.linkedin.com/Mostafamosa",
         "github": "https://www.github.com/Mostafamosa"
-
       }
     },
     {
@@ -125,13 +121,11 @@
       "Lname": "Atef",
       "bio": "Agmad Developer",
       "track": "Mobile Native",
-      "profilepic" :"p333.jpg",
+      "profilepic": "p333.jpg",
       "socialmedia": {
-
         "facebook": "https://www.facebook.com/mohamedAtef",
         "linkedin": "https://www.linkedin.com/mohamedAtef",
         "github": "https://www.github.com/mohamedAtef"
-
       }
     },
     {
@@ -143,13 +137,11 @@
       "Lname": "Mekrem",
       "bio": "Tester gamed",
       "track": "Quality Assurance",
-      "profilepic" :"profile.jpg",
+      "profilepic": "profile.jpg",
       "socialmedia": {
-
         "facebook": "https://www.facebook.com/ramimekrem",
         "linkedin": "https://www.linkedin.com/ramimekrem",
         "github": "https://www.github.com/ramimekrem"
-
       }
     }
   ],
@@ -160,10 +152,13 @@
       "comments": [],
       "img_path": [],
       "userid": 1,
-      "userprofilepic" : "hoda1.jpeg",
+      "userprofilepic": "hoda1.jpeg",
       "username": "Hoda Mosaad",
       "created_at": "1/7/2021, 6:34:33 PM",
-      "tags" : ["Programming","Scientific"],
+      "tags": [
+        "Programming",
+        "Scientific"
+      ],
       "likes": 4
     },
     {
@@ -172,22 +167,26 @@
       "img_path": [],
       "comments": [],
       "userid": 1,
-      "userprofilepic" : "hoda1.jpeg",
-      "username":"Hoda Mosaad" ,
-      "created_at":  "1/7/2021, 5:34:33 PM",
-      "tags": ["Scientific"],
+      "userprofilepic": "hoda1.jpeg",
+      "username": "Hoda Mosaad",
+      "created_at": "1/7/2021, 5:34:33 PM",
+      "tags": [
+        "Scientific"
+      ],
       "likes": 7
     },
     {
       "id": 3,
-      "body":"when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s .",
+      "body": "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s .",
       "img_path": [],
       "comments": [],
       "userid": 3,
-      "userprofilepic" :"anas.jpg",
+      "userprofilepic": "anas.jpg",
       "username": "Anas Ibrahim",
-      "created_at":  "1/7/2021, 6:34:33 PM",
-      "tags": ["Programming"],
+      "created_at": "1/7/2021, 6:34:33 PM",
+      "tags": [
+        "Programming"
+      ],
       "likes": 3
     },
     {
@@ -196,10 +195,13 @@
       "img_path": [],
       "comments": [],
       "userid": 5,
-      "userprofilepic" :"aliaa.jpeg",
+      "userprofilepic": "aliaa.jpeg",
       "username": "Aliaa Y. Hussien",
       "created_at": "1/7/2021, 2:34:33 PM",
-      "tags": ["Scientific", "Entertainment"],
+      "tags": [
+        "Scientific",
+        "Entertainment"
+      ],
       "likes": 2
     },
     {
@@ -208,37 +210,49 @@
       "img_path": [],
       "comments": [],
       "userid": 2,
-      "userprofilepic" :"esraa.jpg",
+      "userprofilepic": "esraa.jpg",
       "username": "Esraa Mosallam",
       "created_at": "1/7/2021, 2:37:33 PM",
-      "tags": ["Entertainment","CV"],
+      "tags": [
+        "Entertainment",
+        "CV"
+      ],
       "likes": 5
     },
     {
       "id": 6,
       "body": "we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and ",
-      "img_path": ["uchiha.jpg","3.jpg","4.jpg","5.jpg","6.jpg"],
+      "img_path": [
+        "uchiha.jpg",
+        "3.jpg",
+        "4.jpg",
+        "5.jpg",
+        "6.jpg"
+      ],
       "comments": [],
       "userid": 2,
-      "userprofilepic" :"esraa.jpg",
+      "userprofilepic": "esraa.jpg",
       "username": "Esraa Mosallam",
       "created_at": "1/7/2020, 2:37:33 PM",
-      "tags": ["Entertainment","CV"],
+      "tags": [
+        "Entertainment",
+        "CV"
+      ],
       "likes": 5
     }
   ],
   "following": [
     {
       "follower": 1,
-      "followed" : 2
+      "followed": 2
     },
     {
       "follower": 1,
-      "followed" : 5
+      "followed": 5
     },
     {
       "follower": 2,
-      "followed" : 1
+      "followed": 1
     },
     {
       "follower": 5,
@@ -262,7 +276,7 @@
       "id": 1,
       "content": "this is comment1",
       "postid": 1,
-      "userprofilepic" : "esraa.jpg",
+      "userprofilepic": "esraa.jpg",
       "userid": 2,
       "username": "Esraa Mosallam",
       "created_at": "1/7/2021, 6:34:33 PM"
@@ -272,7 +286,7 @@
       "content": "this is comment11",
       "postid": 1,
       "userid": 1,
-      "userprofilepic" : "hoda1.jpeg",
+      "userprofilepic": "hoda1.jpeg",
       "username": "Hoda Mosaad",
       "created_at": "1/7/2021, 5:34:33 PM"
     },
@@ -280,7 +294,7 @@
       "id": 3,
       "content": "this is comment4",
       "postid": 5,
-      "userprofilepic" :"85.jpg",
+      "userprofilepic": "85.jpg",
       "userid": 3,
       "username": "Ibrahim Mostafa",
       "created_at": "1/7/2021, 6:34:00 PM"
@@ -289,7 +303,7 @@
       "id": 4,
       "content": "this is comment 5",
       "postid": 5,
-      "userprofilepic" :"aliaa.jpeg",
+      "userprofilepic": "aliaa.jpeg",
       "userid": 5,
       "username": "Aliaa Y. Hussien",
       "created_at": "1/7/2021, 6:34:00 PM"
@@ -298,13 +312,19 @@
       "id": 5,
       "content": "this is comment 6",
       "postid": 2,
-      "userprofilepic" :"aliaa.jpeg",
+      "userprofilepic": "aliaa.jpeg",
       "userid": 5,
       "username": "Aliaa Y. Hussien",
       "created_at": "1/7/2021, 6:34:00 PM"
     }
   ],
   "tags": [
-    "Scientific", "Entertainment", "Data Science", "Big Data", "AI", "CV","Programming"
+    "Scientific",
+    "Entertainment",
+    "Data Science",
+    "Big Data",
+    "AI",
+    "CV",
+    "Programming"
   ]
 }

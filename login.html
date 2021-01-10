@@ -88,14 +88,14 @@
                         <label for="track" class="col-sm-4 col-form-label">Track</label>
                         <div class="col-sm-8">
                             <!--onchange="selectChecking()"-->
-                            <select class="form-select" aria-label="" id="track">
+                            <select class="form-select" aria-label="" id="track" onchange="selectCheck()">
                                 <option selected value="">Select Your Track</option>
                                 <option value="System Development">System Development</option>
                                 <option value="Internet Of Things">Internet Of Things</option>
                                 <option value="Data Management">Data Management</option>
                             </select>
 
-                            <a id="trackMessage"></a>
+                            <a id="trackMessageAlert"></a>
                         </div>
                     </div>
                     <div class="row mb-3">

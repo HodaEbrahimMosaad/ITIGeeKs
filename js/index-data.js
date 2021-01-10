@@ -76,7 +76,6 @@ request.done(function( posts ) {
         errorAlert("Request failed: " + textStatus );
     });
 });
-
 var postsList = document.querySelector('.timeline');
 // setup guides
 var setupPosts = function(posts){
@@ -116,9 +115,6 @@ var setupPosts = function(posts){
                     </div>
                 </div>`
             }
-
-
-
             li += `
 
             <div class="post-tags" style="text-align: initial;" id="post-tags">`
@@ -266,10 +262,6 @@ function slider(){
 function stop(){
     clearInterval(timerId);
 }
-
-
-
-
 $(window).on('load', function() {
     setTimeout(function(){
 
