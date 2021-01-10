@@ -119,18 +119,16 @@ var setupPosts = function(posts){
 
             <div class="post-tags" style="text-align: initial;" id="post-tags">`
                         for (var h=0; h< posts[i].tags.length; h++){
-
                             li += `<span style="margin-right: 10px;"> <a> ${posts[i].tags[h]} </a> </span>`
                         }
                     li += `</div>
-                        
                     </div>
-            <div style="color:cornflowerblue;"><span id="likeCounter">${posts[i].likes} </span> Likes <div style="color:cornflowerblue;"></div></div>
-            <div class="react">
-                <div onclick="likeFun(this)"><i class="fa fa-thumbs-o-up"></i> Like</div>
-                <div><i class="fa fa-comments-o"></i> Comment</div>
-            </div>
-            <div class="comments">`
+                    <div style="color:cornflowerblue;"><span id="likeCounter">${posts[i].likes} </span> Likes <div style="color:cornflowerblue;"></div></div>
+                    <div class="react">
+                        <div onclick="likeFun(this)"><i class="fa fa-thumbs-o-up"></i> Like</div>
+                        <div><i class="fa fa-comments-o"></i> Comment</div>
+                    </div>
+                    <div class="comments">`
         posts[i].comments.sort(function (a, b) {
             if (a.created_at > b.created_at) return 1;
             if (a.created_at < b.created_at) return -1;
@@ -161,8 +159,6 @@ var setupPosts = function(posts){
         html += li;
     }
     postsList.innerHTML += html
-
-
     $('.postP1').each(function(i, obj) {
         if (Number.parseInt($(obj).text().length) <= 355){
             $(obj).next().css({"display": "none"})
@@ -177,7 +173,6 @@ function onTestChange(me) {
     var key = window.event.keyCode;
     if (key === 13) {
         console.log(me.value)
-
         var comContent =  me.value
         var comm = `<div class="ccmnt">
                         <div class="img"><a style="text-decoration: none;" href="profile.html" id="prfLink" target="_blank"><img src="img/${getCookie("profilepic")}"></a></div>
@@ -201,25 +196,18 @@ var request5 = $.ajax({
     data: {},
     dataType: "json"
 });
-
 request5.done(function(users) {
     usersss=users;
-
-    
 });
 request5.fail(function( jqXHR, textStatus ) {
     errorAlert("Request failed: " + textStatus );
 });
-
 var start=1;
 var flagToOutSlid=0;
 var timerId = 0;
 var maxLen=30;
-
 var nextFlag=0;
-
 var countFlat=0;
-
 function funPrev(){
  console.log("start"+start,"coun 2",count2,"cputn",count)
    if(start>=1){
@@ -231,8 +219,6 @@ function funPrev(){
             count2--;
             start--;
        }
-
-
    }
     else{
         flagToOutSlid=1;
@@ -241,10 +227,7 @@ function funPrev(){
 var xx=1;
 var ff=0;
 function slider(){
-
-
     timerId = setInterval(function () {
-
         if(xx<=usersss.length&&ff==0){
             funNext();
             xx++;
@@ -268,7 +251,7 @@ $(window).on('load', function() {
         if(usersss.length>=4&&nextFlag==0){
         for(var iz=1;iz<=4;iz++){
 
-            if (followersId.includes(usersss[iz].id)){
+            if (followersId.includes(usersss[iz-1].id)){
                 var bt = `<div><button onclick="toggleFollow(this)" class='btn follow'>Unfollow</button></div>`
             } else {
                 var bt = `<div><button onclick="toggleFollow(this)" class='btn unfollow'>Follow</button></div>`
@@ -281,16 +264,8 @@ $(window).on('load', function() {
                             <div class='title' style='color: #00000085;'>"+ usersss[iz-1].track+"</div>" +bt + "</div>")
 
         }
-
-
             nextFlag=1;
-
-
     }},500)
-
-
-
-
 });
 
 function toggleFollow(btn) {
@@ -315,23 +290,16 @@ var request5 = $.ajax({
 
 request5.done(function(users) {
     var html = "";
-
     usersss=users;
-
     $('#profCont').append(html)
 });
 request5.fail(function( jqXHR, textStatus ) {
     errorAlert("Request failed: " + textStatus );
 });
-
-
 function funNext(){
-    
-
-
     if(usersss.length>=4&&nextFlag==0){
         for(var iz=1;iz<=4;iz++){
-            if (followersId.includes(usersss[iz].id)){
+            if (followersId.includes(usersss[iz-1].id)){
                 var bt = `<div><button onclick="toggleFollow(this)" class='btn follow'>Unfollow</button></div>`
             } else {
                 var bt = `<div><button onclick="toggleFollow(this)" class='btn unfollow'>Follow</button></div>`
@@ -342,14 +310,8 @@ function funNext(){
                             <div class='img'><a href='profile.html?id=" + usersss[iz-1].id + "' class='prfLink' target='_blank'><img src='img/"+usersss[iz-1].profilepic+"'></a></div>\
                             <div class='name'><b><a href='profile.html?id=" + usersss[iz-1].id + "' class='prfLink' target='_blank'>"+usersss[iz-1].Fname +"  "+ usersss[iz-1].Lname +"</a></b></div>\
                             <div class='title' style='color: #00000085;'>"+ usersss[iz-1].track+"</div>" +bt + "</div>")
-
-
-
-
         }
         nextFlag=1;
-        
- 
     }
     else{
      $("#innerDiv"+start).hide(); 
@@ -361,50 +323,34 @@ function funNext(){
                  } else {
                      var bt = `<div><button onclick="toggleFollow(this)" class='btn unfollow'>Follow</button></div>`
                  }
-
-
                  $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+count+"'"+">\
                             <div class='img'><a href='profile.html?id=" + usersss[count-1].id + "' class='prfLink' target='_blank'><img src='img/"+usersss[count-1].profilepic+"'></a></div>\
                             <div class='name'><b><a href='profile.html?id=" + usersss[count-1].id + "' class='prfLink' target='_blank'>"+usersss[count-1].Fname +"  "+ usersss[count-1].Lname +"</a></b></div>\
                             <div class='title' style='color: #00000085;'>"+ usersss[count-1].track+"</div>" +bt + "</div>")
-                 
           }
-
-
              console.log(followersId)
              console.log('------')
-
         if(count<usersss.length){
-
             if (followersId.includes(usersss[count-1].id)){
                 var bt = `<div><button onclick="toggleFollow(this)" class='btn follow'>Unfollow</button></div>`
             } else {
                 var bt = `<div><button onclick="toggleFollow(this)" class='btn unfollow'>Follow</button></div>`
             }
-
-
             $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+count+"'"+">\
                             <div class='img'><a href='profile.html?id=" + usersss[count-1].id + "' class='prfLink' target='_blank'><img src='img/"+usersss[count-1].profilepic+"'></a></div>\
                             <div class='name'><b><a href='profile.html?id=" + usersss[count-1].id + "' class='prfLink' target='_blank'>"+usersss[count-1].Fname +"  "+ usersss[count-1].Lname +"</a></b></div>\
                             <div class='title' style='color: #00000085;'>"+ usersss[count-1].track+"</div>" +bt + "</div>")
             count++;
         }
-
-
-
-
          $("#innerDiv"+count2).show();
         if(count2<usersss.length){
             count2++;
             start++;      
         }
-            
-
     if(count2==usersss.length){
         flagToOutSlid=0;
     }
     }
-
 }
 //lolo
 var AlignCount=1;
