@@ -70,3 +70,8 @@ function errorAlert(errorMessage) {
     },3000)
 }
 
+//text area auto height
+function txtautoheight(x) {
+    x.style.height = "5px";
+    x.style.height = (15+x.scrollHeight)+"px";
+}
