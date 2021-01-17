@@ -36,3 +36,45 @@ body {
 .logContainer>div form {
     margin-top: 40px;
 }
+.col-md-6 {
+    width: 50%;
+    box-sizing: border-box;
+    float: left;
+}
+.logContainer{
+  width: 975px;
+    margin-top: 80px;
+    display: flex;
+    font-family: -webkit-pictograph;
+}
+
+.btns-div{text-align: right;}
+.btn {
+    border: 0;
+    padding: 7px 15px;
+    background: #fff;
+    /* margin: 0; */
+}
+.btn-danger {
+    background: #da3333;
+    color: #fff;
+}
+.btn-success {
+    background: #34b934;
+    color: #fff;
+    font-size: 20px;
+    margin-top: 25px;
+}
+input {
+    padding: 6px;
+    margin: 3px 0px;
+}
+td span {
+    font-size: 12px;
+    display: block;
+}
+select#track {
+    padding: 5px;
+    width: 100%;
+}
+.btn:focus{outline: 0;}

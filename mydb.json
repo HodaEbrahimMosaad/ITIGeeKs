@@ -143,6 +143,17 @@
         "linkedin": "https://www.linkedin.com/ramimekrem",
         "github": "https://www.github.com/ramimekrem"
       }
+    },
+    {
+      "email": "mariam@gmail.com",
+      "password": "1234567",
+      "role": "user",
+      "Fname": "mariam",
+      "Lname": "sediek",
+      "track": "Internet Of Things",
+      "bio": "Programmer",
+      "profilepic": "mariam.jpg",
+      "id": 10
     }
   ],
   "posts": [
