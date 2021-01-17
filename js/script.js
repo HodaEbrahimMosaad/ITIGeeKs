@@ -1,12 +1,13 @@
 $('.profile').attr('src', 'img/'+getCookie('profilepic'))
 
 var request11 = $.ajax({
-    url: "http://localhost:3000/tags",
+    url: "mydb.json",
     method: "GET",
     data: {},
     dataType: "json"
 });
-request11.done(function( tags ) {
+request11.done(function( data ) {
+    var tags = data.tags
     var html = ``
     for (var i=0; i < tags.length; i++){
         html += `<span style="margin-right: 5px;"><a onclick="addtag(event)">${tags[i]}</a></span>`
@@ -229,11 +230,7 @@ function CreatePost(){
     $('.selected-tag').removeClass('selected-tag')
 }
 
-//text area auto height
-function txtautoheight(x) {
-    x.style.height = "5px";
-    x.style.height = (15+x.scrollHeight)+"px";
-}
+
 $(function(){
     //fixed profile section in home
     var stickyHeaderTop = $('.sticky').offset().top;

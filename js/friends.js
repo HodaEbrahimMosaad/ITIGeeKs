@@ -1,29 +1,30 @@
 var _follower = 0;
-var followersId=[]
+var followersId=[];
 var id = Number.parseInt(getCookie('id'))
 var request1 = $.ajax({
-    url: "http://localhost:3000/following",
+    url: "mydb.json",
     method: "GET",
     data: {},
     dataType: "json"
 });
-request1.done(function( following ) {
+request1.done(function( data ) {
+    var following = data.following
     for (var i=0; i < following.length; i++){
         if (following[i].follower == id){
             followersId.push(following[i].followed)
             _follower++;
         }
-
         console.log(followersId)
     }
     var _users = []
     var request5 = $.ajax({
-        url: "http://localhost:3000/users",
+        url: "mydb.json",
         method: "GET",
         data: {},
         dataType: "json"
     });
-    request5.done(function(users) {
+    request5.done(function(data) {
+        var users = data.users
         for (var i=0; i< users.length; i++){
             if (followersId.includes(users[i].id)){
                 _users.push(users[i])
@@ -33,8 +34,8 @@ request1.done(function( following ) {
         var html = ``
         for (var i =0; i< _users.length;i++){
             var li = `<div class="person line-div" id="innerDiv1">
-                        <div class="img"><a style="text-decoration: none;" href="profile.html?id=${_users[i].id}" id="prfLink" target="_blank"><img src="img/${_users[i].profilepic}"></a></div>
-                        <div class="name"><b><a style="text-decoration: none;" href="profile.html?id=${_users[i].id}" id="prfLink" target="_blank">${_users[i].Fname} ${_users[i].Lname}</a></b></div>
+                        <div class="img"><a style="text-decoration: none;" href="profile.html?id=${_users[i].id}" id="prfLink" target="_self"><img src="img/${_users[i].profilepic}"></a></div>
+                        <div class="name"><b><a style="text-decoration: none;" href="profile.html?id=${_users[i].id}" id="prfLink" target="_self">${_users[i].Fname} ${_users[i].Lname}</a></b></div>
                         <div class="title" style="color: #00000085;">${_users[i].track}</div>
                         <div><button onclick="toggleFollow(this)" class="btn follow">Unfollow</button></div>
                      </div>`

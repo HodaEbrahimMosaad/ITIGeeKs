@@ -44,7 +44,6 @@ document.getElementById("Lname").onkeyup = function(){
 document.getElementById("Lname").onblur = function(){
     console.log(LnameFlag.flag)
 };
-
 var emailFlag = false;
 function emailChecking(){
     var email = document.getElementById("email").value;
@@ -82,7 +81,6 @@ function passwordChecking(){
         passwordFlag = true;
     }
 }
-
 var selectFlag = false;
 function selectCheck() {
     var trackMessg = document.getElementById('trackMessageAlert');
@@ -98,7 +96,6 @@ function selectCheck() {
         document.getElementById('track').style.border = '1px solid green';
     }
 }
-
 var passwordRepFlag = false;
 function passwordRepChecking(){
     var passwordRep = document.getElementById("RepeatPassword").value;
@@ -121,7 +118,6 @@ function passwordRepChecking(){
         passwordRepFlag = true;
     }
 }
-
 $(function(){
     $('.register').hide();
     $('.login-btn').click(function(){
@@ -134,13 +130,12 @@ $(function(){
         $('.register').show();
     });
 });
-
 // signup
 var signupForm = document.querySelector('#signup-form');
 signupForm.addEventListener('submit', function(e){
     if (!FnameFlag.flag || !LnameFlag.flag || !emailFlag || !passwordFlag || !passwordRepFlag || !selectFlag){
         console.log('invalid data');
-        errorAlert("Invalid Data Entered!")
+        errorAlert("Invalid Data Entered!");
         e.preventDefault();
         return;
     }
@@ -148,12 +143,14 @@ signupForm.addEventListener('submit', function(e){
     // get user info
     var _email = signupForm['email'].value;
     var password = signupForm['password-signin'].value;
+    var request1 = $.ajax(
+        {
 
-    var request1 = $.ajax({
         url: "http://localhost:3000/users",
         method: "GET",
         data: {},
         dataType: "html"
+
     });
     request1.done(function( mess ) {
         var users = JSON.parse(mess);
@@ -179,7 +176,7 @@ signupForm.addEventListener('submit', function(e){
             dataType: "json"
         });
         request2.done(function(user) {
-            console.log(user)
+            console.log(user);
             setCookie("email", user.email);
             setCookie("id", user.id);
             setCookie("bio", user.bio);
@@ -198,7 +195,6 @@ signupForm.addEventListener('submit', function(e){
         errorAlert( "Request failed: " + textStatus );
     });
 });
-
 // log the user in
 var loginForm = document.querySelector('#login-form');
 loginForm.addEventListener('submit', (e) => {
@@ -208,16 +204,16 @@ loginForm.addEventListener('submit', (e) => {
     var password = loginForm['password-login'].value;
 
     var request = $.ajax({
-        url: "http://localhost:3000/users",
+        url: "mydb.json",
         method: "GET",
         data: {},
         dataType: "json"
     });
     var emailFounded = false;
     var passwordFounded = false;
-
-    request.done(function( users ) {
-        console.log(users)
+    request.done(function( data ) {
+        console.log(data.users)
+        var users = data.users
         for (var i=0; i < users.length; i++){
             if (users[i].email == _email){
                 console.log(users[i].email+"++")
@@ -255,12 +251,11 @@ loginForm.addEventListener('submit', (e) => {
     });
 
 });
-
 function successMess(errorMessage) {
-    var aler = document.createElement('div')
+    var aler = document.createElement('div');
     aler.append(errorMessage);
-    aler.setAttribute('class', 'succ')
-    aler.setAttribute('id', 'succ')
+    aler.setAttribute('class', 'succ');
+    aler.setAttribute('id', 'succ');
     document.body.prepend(aler);
     setTimeout(function () {
         $("#succ").slideUp(500);

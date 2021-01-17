@@ -2,28 +2,26 @@ var start=1;
 var count=5;
 var usersss;
 var count2=count;
-
 var id = getCookie("id");
-console.log(id);
 var followersId = [];
-var followedId = []
-
+var followedId = [];
 var request1 = $.ajax({
-    url: "http://localhost:3000/following",
+    url: "mydb.json",
     method: "GET",
     data: {},
     dataType: "json"
 });
 var _follower = 0;
 var _followed = 0;
-request1.done(function( following ) {
+request1.done(function( data ) {
+    var following = data.following;
     for (var i=0; i < following.length; i++){
         if (following[i].follower == id){
-            followersId.push(following[i].followed)
+            followersId.push(following[i].followed);
             _follower += 1
         }
         if (following[i].followed == id){
-            followedId.push(following[i].follower)
+            followedId.push(following[i].follower);
             _followed += 1
         }
     }
@@ -34,14 +32,15 @@ request1.fail(function( jqXHR, textStatus ) {
     errorAlert("Request failed: " + textStatus );
 });
 var request = $.ajax({
-    url: "http://localhost:3000/posts",
+    url: "mydb.json",
     method: "GET",
     data: {},
     dataType: "json"
 });
 var all_posts = [];
 var postsId = [];
-request.done(function( posts ) {
+request.done(function( data ) {
+    var posts = data.posts;
     for (var i=0; i < posts.length; i++){
         if (posts[i].userid == id){
             postsId.push(posts[i].id);
@@ -52,12 +51,13 @@ request.done(function( posts ) {
         }
     }
     var request2 = $.ajax({
-        url: "http://localhost:3000/comments",
+        url: "mydb.json",
         method: "GET",
         data: {},
         dataType: "json"
     });
-    request2.done(function(comments) {
+    request2.done(function(data) {
+        var comments = data.comments;
         for (var i=0; i < comments.length; i++){
             for (var j=0; j<all_posts.length; j++){
                 if (comments[i].postid == all_posts[j].id){
@@ -88,9 +88,9 @@ var setupPosts = function(posts){
         var li =
         `<div class="post line-div">
             <div class="head">
-                 <div class="img"><a href="${href}" class="prfLink" target="_blank"><img src="img/${posts[i].userprofilepic}"></a></div>
+                 <div class="img"><a href="${href}" class="prfLink" target="_self"><img src="img/${posts[i].userprofilepic}"></a></div>
                 <div class="info">
-                    <div class="name"><a style="text-decoration: none;" href="${href}" id="prfLink" target="_blank">${posts[i].username}</a></div>
+                    <div class="name"><a style="text-decoration: none;" href="${href}" id="prfLink" target="_self">${posts[i].username}</a></div>
                     <div class="time"><i class="fa fa-history"></i> ${(posts[i].created_at)}</div>
                 </div>
             </div>
@@ -140,9 +140,9 @@ var setupPosts = function(posts){
                 hrefpro = hrefpro + "?id=" + posts[i].comments[j].userid
             }
             li += `<div class="ccmnt">
-                    <div class="img"><a style="text-decoration: none;" href="${hrefpro}" id="prfLink" target="_blank"><img src="img/${posts[i].comments[j].userprofilepic}"></a></div>
+                    <div class="img"><a style="text-decoration: none;" href="${hrefpro}" id="prfLink" target="_self"><img src="img/${posts[i].comments[j].userprofilepic}"></a></div>
                     <div class="post-text">
-                        <p><b><a style="text-decoration: none;" href="${hrefpro}" id="prfLink" target="_blank">${posts[i].comments[j].username}</a></b></p>
+                        <p><b><a style="text-decoration: none;" href="${hrefpro}" id="prfLink" target="_self">${posts[i].comments[j].username}</a></b></p>
                         <p>${posts[i].comments[j].content}</p>
                     </div>
                     <div class="clearfix"></div>
@@ -166,25 +166,25 @@ var setupPosts = function(posts){
     });
 };
 var fullname = getCookie("Fname") + " " + getCookie("Lname")
-$('#FLname').text(fullname)
-$('#ttle').text(getCookie("track"))
+$('#FLname').text(fullname);
+$('#ttle').text(getCookie("track"));
 $('#profilepic').attr("src","img/"+getCookie("profilepic"))
 function onTestChange(me) {
     var key = window.event.keyCode;
     if (key === 13) {
-        console.log(me.value)
-        var comContent =  me.value
+        console.log(me.value);
+        var comContent =  me.value;
         var comm = `<div class="ccmnt">
-                        <div class="img"><a style="text-decoration: none;" href="profile.html" id="prfLink" target="_blank"><img src="img/${getCookie("profilepic")}"></a></div>
+                        <div class="img"><a style="text-decoration: none;" href="profile.html" id="prfLink" target="_self"><img src="img/${getCookie("profilepic")}"></a></div>
                         <div class="post-text">
-                            <p><b><a style="text-decoration: none;" href="profile.html" id="prfLink" target="_blank">${getCookie("Fname")} ${getCookie("Lname")}</a></b></p>
+                            <p><b><a style="text-decoration: none;" href="profile.html" id="prfLink" target="_self">${getCookie("Fname")} ${getCookie("Lname")}</a></b></p>
                             <p>${comContent}</p>
                         </div>
                         <div class="clearfix"></div>
                     </div>`
-        $(me).parent().parent().prepend(comm)
-        me.value = ""
-        $(me).val('')
+        $(me).parent().parent().prepend(comm);
+        me.value = "";
+        $(me).val('');
         return false;
     }
     else {
@@ -192,13 +192,13 @@ function onTestChange(me) {
     }
 }
 var request5 = $.ajax({
-    url: "http://localhost:3000/users",
+    url: "mydb.json",
     method: "GET",
     data: {},
     dataType: "json"
 });
-request5.done(function(users) {
-    usersss=users;
+request5.done(function(data) {
+    usersss=data.users;
 });
 request5.fail(function( jqXHR, textStatus ) {
     errorAlert("Request failed: " + textStatus );
@@ -257,41 +257,36 @@ $(window).on('load', function() {
             } else {
                 var bt = `<div><button onclick="toggleFollow(this)" class='btn unfollow'>Follow</button></div>`
             }
-
-
                 $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+iz+"'"+">\
-                            <div class='img'><a href='profile.html?id=" + usersss[iz-1].id + "' class='prfLink' target='_blank'><img src='img/"+usersss[iz-1].profilepic+"'></a></div>\
-                            <div class='name'><b><a href='profile.html?id=" + usersss[iz-1].id + "' class='prfLink' target='_blank'>"+usersss[iz-1].Fname +"  "+ usersss[iz-1].Lname +"</a></b></div>\
+                            <div class='img'><a href='profile.html?id=" + usersss[iz-1].id + "' class='prfLink' target='_self'><img src='img/"+usersss[iz-1].profilepic+"'></a></div>\
+                            <div class='name'><b><a href='profile.html?id=" + usersss[iz-1].id + "' class='prfLink' target='_self'>"+usersss[iz-1].Fname +"  "+ usersss[iz-1].Lname +"</a></b></div>\
                             <div class='title' style='color: #00000085;'>"+ usersss[iz-1].track+"</div>" +bt + "</div>")
 
         }
             nextFlag=1;
     }},500)
 });
-
 function toggleFollow(btn) {
     if($(btn).hasClass('follow')){
-        $(btn).addClass('unfollow')
-        $(btn).removeClass('follow')
+        $(btn).addClass('unfollow');
+        $(btn).removeClass('follow');
         $(btn).text('Follow')
     } else {
-        $(btn).addClass('follow')
-        $(btn).removeClass('unfollow')
-        $(btn).text('Unfollow')
+        $(btn).addClass('follow');
+        $(btn).removeClass('unfollow');
+        $(btn).text('Unfollow');
     }
 }
-
 var request5 = $.ajax({
-    url: "http://localhost:3000/users",
+    url: "mydb.json",
     method: "GET",
     data: {},
     dataType: "json"
 });
+request5.done(function(data) {
 
-
-request5.done(function(users) {
     var html = "";
-    usersss=users;
+    usersss=data.users;
     $('#profCont').append(html)
 });
 request5.fail(function( jqXHR, textStatus ) {
@@ -305,18 +300,15 @@ function funNext(){
             } else {
                 var bt = `<div><button onclick="toggleFollow(this)" class='btn unfollow'>Follow</button></div>`
             }
-
-
             $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+iz+"'"+">\
-                            <div class='img'><a href='profile.html?id=" + usersss[iz-1].id + "' class='prfLink' target='_blank'><img src='img/"+usersss[iz-1].profilepic+"'></a></div>\
-                            <div class='name'><b><a href='profile.html?id=" + usersss[iz-1].id + "' class='prfLink' target='_blank'>"+usersss[iz-1].Fname +"  "+ usersss[iz-1].Lname +"</a></b></div>\
+                            <div class='img'><a href='profile.html?id=" + usersss[iz-1].id + "' class='prfLink' target='_self'><img src='img/"+usersss[iz-1].profilepic+"'></a></div>\
+                            <div class='name'><b><a href='profile.html?id=" + usersss[iz-1].id + "' class='prfLink' target='_self'>"+usersss[iz-1].Fname +"  "+ usersss[iz-1].Lname +"</a></b></div>\
                             <div class='title' style='color: #00000085;'>"+ usersss[iz-1].track+"</div>" +bt + "</div>")
         }
         nextFlag=1;
     }
     else{
-     $("#innerDiv"+start).hide(); 
-       
+     $("#innerDiv"+start).hide();
              if(count==usersss.length&&$("#innerDiv"+count).length==0){
 
                  if (followersId.includes(usersss[count-1].id)){
@@ -325,8 +317,8 @@ function funNext(){
                      var bt = `<div><button onclick="toggleFollow(this)" class='btn unfollow'>Follow</button></div>`
                  }
                  $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+count+"'"+">\
-                            <div class='img'><a href='profile.html?id=" + usersss[count-1].id + "' class='prfLink' target='_blank'><img src='img/"+usersss[count-1].profilepic+"'></a></div>\
-                            <div class='name'><b><a href='profile.html?id=" + usersss[count-1].id + "' class='prfLink' target='_blank'>"+usersss[count-1].Fname +"  "+ usersss[count-1].Lname +"</a></b></div>\
+                            <div class='img'><a href='profile.html?id=" + usersss[count-1].id + "' class='prfLink' target='_self'><img src='img/"+usersss[count-1].profilepic+"'></a></div>\
+                            <div class='name'><b><a href='profile.html?id=" + usersss[count-1].id + "' class='prfLink' target='_self'>"+usersss[count-1].Fname +"  "+ usersss[count-1].Lname +"</a></b></div>\
                             <div class='title' style='color: #00000085;'>"+ usersss[count-1].track+"</div>" +bt + "</div>")
           }
              console.log(followersId)
@@ -338,8 +330,8 @@ function funNext(){
                 var bt = `<div><button onclick="toggleFollow(this)" class='btn unfollow'>Follow</button></div>`
             }
             $('.profilesContainer').append("<div class='person line-div' id='innerDiv"+count+"'"+">\
-                            <div class='img'><a href='profile.html?id=" + usersss[count-1].id + "' class='prfLink' target='_blank'><img src='img/"+usersss[count-1].profilepic+"'></a></div>\
-                            <div class='name'><b><a href='profile.html?id=" + usersss[count-1].id + "' class='prfLink' target='_blank'>"+usersss[count-1].Fname +"  "+ usersss[count-1].Lname +"</a></b></div>\
+                            <div class='img'><a href='profile.html?id=" + usersss[count-1].id + "' class='prfLink' target='_self'><img src='img/"+usersss[count-1].profilepic+"'></a></div>\
+                            <div class='name'><b><a href='profile.html?id=" + usersss[count-1].id + "' class='prfLink' target='_self'>"+usersss[count-1].Fname +"  "+ usersss[count-1].Lname +"</a></b></div>\
                             <div class='title' style='color: #00000085;'>"+ usersss[count-1].track+"</div>" +bt + "</div>")
             count++;
         }
@@ -358,11 +350,9 @@ var AlignCount=1;
 function AlignFun(){
    debugger
     if(AlignCount==0){
-        
         $('#postBody').css("text-align","left");
         $("#_align").removeClass("fa-align-right");
         $("#_align").addClass("fa-align-left");
-        
         AlignCount++;
     }
      else if(AlignCount==1){
@@ -370,7 +360,6 @@ function AlignFun(){
         $('#postBody').css("text-align","center");
         $("#_align").removeClass("fa-align-left");
         $("#_align").addClass("fa-align-center");
-
         AlignCount++;
     }
     else if(AlignCount==2){
@@ -379,42 +368,29 @@ function AlignFun(){
         $("#_align").addClass("fa-align-right");
         AlignCount=0;       
     }
- 
 }
-
-
-
-
 var AlignCount=1;
 function AlignFun(){
 
     if(AlignCount==0){
-
         $('#postBody').css("text-align","left");
         $("#_align").removeClass("fa-align-right");
         $("#_align").addClass("fa-align-left");
-        
         AlignCount++;
     }
      else if(AlignCount==1){
-        
         $('#postBody').css("text-align","center");
         $("#_align").removeClass("fa-align-left");
         $("#_align").addClass("fa-align-center");
-        
         AlignCount++;
     }
-    else if(AlignCount==2){
-        $('#postBody').css("text-align","right");
+    else if(AlignCount==2) {
+        $('#postBody').css("text-align", "right");
         $("#_align").removeClass("fa-align-center");
         $("#_align").addClass("fa-align-right");
-        AlignCount=0;       
+        AlignCount = 0;
     }
- 
 }
-
-
-
 var FintFamilyCount=0;
 function fontFamily(){
 
@@ -432,11 +408,7 @@ function fontFamily(){
         $('#postBody').css("font-family","Fantasy");
         FintFamilyCount=0;       
     }
- 
 }
-
-
-
 var ColorCount=0;
 function fontColor(){
     if(ColorCount==0){
@@ -451,7 +423,6 @@ function fontColor(){
         $('#postBody').css("color","#1e52a7");
         $("#_Color").css("color","#1e52a7");
        // $("#_Color").addClass("fa-align-center");*/
-        
         ColorCount++;
     }
     else if(ColorCount==2){
@@ -460,6 +431,4 @@ function fontColor(){
        /* $("#_Color").addClass("fa-align-right");*/
         ColorCount=0;       
     }
-    
- 
 }

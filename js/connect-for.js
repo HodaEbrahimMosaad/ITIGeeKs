@@ -1,8 +1,8 @@
-var board=document.querySelector(".board")
-var player=document.querySelector(".player")
-var playAgain=document.querySelector(".playAgain")
-var restart=document.querySelector(".restart")
-var box=0
+var board=document.querySelector(".board");
+var player=document.querySelector(".player");
+var playAgain=document.querySelector(".playAgain");
+var restart=document.querySelector(".restart");
+var box=0;
 var winningArray = [
     [0, 1, 2, 3], [41, 40, 39, 38],[7, 8, 9, 10],
     [34, 33, 32, 31], [14, 15, 16, 17], [27, 26, 25, 24],
@@ -46,9 +46,9 @@ function loadDOM(){
 
 function createBoard(){
     for(var i=0;i<49;i++){
-        var div =document.createElement("div")
-        div.setAttribute("id",i)
-        div.className = "square"
+        var div =document.createElement("div");
+        div.setAttribute("id",i);
+        div.className = "square";
         if (i>=42){
             div.className="taken non";
         }
@@ -58,22 +58,22 @@ function createBoard(){
 //clickBoard function
 
 function clickBox(){
-    var squares =document.querySelectorAll(".board div")
-    var click =parseInt(this.id)
+    var squares =document.querySelectorAll(".board div");
+    var click =parseInt(this.id);
     if( squares[click+7].classList.contains("taken") && !squares[click].classList.contains("taken")){
         if(currentPlayer===1){
-            currentPlayer=2
-            player.innerHTML=currentPlayer
-            this.className="player-one taken"
+            currentPlayer=2;
+            player.innerHTML=currentPlayer;
+            this.className="player-one taken";
             checkWon()
         }else if(currentPlayer===2){
-            currentPlayer=1
-            player.innerHTML=currentPlayer
-            this.className="player-two taken"
+            currentPlayer=1;
+            player.innerHTML=currentPlayer;
+            this.className="player-two taken";
             checkWon()
         }
         if(box===42){
-            setTimeout(()=>alert("boxes filled"),300)
+            setTimeout(()=>alert("boxes filled"),300);
             setTimeout(()=>restart.style.display="block",500)
         }
     }else{
@@ -83,7 +83,7 @@ function clickBox(){
 //the checkWon function
 
 function checkWon(){
-    var squares =document.querySelectorAll(".board div")
+    var squares =document.querySelectorAll(".board div");
     for (var y=0;y<winningArray.length;y++){
         var flagR = true, flagB = true;
         var square =winningArray[y] //(1,2,3,4)
@@ -116,8 +116,8 @@ function checkWon(){
     }
 }
 function reset(){
-    console.log('reset')
-    board.innerHTML=""
-    loadDOM()
+    console.log('reset');
+    board.innerHTML="";
+    loadDOM();
     restart.style.display="none"
 }

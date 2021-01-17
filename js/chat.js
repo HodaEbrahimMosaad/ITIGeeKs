@@ -100,12 +100,13 @@ function output(input){
             if (input == "help"){
                 var html = ``;
                 var request1 = $.ajax({
-                    url: "http://localhost:3000/tags",
+                    url: "mydb.json",
                     method: "GET",
                     data: {},
                     dataType: "json"
                 });
-                request1.done(function( tags ) {
+                request1.done(function( data ) {
+                    var tags = data.tags
                     html += `<div style="color:#FFF;" id="options">`
                     for (var i=0; i < tags.length; i++){
                         html += `<button onclick="getTagPsts(event)" class="option">${tags[i]}</button>`
@@ -176,24 +177,26 @@ function getTagPsts(e) {
     console.log(tag);
     var tagPosts = [];
     var request = $.ajax({
-        url: "http://localhost:3000/posts",
+        url: "mydb.json",
         method: "GET",
         data: {},
         dataType: "json"
     });
-    request.done(function (posts) {
+    request.done(function (data) {
+        var posts = data.posts
         for (var i = 0; i < posts.length; i++) {
             if (posts[i].tags.includes(tag)) {
                 tagPosts.push(posts[i])
             }
         }
         var request2 = $.ajax({
-            url: "http://localhost:3000/comments",
+            url: "mydb.json",
             method: "GET",
             data: {},
             dataType: "json"
         });
-        request2.done(function (comments) {
+        request2.done(function (data) {
+            var comments = data.comments;
             for (var i = 0; i < comments.length; i++) {
                 for (var j = 0; j < tagPosts.length; j++) {
                     if (comments[i].postid == tagPosts[j].id) {
@@ -257,9 +260,9 @@ function setupTagPosts(tagPosts) {
                 });
                 for (var j = 0; j < tagPosts[i].comments.length; j++) {
                     li += `<div class="ccmnt">
-                                <div class="img"><a style="text-decoration: none;" href="profile.html?id=${tagPosts[i].comments[j].userid}" id="prfLink" target="_blank"><img src="img/${tagPosts[i].comments[j].userprofilepic}"></a></div>
+                                <div class="img"><a style="text-decoration: none;" href="profile.html?id=${tagPosts[i].comments[j].userid}" id="prfLink" target="_self"><img src="img/${tagPosts[i].comments[j].userprofilepic}"></a></div>
                                 <div class="post-text">
-                                    <p><b><a style="text-decoration: none;" href="profile.html?id=${tagPosts[i].comments[j].userid}" id="prfLink" target="_blank">${tagPosts[i].comments[j].username}</a></b></p>
+                                    <p><b><a style="text-decoration: none;" href="profile.html?id=${tagPosts[i].comments[j].userid}" id="prfLink" target="_self">${tagPosts[i].comments[j].username}</a></b></p>
                                     <p>${tagPosts[i].comments[j].content}</p>
                                 </div>
                                 <div class="clearfix"></div>
@@ -278,6 +281,3 @@ function setupTagPosts(tagPosts) {
         }
     }
 }
-
-
-
