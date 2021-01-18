@@ -75,6 +75,10 @@ td span {
 }
 select#track {
     padding: 5px;
-    width: 100%;
+    width: 172px;
+
 }
 .btn:focus{outline: 0;}
+table tr{
+    height: 60px;
+}

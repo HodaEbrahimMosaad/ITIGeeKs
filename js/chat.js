@@ -47,7 +47,7 @@ var alternative = ["What?...", "Eh?...", "I can't understand you!"];
 function test2(key) {
     if(key === 13){ //Enter button
         var input = document.getElementById("input").value;
-        process(input)
+        process(input);
         output(input);
     }
 }
@@ -57,7 +57,7 @@ function test(){
     output(input);
 }
 function process(input) {
-    var now = new Date()
+    var now = new Date();
     var inp = `<div class="msg-container msg-remote" id="msg-0">
                     <div class="msg-box">
                         <img class="user-img" id="user-0" src="img/profile.jpg" />
@@ -183,7 +183,7 @@ function getTagPsts(e) {
         dataType: "json"
     });
     request.done(function (data) {
-        var posts = data.posts
+        var posts = data.posts;
         for (var i = 0; i < posts.length; i++) {
             if (posts[i].tags.includes(tag)) {
                 tagPosts.push(posts[i])

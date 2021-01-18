@@ -154,6 +154,28 @@
       "bio": "Programmer",
       "profilepic": "mariam.jpg",
       "id": 10
+    },
+    {
+      "email": "hoda0000@gmail.com",
+      "password": "1234567",
+      "role": "user",
+      "Fname": "kjhkk",
+      "Lname": "hkjhkj",
+      "track": "Internet Of Things",
+      "bio": "",
+      "profilepic": "def.jfif",
+      "id": 11
+    },
+    {
+      "email": "hoda11111@gmail.com",
+      "password": "1234567",
+      "role": "user",
+      "Fname": "abckl",
+      "Lname": "kjhkj",
+      "track": "Data Management",
+      "bio": "",
+      "profilepic": "def.jfif",
+      "id": 12
     }
   ],
   "posts": [

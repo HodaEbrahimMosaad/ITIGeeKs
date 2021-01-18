@@ -6,8 +6,8 @@ function nameChecking(inputValue,messageFor,obj) {
         demo.innerHTML = inputValue + " can't be empty!";
         demo.style.color = "red";
         obj.flag = false;
-    } else if (Fname.length < 4){
-        demo.innerHTML = inputValue + " should be at least 4 chars!";
+    } else if (Fname.length < 3){
+        demo.innerHTML = inputValue + " should be at least 3 chars!";
         demo.style.color = "red";
         console.log("Error");
         obj.flag = false;
